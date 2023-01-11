@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tinysnow.mapper.CommentsMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.model.Comments">
+    <id property="id" column="id" jdbcType="BIGINT"/>
+    <result property="post" column="post" jdbcType="VARCHAR"/><!-- 关联posts的id -->
+    <result property="parent" column="parent" jdbcType="VARCHAR"/><!-- 父评论id，关联comments的id，若无则为post的一级评论 -->
+    <result property="author" column="author" jdbcType="VARCHAR"/><!-- 关联users的id -->
+    <result property="content" column="content" jdbcType="LONGVARCHAR"/><!-- 内容 -->
+    <result property="upvote" column="upvote" jdbcType="INTEGER"/><!-- 点赞数 -->
+    <result property="devote" column="devote" jdbcType="INTEGER"/><!-- 点踩数 -->
+    <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
+    <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更改时间，若无可为空 -->
+    <result property="status" column="status" jdbcType="INTEGER"/><!-- 状态，是否可用 -->
+    <result property="isTop" column="is_top" jdbcType="BIT"/><!-- 置顶，即是否为最佳答案 -->
+  </resultMap>
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tinysnow.mapper.CollectionsMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.model.Collections">
+    <id property="id" column="id" jdbcType="BIGINT"/>
+    <result property="title" column="title" jdbcType="VARCHAR"/><!-- 问题集标题 -->
+    <result property="author" column="author" jdbcType="VARCHAR"/><!-- 创建者，关联users的id -->
+    <result property="description" column="description" jdbcType="LONGVARCHAR"/><!-- 问题集描述 -->
+    <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
+    <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更改时间，若无可为空 -->
+  </resultMap>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tinysnow.mapper.UsersMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.model.Users">
+    <id property="id" column="id" jdbcType="BIGINT"/>
+    <result property="username" column="username" jdbcType="VARCHAR"/><!-- 用户名 -->
+    <result property="password" column="password" jdbcType="VARCHAR"/><!-- 密码，加密 -->
+    <result property="avatar" column="avatar" jdbcType="VARCHAR"/><!-- 头像，链接存储 -->
+    <result property="email" column="email" jdbcType="VARCHAR"/><!-- 邮箱，唯一凭证 -->
+    <result property="gender" column="gender" jdbcType="BIT"/><!-- 性别，默认为1，女性 -->
+    <result property="birthday" column="birthday" jdbcType="DATE"/><!-- 生日，仅日期 -->
+    <result property="points" column="points" jdbcType="BIGINT"/><!-- 助人点分数 -->
+    <result property="registerTime" column="register_time" jdbcType="TIMESTAMP"/><!-- 注册时间 -->
+  </resultMap>
+</mapper>
