@@ -1,23 +1,17 @@
 <template>
-  <el-container>
-
-    <el-header>
-      <single />
-    </el-header>
-
+  <div class="common-layout">
     <el-container>
-
-      <el-aside>
-        <sidebar />
-      </el-aside>
-
+      <el-header class="outer-header">
+        <single />
+      </el-header>
       <el-main>
         <RouterView />
       </el-main>
-
+      <el-footer class="outer-footer">
+        <p> Temporary a footer. </p>
+      </el-footer>
     </el-container>
-
-  </el-container>
+  </div>
 </template>
 
 
@@ -25,11 +19,22 @@
 
 import { RouterView } from 'vue-router'
 import single from '@/components/header-part/custom-header.vue'
-import sidebar from '@/components/sidebar-part/custom-sidebar.vue'
+// import sidebar from '@/components/sidebar-part/custom-sidebar.vue'
 
 </script>
 
 
-<style>
+<style scoped>
+/* 测试，为使布局可见，临时样式 */
+.outer-footer {
+  background-color: orange;
+  text-align: center;
+  padding: auto;
+}
 
+.outer-header {
+  background-color: orange;
+  text-align: center;
+  padding: auto;
+}
 </style>
