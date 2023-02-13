@@ -27,7 +27,7 @@ export default {
             this.$router.push('/space')
         },
         toHome(){
-            this.$router.push('/home')
+            this.$router.push('/login')
         }
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * users - 
+ * users -
  *
  * @author Snow
  */
@@ -23,12 +23,13 @@ public class UsersController {
 
   @PostMapping
   public DataResponse<Users> save(@RequestBody Users users) {
-    return DataResponse.ok(usersService.save( users));
+    return DataResponse.ok(usersService.save(users));
   }
 
   @GetMapping
-  public RowsResponse<Users> findList(@RequestBody Users users) {
-    return RowsResponse.ok(usersService.findList( users));
+  public RowsResponse<Users> findList() {
+    Users users = new Users();
+    return RowsResponse.ok(usersService.findList(users));
   }
 
   @GetMapping(value = "/{id}")
@@ -39,7 +40,7 @@ public class UsersController {
   @PutMapping(value = "/{id}")
   public DataResponse<Users> update(@PathVariable("id") Long id, @RequestBody Users users) {
     users.setId(id);
-    return DataResponse.ok(usersService.update( users));
+    return DataResponse.ok(usersService.update(users));
   }
 
   @DeleteMapping(value = "/{id}")

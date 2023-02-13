@@ -3,20 +3,8 @@
 </template>
 
 
-<script lang="ts">
+<script lang="ts" setup>
 
-
-export default {
-    props: [],
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-
-    }
-}
 </script>
 
 
