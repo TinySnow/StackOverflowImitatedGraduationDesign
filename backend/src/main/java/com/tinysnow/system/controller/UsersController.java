@@ -1,7 +1,6 @@
 package com.tinysnow.system.controller;
 
 import io.mybatis.common.core.DataResponse;
-import io.mybatis.common.core.RowsResponse;
 
 import com.tinysnow.common.utils.response.ArrayResponse;
 import com.tinysnow.common.utils.response.ObjectResponse;

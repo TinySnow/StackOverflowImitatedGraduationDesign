@@ -56,5 +56,9 @@ public class Constants {
      */
     public static final String LOGIN_FAIL = "Error";
 
+    /**
+     * token 前缀
+     */
+    public static final String TOKEN_PREFIX = "Ancielin = ";
 
 }
