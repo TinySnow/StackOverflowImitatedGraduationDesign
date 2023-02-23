@@ -2,11 +2,21 @@ server:
   port: 38643
 
 spring:
+  security:
+    user:
+      name: user
+      password: tinysnow
+      roles: admin
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: root
     password: tinysnow;
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+#  packages-to-scan: com.tinysnow.system.controller
 
 # token配置
 token:

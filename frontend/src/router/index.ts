@@ -23,6 +23,11 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: () => import('@/views/register.vue')
+    },
+    {
+      path: '/editor',
+      name: 'editor',
+      component: () => import('@/views/md-editor.vue')
     }
   ]
 })
