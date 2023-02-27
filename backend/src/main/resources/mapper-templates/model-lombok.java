@@ -1,10 +1,8 @@
 package ${package};
 
 import io.mybatis.provider.Entity;
+import lombok.Data;
 import org.apache.ibatis.type.JdbcType;
-
-import lombok.Getter;
-import lombok.Setter;
 
 <#list it.importJavaTypes as javaType>
 import ${javaType};
@@ -15,9 +13,8 @@ import ${javaType};
  *
  * @author ${SYS['user.name']}
  */
-@Getter
-@Setter
-@Entity.Table("${it.name}" remark = "${it.comment}", autoResultMap = true)
+@Data
+@Entity.Table(value = "${it.name}", remark = "${it.comment}", autoResultMap = true)
 public class ${it.name.className} {
   <#list it.columns as column>
   <#if column.pk>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tinysnow.mapper.CollectionsMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.model.Collections">
+<mapper namespace="com.tinysnow.system.mapper.CollectionsMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Collections">
     <id property="id" column="id" jdbcType="BIGINT"/>
     <result property="title" column="title" jdbcType="VARCHAR"/><!-- 问题集标题 -->
     <result property="author" column="author" jdbcType="VARCHAR"/><!-- 创建者，关联users的id -->

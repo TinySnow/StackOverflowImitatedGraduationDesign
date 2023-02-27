@@ -1,4 +1,4 @@
-package com.tinysnow.system.controller;
+package com.tinysnow.system;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.tinysnow.common.utils.response.ObjectResponse;

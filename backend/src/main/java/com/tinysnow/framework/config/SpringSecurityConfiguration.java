@@ -17,7 +17,7 @@ public class SpringSecurityConfiguration {
                 .csrf().disable()
                 .formLogin().disable()
                 .authorizeRequests()
-                .antMatchers("/test/login").permitAll()
+                .antMatchers("/test/login","/userses/**").permitAll()
                 .antMatchers( "/swagger-ui/**", "/webjars/**", "/**/api-docs/**", "/druid/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

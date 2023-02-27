@@ -42,7 +42,7 @@ database:
 # 附加属性
 attrs: # 子目录（文件）可以通过 parent.parent...attrs.属性名 可以逐级向上使用属性
   # 这里设置了一个基础包名
-  basePackage: com.tinysnow
+  basePackage: com.tinysnow.system
 # 子目录（文件）
 files:
   # 文件名，可以 / 设置多级目录
@@ -87,9 +87,9 @@ files:
               - name: model
                 files:
                   - name: '${it.name.className}.java'
-                    # 此处有2种模板示例，分别列出来加了注释
-                    file: model.java
-                    # file: model-lombok.java
+                     # 此处有2种模板示例，分别列出来加了注释
+#                    file: model.java
+                    file: model-lombok.java
                     iter: tables
               - name: service
                 files:

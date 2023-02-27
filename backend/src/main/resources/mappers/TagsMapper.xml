@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tinysnow.mapper.TagsMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.model.Tags">
+<mapper namespace="com.tinysnow.system.mapper.TagsMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Tags">
     <id property="id" column="id" jdbcType="INTEGER"/>
     <result property="label" column="label" jdbcType="VARCHAR"/><!-- 标签名称 -->
   </resultMap>

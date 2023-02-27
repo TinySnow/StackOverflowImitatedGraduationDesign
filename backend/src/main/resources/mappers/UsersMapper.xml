@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tinysnow.mapper.UsersMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.model.Users">
+<mapper namespace="com.tinysnow.system.mapper.UsersMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Users">
     <id property="id" column="id" jdbcType="BIGINT"/>
     <result property="username" column="username" jdbcType="VARCHAR"/><!-- 用户名 -->
     <result property="password" column="password" jdbcType="VARCHAR"/><!-- 密码，加密 -->

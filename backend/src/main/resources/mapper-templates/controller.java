@@ -23,12 +23,12 @@ public class ${it.name.className}Controller {
 
   @PostMapping
   public DataResponse<${it.name.className}> save(@RequestBody ${it.name.className} ${it.name.fieldName}) {
-    return DataResponse.ok(${it.name.fieldName}Service.save( ${it.name.fieldName}));
+    return DataResponse.ok(${it.name.fieldName}Service.save(${it.name.fieldName}));
   }
 
   @GetMapping
   public RowsResponse<${it.name.className}> findList(@RequestBody ${it.name.className} ${it.name.fieldName}) {
-    return RowsResponse.ok(${it.name.fieldName}Service.findList( ${it.name.fieldName}));
+    return RowsResponse.ok(${it.name.fieldName}Service.findList(${it.name.fieldName}));
   }
 
   @GetMapping(value = "/{id}")
@@ -39,7 +39,7 @@ public class ${it.name.className}Controller {
   @PutMapping(value = "/{id}")
   public DataResponse<${it.name.className}> update(@PathVariable("id") Long id, @RequestBody ${it.name.className} ${it.name.fieldName}) {
     ${it.name.fieldName}.setId(id);
-    return DataResponse.ok(${it.name.fieldName}Service.update( ${it.name.fieldName}));
+    return DataResponse.ok(${it.name.fieldName}Service.update(${it.name.fieldName}));
   }
 
   @DeleteMapping(value = "/{id}")

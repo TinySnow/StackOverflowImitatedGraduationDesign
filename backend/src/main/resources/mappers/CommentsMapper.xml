@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tinysnow.mapper.CommentsMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.model.Comments">
+<mapper namespace="com.tinysnow.system.mapper.CommentsMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Comments">
     <id property="id" column="id" jdbcType="BIGINT"/>
     <result property="post" column="post" jdbcType="VARCHAR"/><!-- 关联posts的id -->
     <result property="parent" column="parent" jdbcType="VARCHAR"/><!-- 父评论id，关联comments的id，若无则为post的一级评论 -->

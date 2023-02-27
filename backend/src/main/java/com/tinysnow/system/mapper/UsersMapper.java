@@ -1,8 +1,8 @@
 package com.tinysnow.system.mapper;
 
-import com.tinysnow.system.model.Users;
-
 import io.mybatis.mapper.Mapper;
+
+import com.tinysnow.system.model.Users;
 
 /**
  * users - 
