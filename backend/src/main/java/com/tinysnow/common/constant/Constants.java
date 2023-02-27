@@ -1,5 +1,7 @@
 package com.tinysnow.common.constant;
 
+import io.jsonwebtoken.Claims;
+
 public class Constants {
     /**
      * UTF-8 字符集
@@ -57,8 +59,48 @@ public class Constants {
     public static final String LOGIN_FAIL = "Error";
 
     /**
+     * 令牌
+     */
+    public static final String TOKEN = "token";
+
+    /**
      * token 前缀
      */
     public static final String TOKEN_PREFIX = "Ancielin = ";
+
+        /**
+     * 令牌前缀
+     */
+    public static final String LOGIN_USER_KEY = "login_user_key";
+
+    /**
+     * 用户ID
+     */
+    public static final String JWT_USERID = "userid";
+
+    /**
+     * 用户名称
+     */
+    public static final String JWT_USERNAME = Claims.SUBJECT;
+
+    /**
+     * 用户头像
+     */
+    public static final String JWT_AVATAR = "avatar";
+
+    /**
+     * 创建时间
+     */
+    public static final String JWT_CREATED = "created";
+
+    /**
+     * 用户权限
+     */
+    public static final String JWT_AUTHORITIES = "authorities";
+
+    /**
+     * 资源映射路径 前缀
+     */
+    public static final String RESOURCE_PREFIX = "/profile";
 
 }

@@ -47,7 +47,10 @@ const login = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
     await formEl.validate((valid, fields) => {
         if (valid) {
-            api.get('userses').then(function (res) {
+            api.post('login/body', {
+                "username": ruleForm.username,
+                "password": ruleForm.password
+            }).then(function (res) {
                 console.log(res);
             })
             console.log('submit!')
@@ -65,6 +68,4 @@ const jumpToRegister = (formEl: FormInstance | undefined) => {
 </script>
 
 
-<style scoped>
-
-</style>
+<style scoped></style>

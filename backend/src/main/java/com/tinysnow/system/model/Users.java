@@ -7,7 +7,7 @@ import org.apache.ibatis.type.JdbcType;
 import java.util.Date;
 
 /**
- * users - 
+ * users -
  *
  * @author Snow
  */
