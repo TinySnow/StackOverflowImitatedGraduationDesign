@@ -2,9 +2,14 @@ package com.tinysnow.common.constant;
 
 import lombok.Data;
 
+/**
+ * HTTP 状态码
+ * 
+ * @author TinySnow
+ */
 @Data
-public class HttpStatusCode {
-    
+public class HttpStatus {
+
     /**
      * 操作成功
      */

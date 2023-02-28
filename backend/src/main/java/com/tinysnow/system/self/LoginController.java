@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tinysnow.common.constant.Constants;
+import com.tinysnow.common.constant.CommonConstants;
 import com.tinysnow.common.utils.others.SecurityUtil;
 import com.tinysnow.common.utils.response.Response;
 import com.tinysnow.framework.security.service.LoginService;
@@ -30,7 +30,7 @@ public class LoginController {
         Response response = Response.success();
         // 生成令牌
         String token = loginService.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getId());
-        response.put(Constants.TOKEN, token);
+        response.put(CommonConstants.TOKEN, token);
         return response;
     }
 
@@ -39,7 +39,7 @@ public class LoginController {
         Response response = Response.success();
         // 生成令牌
         String token = loginService.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getId());
-        response.put(Constants.TOKEN, token);
+        response.put(CommonConstants.TOKEN, token);
         return response;
     }
 

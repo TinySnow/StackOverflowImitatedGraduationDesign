@@ -2,7 +2,12 @@ package com.tinysnow.common.constant;
 
 import io.jsonwebtoken.Claims;
 
-public class Constants {
+/**
+ * 常见常量
+ * 
+ * @author TinySnow
+ */
+public class CommonConstants {
     /**
      * UTF-8 字符集
      */
@@ -41,22 +46,22 @@ public class Constants {
     /**
      * 登录成功
      */
-    public static final String LOGIN_SUCCESS = "Success";
+    public static final String LOGIN_SUCCESS = "登录成功";
 
     /**
      * 注销
      */
-    public static final String LOGOUT = "Logout";
+    public static final String LOGOUT = "注销";
 
     /**
      * 注册
      */
-    public static final String REGISTER = "Register";
+    public static final String REGISTER = "注册";
 
     /**
      * 登录失败
      */
-    public static final String LOGIN_FAIL = "Error";
+    public static final String LOGIN_FAIL = "登录失败";
 
     /**
      * 令牌
@@ -68,13 +73,13 @@ public class Constants {
      */
     public static final String TOKEN_PREFIX = "Ancielin = ";
 
-        /**
+    /**
      * 令牌前缀
      */
     public static final String LOGIN_USER_KEY = "login_user_key";
 
     /**
-     * 用户ID
+     * 用户 ID
      */
     public static final String JWT_USERID = "userid";
 

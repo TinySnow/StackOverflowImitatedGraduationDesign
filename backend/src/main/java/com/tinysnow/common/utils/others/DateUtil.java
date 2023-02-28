@@ -33,7 +33,7 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
             "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM" };
 
     /**
-     * 获取当前Date型日期
+     * 获取当前 Date 型日期
      * 
      * @return Date() 当前日期
      */
@@ -42,7 +42,7 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
-     * 获取当前日期, 默认格式为yyyy-MM-dd
+     * 获取当前日期, 默认格式为 yyyy-MM-dd
      * 
      * @return String
      */
@@ -79,7 +79,7 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
-     * 日期路径 即年/月/日 如2018/08/08
+     * 日期路径 即年/月/日 如 2018/08/08
      */
     public static final String datePath() {
         Date now = new Date();
@@ -87,7 +87,7 @@ public class DateUtil extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
-     * 日期路径 即年/月/日 如20180808
+     * 日期路径 即年/月/日 如 20180808
      */
     public static final String dateTime() {
         Date now = new Date();

@@ -3,7 +3,7 @@ package com.tinysnow.common.utils.response;
 import java.util.HashMap;
 import java.util.Objects;
 
-import com.tinysnow.common.constant.HttpStatusCode;
+import com.tinysnow.common.constant.HttpStatus;
 import com.tinysnow.common.utils.strings.StringUtil;
 
 public class Response extends HashMap<String, Object> {
@@ -13,13 +13,20 @@ public class Response extends HashMap<String, Object> {
      */
     private static final String SUCCESS_TAG = "success";
 
-    /** 状态码 */
+    /**
+     * 状态码
+     * 
+     */
     private static final String CODE_TAG = "code";
 
-    /** 返回内容 */
+    /**
+     * 返回内容
+     */
     private static final String MSG_TAG = "msg";
 
-    /** 数据对象 */
+    /**
+     * 数据对象
+     */
     private static final String DATA_TAG = "data";
 
     /**
@@ -94,7 +101,7 @@ public class Response extends HashMap<String, Object> {
      * @return 成功消息
      */
     public static Response success(String msg, Object data) {
-        return new Response(true, HttpStatusCode.SUCCESS, msg, data);
+        return new Response(true, HttpStatus.SUCCESS, msg, data);
     }
 
     /**
@@ -115,7 +122,7 @@ public class Response extends HashMap<String, Object> {
      * @return 警告消息
      */
     public static Response warn(String msg, Object data) {
-        return new Response(true, HttpStatusCode.WARN, msg, data);
+        return new Response(true, HttpStatus.WARN, msg, data);
     }
 
     /**
@@ -134,7 +141,7 @@ public class Response extends HashMap<String, Object> {
      * @return 错误消息
      */
     public static Response error(String msg) {
-        return Response.error(HttpStatusCode.ERROR, msg, null);
+        return Response.error(HttpStatus.ERROR, msg, null);
     }
 
     /**
@@ -145,7 +152,7 @@ public class Response extends HashMap<String, Object> {
      * @return 错误消息
      */
     public static Response error(String msg, Object data) {
-        return Response.error(HttpStatusCode.ERROR, msg, data);
+        return Response.error(HttpStatus.ERROR, msg, data);
     }
 
     /**
@@ -186,7 +193,7 @@ public class Response extends HashMap<String, Object> {
      * @return 结果
      */
     public boolean isError() {
-        return Objects.equals(HttpStatusCode.ERROR, this.get(CODE_TAG));
+        return Objects.equals(HttpStatus.ERROR, this.get(CODE_TAG));
     }
 
     /**

@@ -1,13 +1,15 @@
 package com.tinysnow.common.exception;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 业务异常
  * 
- * @author ruoyi
+ * @author TinySnow
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public final class ServiceException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 

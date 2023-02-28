@@ -11,8 +11,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tinysnow.common.constant.HttpStatusCode;
-import com.tinysnow.common.utils.ServletUtil;
+import com.tinysnow.common.constant.HttpStatus;
+import com.tinysnow.common.utils.others.ServletUtil;
 import com.tinysnow.common.utils.response.Response;
 import com.tinysnow.common.utils.strings.StringUtil;
 
@@ -25,7 +25,7 @@ public class AuthenticationEntryPointHandler implements AuthenticationEntryPoint
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e)
             throws IOException {
-        int code = HttpStatusCode.UNAUTHORIZED;
+        int code = HttpStatus.UNAUTHORIZED;
         String msg = StringUtil.format("请求访问：{} 失败，无法访问系统资源", request.getRequestURI());
         ServletUtil.renderString(response, mapper.writeValueAsString(Response.error(code, msg)));
     }

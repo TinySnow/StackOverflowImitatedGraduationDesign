@@ -3,7 +3,7 @@ package com.tinysnow.common.utils.others;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import com.tinysnow.common.constant.HttpStatusCode;
+import com.tinysnow.common.constant.HttpStatus;
 import com.tinysnow.common.exception.ServiceException;
 import com.tinysnow.framework.security.util.LoginUser;
 
@@ -15,24 +15,24 @@ import com.tinysnow.framework.security.util.LoginUser;
 public class SecurityUtil {
 
     /**
-     * 用户ID
+     * 用户 ID
      **/
     public static Long getUserId() {
         try {
             return getLoginUser().getUserId();
         } catch (Exception e) {
-            throw new ServiceException("获取用户ID异常", HttpStatusCode.UNAUTHORIZED);
+            throw new ServiceException("获取用户ID异常", HttpStatus.UNAUTHORIZED);
         }
     }
 
     /**
-     * 获取部门ID
+     * 获取部门 ID
      **/
     public static Long getDeptId() {
         try {
             return getLoginUser().getDeptId();
         } catch (Exception e) {
-            throw new ServiceException("获取部门ID异常", HttpStatusCode.UNAUTHORIZED);
+            throw new ServiceException("获取部门ID异常", HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -43,7 +43,7 @@ public class SecurityUtil {
         try {
             return getLoginUser().getUsername();
         } catch (Exception e) {
-            throw new ServiceException("获取用户账户异常", HttpStatusCode.UNAUTHORIZED);
+            throw new ServiceException("获取用户账户异常", HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -54,19 +54,19 @@ public class SecurityUtil {
         try {
             return (LoginUser) getAuthentication().getPrincipal();
         } catch (Exception e) {
-            throw new ServiceException("获取用户信息异常", HttpStatusCode.UNAUTHORIZED);
+            throw new ServiceException("获取用户信息异常", HttpStatus.UNAUTHORIZED);
         }
     }
 
     /**
-     * 获取Authentication
+     * 获取 Authentication
      */
     public static Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
 
     /**
-     * 生成BCryptPasswordEncoder密码
+     * 生成 BCryptPasswordEncoder 密码
      *
      * @param password 密码
      * @return 加密字符串

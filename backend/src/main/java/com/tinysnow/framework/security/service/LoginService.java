@@ -1,15 +1,8 @@
 package com.tinysnow.framework.security.service;
 
-import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.security.authentication.AuthenticationManager;
-// import org.springframework.security.authentication.BadCredentialsException;
-// import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-// import org.springframework.security.core.Authentication;
-// import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Component;
 
-// import com.tinysnow.common.utils.others.DateUtil;
 import com.tinysnow.system.model.Users;
 import com.tinysnow.system.service.UsersService;
 

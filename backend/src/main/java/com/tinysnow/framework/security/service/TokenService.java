@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import com.tinysnow.common.constant.CacheConstants;
-import com.tinysnow.common.constant.Constants;
+import com.tinysnow.common.constant.CommonConstants;
 import com.tinysnow.common.utils.strings.StringUtil;
 import com.tinysnow.framework.redis.RedisCache;
 import com.tinysnow.framework.security.util.LoginUser;
@@ -67,7 +67,7 @@ public class TokenService {
             try {
                 Claims claims = parseToken(token);
                 // 解析对应的权限以及用户信息
-                String uuid = (String) claims.get(Constants.LOGIN_USER_KEY);
+                String uuid = (String) claims.get(CommonConstants.LOGIN_USER_KEY);
                 String userKey = getTokenKey(uuid);
                 LoginUser user = redisCache.getCacheObject(userKey);
                 return user;
@@ -110,7 +110,7 @@ public class TokenService {
         refreshToken(loginUser);
 
         Map<String, Object> claims = new HashMap<>();
-        claims.put(Constants.LOGIN_USER_KEY, token);
+        claims.put(CommonConstants.LOGIN_USER_KEY, token);
         return createToken(claims);
     }
 
@@ -200,8 +200,8 @@ public class TokenService {
      */
     private String getToken(HttpServletRequest request) {
         String token = request.getHeader(header);
-        if (StringUtil.isNotEmpty(token) && token.startsWith(Constants.TOKEN_PREFIX)) {
-            token = token.replace(Constants.TOKEN_PREFIX, "");
+        if (StringUtil.isNotEmpty(token) && token.startsWith(CommonConstants.TOKEN_PREFIX)) {
+            token = token.replace(CommonConstants.TOKEN_PREFIX, "");
         }
         return token;
     }

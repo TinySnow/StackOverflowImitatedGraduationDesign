@@ -1,4 +1,4 @@
-package com.tinysnow.common.utils;
+package com.tinysnow.common.utils.others;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import com.tinysnow.common.constant.Constants;
+import com.tinysnow.common.constant.CommonConstants;
 import com.tinysnow.common.utils.convert.Convert;
 import com.tinysnow.common.utils.strings.StringUtil;
 
@@ -167,7 +167,7 @@ public class ServletUtil {
      */
     public static String urlEncode(String str) {
         try {
-            return URLEncoder.encode(str, Constants.UTF8);
+            return URLEncoder.encode(str, CommonConstants.UTF8);
         } catch (UnsupportedEncodingException e) {
             return StringUtil.EMPTY;
         }
@@ -181,7 +181,7 @@ public class ServletUtil {
      */
     public static String urlDecode(String str) {
         try {
-            return URLDecoder.decode(str, Constants.UTF8);
+            return URLDecoder.decode(str, CommonConstants.UTF8);
         } catch (UnsupportedEncodingException e) {
             return StringUtil.EMPTY;
         }

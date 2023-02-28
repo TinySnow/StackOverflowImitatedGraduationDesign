@@ -1,11 +1,11 @@
 <template>
     <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" size="large"
         status-icon>
-        <el-form-item label="用户名" prop="username">
-            <el-input v-model="ruleForm.username" placeholder="邮箱" />
+        <el-form-item label="登录账户" prop="email">
+            <el-input v-model="ruleForm.email" placeholder="仅支持邮箱登录" />
         </el-form-item>
         <el-form-item label="密码" prop="password">
-            <el-input v-model="ruleForm.password" type="password" placeholder="密码" />
+            <el-input v-model="ruleForm.password" type="password" placeholder="请输入密码" />
         </el-form-item>
         <el-form-item>
             <el-button type="primary" @click="login(ruleFormRef)">登录</el-button>
@@ -26,13 +26,14 @@ const router = useRouter()
 
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive({
-    username: '',
+    email: '',
     password: ''
 })
 
 const rules = reactive<FormRules>({
-    username: [
-        { required: true, message: '请输入用户名或邮箱', trigger: 'blur' }
+    email: [
+        { required: true, message: '请输入用户名或邮箱', trigger: 'blur' },
+        { type: 'email', message: '请输入正确的邮箱格式', trigger: 'blur' }
     ],
     password: [
         {
@@ -48,10 +49,12 @@ const login = async (formEl: FormInstance | undefined) => {
     await formEl.validate((valid, fields) => {
         if (valid) {
             api.post('login/body', {
-                "username": ruleForm.username,
+                "email": ruleForm.email,
                 "password": ruleForm.password
-            }).then(function (res) {
+            }).then(res => {
                 console.log(res);
+            }).catch(error => {
+                console.log(error);
             })
             console.log('submit!')
         } else {
