@@ -104,10 +104,10 @@ public class TokenService {
      */
     public String createToken(LoginUser loginUser) {
         // String token = IdUtils.fastUUID();
-        String token = usersService.findById(loginUser.getUserId()).getId().toString();
+        String token = loginUser.getUser().getId().toString();
         loginUser.setToken(token);
         setUserAgent(loginUser);
-        refreshToken(loginUser);
+        // refreshToken(loginUser);
 
         Map<String, Object> claims = new HashMap<>();
         claims.put(CommonConstants.LOGIN_USER_KEY, token);

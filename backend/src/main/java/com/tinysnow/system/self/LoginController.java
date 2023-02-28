@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tinysnow.common.constant.CommonConstants;
+import com.tinysnow.common.constant.HttpStatus;
+import com.tinysnow.common.constant.ServiceConstants;
 import com.tinysnow.common.utils.others.SecurityUtil;
 import com.tinysnow.common.utils.response.Response;
 import com.tinysnow.framework.security.service.LoginService;
@@ -27,9 +29,12 @@ public class LoginController {
 
     @PostMapping("/body")
     public Response body(@RequestBody LoginBody loginBody) {
-        Response response = Response.success();
         // 生成令牌
-        String token = loginService.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getId());
+        String token = loginService.login(loginBody.getEmail(), loginBody.getPassword());
+        if (token == null) {
+            return Response.error(HttpStatus.NOT_FOUND ,ServiceConstants.EMAIL_NOT_FOUND);
+        }
+        Response response = Response.success();
         response.put(CommonConstants.TOKEN, token);
         return response;
     }
@@ -38,7 +43,7 @@ public class LoginController {
     public Response param(@RequestParam LoginBody loginBody) {
         Response response = Response.success();
         // 生成令牌
-        String token = loginService.login(loginBody.getUsername(), loginBody.getPassword(), loginBody.getId());
+        String token = loginService.login(loginBody.getEmail(), loginBody.getPassword());
         response.put(CommonConstants.TOKEN, token);
         return response;
     }

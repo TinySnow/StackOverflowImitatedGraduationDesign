@@ -9,20 +9,21 @@ import lombok.Data;
  */
 @Data
 public class LoginBody {
-    /**
-     * 唯一标识
-     */
-    private String id;
 
     /**
      * 用户名
      */
-    private String username;
+    private String email;
 
     /**
      * 用户密码
      */
     private String password;
+
+    // /**
+    //  * 唯一标识
+    //  */
+    // private String id;
 
     // /**
     // * 验证码

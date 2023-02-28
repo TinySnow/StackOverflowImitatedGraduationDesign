@@ -3,6 +3,7 @@ package com.tinysnow.framework.security.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.tinysnow.framework.security.util.LoginUser;
 import com.tinysnow.system.model.Users;
 import com.tinysnow.system.service.UsersService;
 
@@ -21,14 +22,21 @@ public class LoginService {
     /**
      * 登录验证
      * 
-     * @param username 用户名
+     * @param email 邮箱
      * @param password 密码
-     * @param id       唯一标识
      * @return 结果
      */
-    public String login(String username, String password, String id) {
-
-        return username + ":" + password.hashCode();
+    public String login(String email, String password) {
+        Users user = new Users();
+        user.setEmail(email);
+        user.setPassword(password);
+        Users findOne = userService.findOne(user);
+        if (findOne == null) {
+            return null;
+        }
+        LoginUser loginUser = new LoginUser();
+        loginUser.setUser(findOne);
+        return tokenService.createToken(loginUser);
         // boolean captchaEnabled = configService.selectCaptchaEnabled();
         // // 验证码开关
         // if (captchaEnabled) {

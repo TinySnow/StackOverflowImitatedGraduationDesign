@@ -18,12 +18,12 @@ public class LoginUser implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户ID
+     * 用户 ID
      */
     private Long userId;
 
     /**
-     * 部门ID
+     * 部门 ID
      */
     private Long deptId;
 
@@ -43,7 +43,7 @@ public class LoginUser implements UserDetails {
     private Long expireTime;
 
     /**
-     * 登录IP地址
+     * 登录 IP 地址
      */
     private String ipaddr;
 
@@ -71,6 +71,14 @@ public class LoginUser implements UserDetails {
      * 用户信息
      */
     private Users user;
+
+    
+
+    /**
+     * 空构造
+     */
+    public LoginUser() {
+    }
 
     public LoginUser(Users user, Set<String> permissions) {
         this.user = user;

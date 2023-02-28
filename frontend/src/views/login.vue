@@ -53,6 +53,9 @@ const login = async (formEl: FormInstance | undefined) => {
                 "password": ruleForm.password
             }).then(res => {
                 console.log(res);
+                if (res.data.success) {
+                    jumpToHome();
+                }
             }).catch(error => {
                 console.log(error);
             })
@@ -61,6 +64,10 @@ const login = async (formEl: FormInstance | undefined) => {
             console.log('error submit!', fields)
         }
     })
+}
+
+const jumpToHome = () => {
+    router.push('/home')
 }
 
 const jumpToRegister = (formEl: FormInstance | undefined) => {
