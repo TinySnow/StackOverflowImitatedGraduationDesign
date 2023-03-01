@@ -5,6 +5,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/',
+      name: 'root',
+      redirect: '/space'
+    },
+    {
       path: '/space',
       name: 'space',
       component: space

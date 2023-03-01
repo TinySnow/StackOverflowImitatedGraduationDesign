@@ -19,6 +19,7 @@
 
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+import {showMessagesForError} from "@/utils/show-messages";
 import { useRouter } from 'vue-router'
 import api from '@/utils/baseurl';
 
@@ -55,11 +56,14 @@ const login = async (formEl: FormInstance | undefined) => {
                 console.log(res);
                 if (res.data.success) {
                     jumpToHome();
+                } else {
+                    showMessagesForError(res.data.msg);
+                    
                 }
             }).catch(error => {
                 console.log(error);
             })
-            console.log('submit!')
+            // console.log('submit!')
         } else {
             console.log('error submit!', fields)
         }
@@ -74,7 +78,6 @@ const jumpToRegister = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     router.push('/register')
 }
-
 </script>
 
 

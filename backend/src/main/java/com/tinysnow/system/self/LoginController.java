@@ -33,6 +33,8 @@ public class LoginController {
         String token = loginService.login(loginBody.getEmail(), loginBody.getPassword());
         if (token == null) {
             return Response.error(HttpStatus.NOT_FOUND ,ServiceConstants.EMAIL_NOT_FOUND);
+        }else if (token.equals(ServiceConstants.PASSWORD_INCORRECT)) {
+            return Response.error(HttpStatus.BAD_REQUEST ,ServiceConstants.PASSWORD_INCORRECT);
         }
         Response response = Response.success();
         response.put(CommonConstants.TOKEN, token);

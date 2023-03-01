@@ -3,6 +3,7 @@ package com.tinysnow.framework.security.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.tinysnow.common.constant.ServiceConstants;
 import com.tinysnow.framework.security.util.LoginUser;
 import com.tinysnow.system.model.Users;
 import com.tinysnow.system.service.UsersService;
@@ -29,10 +30,12 @@ public class LoginService {
     public String login(String email, String password) {
         Users user = new Users();
         user.setEmail(email);
-        user.setPassword(password);
         Users findOne = userService.findOne(user);
         if (findOne == null) {
             return null;
+        }
+        if (!findOne.getPassword().equals(password)) {
+            return ServiceConstants.PASSWORD_INCORRECT;
         }
         LoginUser loginUser = new LoginUser();
         loginUser.setUser(findOne);

@@ -4,6 +4,8 @@ import io.mybatis.provider.Entity;
 import lombok.Data;
 import org.apache.ibatis.type.JdbcType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
