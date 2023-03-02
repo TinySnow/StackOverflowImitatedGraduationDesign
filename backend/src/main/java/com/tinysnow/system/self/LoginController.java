@@ -18,7 +18,7 @@ import com.tinysnow.common.utils.others.SecurityUtil;
 import com.tinysnow.common.utils.response.Response;
 import com.tinysnow.framework.security.service.LoginService;
 import com.tinysnow.framework.security.util.LoginBody;
-import com.tinysnow.system.model.Users;
+import com.tinysnow.system.model.User;
 
 @RestController
 @RequestMapping("/login")
@@ -57,7 +57,7 @@ public class LoginController {
      */
     @GetMapping("/getInfo")
     public Response getInfo() {
-        Users user = SecurityUtil.getLoginUser().getUser();
+        User user = SecurityUtil.getLoginUser().getUser();
         // // 角色集合
         // Set<String> roles = permissionService.getRolePermission(user);
         // // 权限集合

@@ -58,7 +58,6 @@ const login = async (formEl: FormInstance | undefined) => {
                     jumpToHome();
                 } else {
                     showMessagesForError(res.data.msg);
-                    
                 }
             }).catch(error => {
                 console.log(error);

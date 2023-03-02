@@ -3,8 +3,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.tinysnow.common.utils.response.Response;
-import com.tinysnow.system.model.Users;
-import com.tinysnow.system.service.UsersService;
+import com.tinysnow.system.model.User;
+import com.tinysnow.system.service.UserService;
 
 import io.mybatis.common.core.DataResponse;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class TestController {
 
     @Autowired
-    UsersService usersService;
+    UserService userService;
 
     @GetMapping("/login")
     public Response login(HttpServletResponse response){
@@ -28,7 +28,7 @@ public class TestController {
     }
     
     @PostMapping("/save")
-    public DataResponse<Users> save(@RequestBody Users users) {
-      return DataResponse.ok(usersService.save(users));
+    public DataResponse<User> save(@RequestBody User users) {
+      return DataResponse.ok(userService.save(users));
     }
 }

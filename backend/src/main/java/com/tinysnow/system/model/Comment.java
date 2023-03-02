@@ -7,23 +7,23 @@ import org.apache.ibatis.type.JdbcType;
 import java.util.Date;
 
 /**
- * comments - 
+ * comment - 
  *
  * @author Snow
  */
 @Data
-@Entity.Table(value = "comments", remark = "", autoResultMap = true)
-public class Comments {
-  @Entity.Column(value = "id", id = true, remark = "评论id", updatable = false, insertable = false)
+@Entity.Table(value = "comment", remark = "", autoResultMap = true)
+public class Comment {
+  @Entity.Column(value = "id", id = true, remark = "评论 id", updatable = false, insertable = false)
   private Long id;
 
-  @Entity.Column(value = "post", remark = "关联posts的id")
+  @Entity.Column(value = "post", remark = "关联 question 的 id")
   private String post;
 
-  @Entity.Column(value = "parent", remark = "父评论id，关联comments的id，若无则为post的一级评论")
+  @Entity.Column(value = "parent", remark = "父评论 id，关联 comment 的 id，若无则为 question 的一级评论")
   private String parent;
 
-  @Entity.Column(value = "author", remark = "关联users的id")
+  @Entity.Column(value = "author", remark = "关联 user 的 id")
   private String author;
 
   @Entity.Column(value = "content", remark = "内容")

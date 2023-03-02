@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tinysnow.system.mapper.PostsMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Posts">
+<mapper namespace="com.tinysnow.system.mapper.QuestionMapper">
+  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Question">
     <id property="id" column="id" jdbcType="BIGINT"/>
-    <result property="author" column="author" jdbcType="VARCHAR"/><!-- 作者，关联users的id -->
-    <result property="question" column="question" jdbcType="LONGVARCHAR"/><!-- 文章标题 -->
+    <result property="author" column="author" jdbcType="VARCHAR"/><!-- 作者，关联 user 的 id -->
+    <result property="title" column="title" jdbcType="LONGVARCHAR"/><!-- 文章标题 -->
     <result property="content" column="content" jdbcType="LONGVARCHAR"/><!-- 文章内容 -->
-    <result property="bestAnswer" column="best_answer" jdbcType="VARCHAR"/><!-- 最佳答案，关联comments的id -->
+    <result property="bestAnswer" column="best_answer" jdbcType="VARCHAR"/><!-- 最佳答案，关联 comment 的 id -->
     <result property="reward" column="reward" jdbcType="INTEGER"/><!-- 悬赏分数，标注最佳答案后进行事务性扣除 -->
     <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
     <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更新时间，若无更改可为空 -->

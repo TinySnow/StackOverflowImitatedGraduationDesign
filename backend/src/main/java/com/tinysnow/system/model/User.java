@@ -4,18 +4,16 @@ import io.mybatis.provider.Entity;
 import lombok.Data;
 import org.apache.ibatis.type.JdbcType;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 /**
- * users -
+ * user - 
  *
  * @author Snow
  */
 @Data
-@Entity.Table(value = "users", remark = "", autoResultMap = true)
-public class Users {
+@Entity.Table(value = "user", remark = "", autoResultMap = true)
+public class User {
   @Entity.Column(value = "id", id = true, remark = "主键，自增", updatable = false, insertable = false)
   private Long id;
 
@@ -31,10 +29,10 @@ public class Users {
   @Entity.Column(value = "email", remark = "邮箱，唯一凭证")
   private String email;
 
-  @Entity.Column(value = "gender", remark = "性别，默认为1，女性")
+  @Entity.Column(value = "gender", remark = "性别，默认为 1，女性")
   private Boolean gender;
 
-  @Entity.Column(value = "birthday", remark = "生日，仅日期", jdbcType = JdbcType.DATE)
+  @Entity.Column(value = "birthday", remark = "生日，仅日期", jdbcType = JdbcType.TIME)
   private Date birthday;
 
   @Entity.Column(value = "points", remark = "助人点分数")

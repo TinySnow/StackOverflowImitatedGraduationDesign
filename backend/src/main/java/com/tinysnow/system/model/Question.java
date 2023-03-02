@@ -7,26 +7,26 @@ import org.apache.ibatis.type.JdbcType;
 import java.util.Date;
 
 /**
- * posts -
+ * question - 
  *
  * @author Snow
  */
 @Data
-@Entity.Table(value = "posts", remark = "", autoResultMap = true)
-public class Posts {
-  @Entity.Column(value = "id", id = true, remark = "文章id，唯一凭证", updatable = false, insertable = false)
+@Entity.Table(value = "question", remark = "", autoResultMap = true)
+public class Question {
+  @Entity.Column(value = "id", id = true, remark = "问题 id，唯一凭证", updatable = false, insertable = false)
   private Long id;
 
-  @Entity.Column(value = "author", remark = "作者，关联users的id")
+  @Entity.Column(value = "author", remark = "作者，关联 user 的 id")
   private String author;
 
-  @Entity.Column(value = "question", remark = "文章标题")
-  private String question;
+  @Entity.Column(value = "title", remark = "文章标题")
+  private String title;
 
   @Entity.Column(value = "content", remark = "文章内容")
   private String content;
 
-  @Entity.Column(value = "best_answer", remark = "最佳答案，关联comments的id")
+  @Entity.Column(value = "best_answer", remark = "最佳答案，关联 comment 的 id")
   private String bestAnswer;
 
   @Entity.Column(value = "reward", remark = "悬赏分数，标注最佳答案后进行事务性扣除")

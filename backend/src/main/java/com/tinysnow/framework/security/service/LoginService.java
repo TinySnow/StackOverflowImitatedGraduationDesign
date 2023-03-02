@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import com.tinysnow.common.constant.ServiceConstants;
 import com.tinysnow.framework.security.util.LoginUser;
-import com.tinysnow.system.model.Users;
-import com.tinysnow.system.service.UsersService;
+import com.tinysnow.system.model.User;
+import com.tinysnow.system.service.UserService;
 
 @Component
 public class LoginService {
@@ -18,7 +18,7 @@ public class LoginService {
     // private AuthenticationManager authenticationManager;
 
     @Autowired
-    private UsersService userService;
+    private UserService userService;
 
     /**
      * 登录验证
@@ -28,9 +28,9 @@ public class LoginService {
      * @return 结果
      */
     public String login(String email, String password) {
-        Users user = new Users();
+        User user = new User();
         user.setEmail(email);
-        Users findOne = userService.findOne(user);
+        User findOne = userService.findOne(user);
         if (findOne == null) {
             return null;
         }
@@ -111,7 +111,7 @@ public class LoginService {
      * @param userId 用户ID
      */
     public void recordLoginInfo(Long userId) {
-        Users sysUser = new Users();
+        User sysUser = new User();
         sysUser.setId(userId);
         // sysUser.setLoginDate(DateUtil.getNowDate());
         // userService.updateUserProfile(sysUser);

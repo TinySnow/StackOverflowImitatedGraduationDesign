@@ -2,14 +2,14 @@ package com.tinysnow.system.mapper;
 
 import io.mybatis.mapper.Mapper;
 
-import com.tinysnow.system.model.Posts;
+import com.tinysnow.system.model.Comment;
 
 /**
- * posts - 
+ * comment - 
  *
  * @author Snow
  */
 @org.apache.ibatis.annotations.Mapper
-public interface PostsMapper extends Mapper<Posts, Long> {
+public interface CommentMapper extends Mapper<Comment, Long> {
 
 }

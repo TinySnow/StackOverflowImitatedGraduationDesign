@@ -12,7 +12,7 @@ import com.tinysnow.common.constant.CommonConstants;
 import com.tinysnow.common.utils.strings.StringUtil;
 import com.tinysnow.framework.redis.RedisCache;
 import com.tinysnow.framework.security.util.LoginUser;
-import com.tinysnow.system.service.UsersService;
+import com.tinysnow.system.service.UserService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +51,7 @@ public class TokenService {
     private RedisCache redisCache;
 
     @Autowired
-    UsersService usersService;
+    UserService userService;
 
     /**
      * 获取用户身份信息

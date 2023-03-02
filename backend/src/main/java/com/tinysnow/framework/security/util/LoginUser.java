@@ -6,7 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import lombok.Data;
 
-import com.tinysnow.system.model.Users;
+import com.tinysnow.system.model.User;
 
 /**
  * 登录用户身份权限
@@ -70,7 +70,7 @@ public class LoginUser implements UserDetails {
     /**
      * 用户信息
      */
-    private Users user;
+    private User user;
 
     
 
@@ -80,12 +80,12 @@ public class LoginUser implements UserDetails {
     public LoginUser() {
     }
 
-    public LoginUser(Users user, Set<String> permissions) {
+    public LoginUser(User user, Set<String> permissions) {
         this.user = user;
         this.permissions = permissions;
     }
 
-    public LoginUser(Long userId, Long deptId, Users user, Set<String> permissions) {
+    public LoginUser(Long userId, Long deptId, User user, Set<String> permissions) {
         this.userId = userId;
         this.deptId = deptId;
         this.user = user;
