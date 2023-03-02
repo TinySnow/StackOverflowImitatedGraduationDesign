@@ -1,3 +1,5 @@
+// 此处可能需要加一个 store 用于缓存排行榜的 lists 变量，否则请求太频繁
+
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 

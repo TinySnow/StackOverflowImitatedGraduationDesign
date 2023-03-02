@@ -1,5 +1,5 @@
 <template>
-    <p class="please-login">请先登录</p>
+    <el-empty description="请先登录" />
 </template>
 
 
@@ -9,9 +9,5 @@
 
 
 <style scoped>
-.please-login {
-    background-color: lightpink;
-    text-align: center;
-    padding: 10%;
-}
+
 </style>

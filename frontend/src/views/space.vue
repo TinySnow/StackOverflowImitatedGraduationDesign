@@ -1,13 +1,12 @@
 <template>
-    <!-- <p class="index">首页</p> -->
-    <el-container>
-        <el-aside>
+    <el-row :gutter="24">
+        <el-col :span="5">
             <rank-list />
-        </el-aside>
-        <el-main>
-            <problem-list/>
-        </el-main>
-    </el-container>
+        </el-col>
+        <el-col :span="18">
+            <problem-list />
+        </el-col>
+    </el-row>
 </template>
 
 
@@ -19,10 +18,4 @@ import RankList from '@/components/lists/rank-list.vue';
 </script>
 
 
-<style scoped>
-.index {
-    background-color: lightpink;
-    text-align: center;
-    padding: 10%;
-}
-</style>
+<style scoped></style>

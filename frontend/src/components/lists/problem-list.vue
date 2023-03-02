@@ -1,22 +1,46 @@
 <template>
-    <el-row>
-        <el-col v-for="item in 6" :key="item">
-            <el-card @click="intoProblem(item)">
-                <h3>Problem {{ item }}</h3>
-                <hr />
-                <p>Description {{ item }}</p>
-            </el-card>
-        </el-col>
-    </el-row>
+    <el-card v-for="item in lists" @click="intoProblem(item)">
+        <h3>{{ item.title }}</h3>
+        <hr />
+        <p>{{ item.content }}</p>
+    </el-card>
 </template>
 
 
-<script lang="ts" setup>
+<script lang="ts">
+import api from '@/utils/baseurl';
+import { onBeforeMount, reactive } from 'vue';
 
-const intoProblem = function (item :Object) {
-    console.log("点击了 "+ item );
+export default {
+    data() {
+        return {
+            // 返回的数据结构类型
+            lists: [{
+                id: Number,
+                title: '',
+                author: '',
+                content: '',
+                reward: Number,
+                bestAnswer: Boolean,
+                createdTime: Date,
+                updatedTime: Date,
+            }]
+        }
+    },
+    methods: {
+        intoProblem(item: Object) {
+            console.log(item);
+        }
+    },
+    created() {
+        api.get('test/question-lists').then(res => {
+            console.log(res);
+            this.$data.lists = res.data.data
+        }).catch(error => {
+            console.log(error);
+        })
+    }
 }
-
 </script>
 
 

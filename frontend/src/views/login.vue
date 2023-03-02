@@ -22,7 +22,7 @@ import type { FormInstance, FormRules } from 'element-plus'
 import { showMessagesForError } from "@/utils/show-messages";
 import { useRouter } from 'vue-router'
 import api from '@/utils/baseurl';
-import { useLoginedStore } from '@/stores/counter';
+import { useLoginedStore } from '@/stores/store';
 
 const router = useRouter()
 const logined = useLoginedStore()
