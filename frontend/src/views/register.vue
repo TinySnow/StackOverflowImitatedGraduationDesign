@@ -1,3 +1,6 @@
+<!-- TODO: birthday 日期存入数据库格式不正常 -->
+
+
 <template>
     <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" size="large"
         status-icon>
@@ -79,7 +82,6 @@ onMounted(() => {
     // 每 1s 刷新数据
     timer = setInterval(() => {
         ruleForm.registerTime = new Date().toJSON()
-        // exhibtion.time = new Date().toJSON()
         exhibtion.time = new Date().toLocaleString()
     }, 1000);
 })
@@ -91,6 +93,8 @@ onBeforeUnmount(() => {
 
 const register = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
+    console.log(ruleForm.birthday);
+    console.log(new Date(Date.parse(ruleForm.birthday)).toJSON());
     await formEl.validate((valid, fields) => {
         if (valid) {
             // 推送至后端

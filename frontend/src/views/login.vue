@@ -19,11 +19,13 @@
 
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import {showMessagesForError} from "@/utils/show-messages";
+import { showMessagesForError } from "@/utils/show-messages";
 import { useRouter } from 'vue-router'
 import api from '@/utils/baseurl';
+import { useLoginedStore } from '@/stores/counter';
 
 const router = useRouter()
+const logined = useLoginedStore()
 
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive({
@@ -55,6 +57,7 @@ const login = async (formEl: FormInstance | undefined) => {
             }).then(res => {
                 console.log(res);
                 if (res.data.success) {
+                    logined.login()
                     jumpToHome();
                 } else {
                     showMessagesForError(res.data.msg);
