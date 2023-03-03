@@ -15,8 +15,8 @@ spring:
 
 springdoc:
   swagger-ui:
-    path: /swagger-ui.html
-#  packages-to-scan: com.tinysnow.system.controller
+    disable-swagger-default-url: true
+  packages-to-scan: com.tinysnow.system
 
 # token配置
 token:

@@ -38,6 +38,7 @@ import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useRouter } from 'vue-router';
 import api from '@/utils/baseurl';
+import backend from '@/apis/api';
 import { showMessagesForError } from '@/utils/show-messages';
 
 const router = useRouter()
@@ -99,7 +100,7 @@ const register = async (formEl: FormInstance | undefined) => {
         if (valid) {
             // 推送至后端
             console.log(ruleForm);
-            api.post('test/save', {
+            api.post(backend.registerUser, {
                 username: ruleForm.username,
                 email: ruleForm.email,
                 password: ruleForm.password,

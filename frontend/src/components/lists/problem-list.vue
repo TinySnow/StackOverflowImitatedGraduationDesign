@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import api from '@/utils/baseurl';
-import { onBeforeMount, reactive } from 'vue';
+import backend from "@/apis/api";
 
 export default {
     data() {
@@ -33,8 +33,8 @@ export default {
         }
     },
     created() {
-        api.get('test/question-lists').then(res => {
-            console.log(res);
+        api.get(backend.questionList).then(res => {
+            // console.log(res);
             this.$data.lists = res.data.data
         }).catch(error => {
             console.log(error);

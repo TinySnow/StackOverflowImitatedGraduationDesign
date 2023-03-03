@@ -34,10 +34,10 @@ public class SpringSecurityConfiguration {
                 // 过滤请求
                 .authorizeRequests()
                 // 对于登录 login、注册 register、验证码 captchaImage（还未实现），允许匿名访问
-                .antMatchers("/login/**", "/register", "/captchaImage","/test/**","/userses/**").permitAll()
+                .antMatchers("/login/**", "/register", "/captchaImage","/test/**","/user/**").permitAll()
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**").permitAll()
-                .antMatchers("/swagger-ui/**", "/swagger-resources/**", "/webjars/**", "/**/api-docs", "/druid/**").permitAll()
+                .antMatchers("/swagger-ui/**", "/swagger-resources/**", "/swagger/**", "/webjars/**", "/**/api-docs", "/druid/**").permitAll()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated()
                 .and()

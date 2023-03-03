@@ -1,7 +1,6 @@
 package com.tinysnow.system.controller;
 
-import io.mybatis.common.core.DataResponse;
-import io.mybatis.common.core.RowsResponse;
+import com.tinysnow.common.utils.response.Response;
 
 import com.tinysnow.system.model.Tag;
 import com.tinysnow.system.service.TagService;
@@ -15,36 +14,37 @@ import org.springframework.web.bind.annotation.*;
  * @author Snow
  */
 @RestController
-@RequestMapping("tags")
+@RequestMapping("tag")
 public class TagController {
 
   @Autowired
   private TagService tagService;
 
   @PostMapping
-  public DataResponse<Tag> save(@RequestBody Tag tag) {
-    return DataResponse.ok(tagService.save(tag));
+  public Response save(@RequestBody Tag tag) {
+    return Response.success(tagService.save(tag));
   }
 
   @GetMapping
-  public RowsResponse<Tag> findList(@RequestBody Tag tag) {
-    return RowsResponse.ok(tagService.findList(tag));
+  public Response findList() {
+    Tag tag = new Tag();
+    return Response.success(tagService.findList(tag));
   }
 
   @GetMapping(value = "/{id}")
-  public DataResponse<Tag> findById(@PathVariable("id") Long id) {
-    return DataResponse.ok(tagService.findById(id));
+  public Response findById(@PathVariable("id") Long id) {
+    return Response.success(tagService.findById(id));
   }
 
   @PutMapping(value = "/{id}")
-  public DataResponse<Tag> update(@PathVariable("id") Integer id, @RequestBody Tag tag) {
+  public Response update(@PathVariable("id") Integer id, @RequestBody Tag tag) {
     tag.setId(id);
-    return DataResponse.ok(tagService.update(tag));
+    return Response.success(tagService.update(tag));
   }
 
   @DeleteMapping(value = "/{id}")
-  public DataResponse<Boolean> deleteById(@PathVariable("id") Long id) {
-    return DataResponse.ok(tagService.deleteById(id) == 1);
+  public Response deleteById(@PathVariable("id") Long id) {
+    return Response.success(tagService.deleteById(id) == 1);
   }
 
 }

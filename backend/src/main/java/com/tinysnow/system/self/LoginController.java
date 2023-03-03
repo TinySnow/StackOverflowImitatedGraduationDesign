@@ -20,8 +20,11 @@ import com.tinysnow.framework.security.service.LoginService;
 import com.tinysnow.framework.security.util.LoginBody;
 import com.tinysnow.system.model.User;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/login")
+@Tag(name = "测试接口")
 public class LoginController {
 
     @Autowired

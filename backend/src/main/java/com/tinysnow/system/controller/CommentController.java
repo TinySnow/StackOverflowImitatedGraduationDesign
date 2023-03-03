@@ -1,7 +1,6 @@
 package com.tinysnow.system.controller;
 
-import io.mybatis.common.core.DataResponse;
-import io.mybatis.common.core.RowsResponse;
+import com.tinysnow.common.utils.response.Response;
 
 import com.tinysnow.system.model.Comment;
 import com.tinysnow.system.service.CommentService;
@@ -15,36 +14,37 @@ import org.springframework.web.bind.annotation.*;
  * @author Snow
  */
 @RestController
-@RequestMapping("comments")
+@RequestMapping("comment")
 public class CommentController {
 
   @Autowired
   private CommentService commentService;
 
   @PostMapping
-  public DataResponse<Comment> save(@RequestBody Comment comment) {
-    return DataResponse.ok(commentService.save(comment));
+  public Response save(@RequestBody Comment comment) {
+    return Response.success(commentService.save(comment));
   }
 
   @GetMapping
-  public RowsResponse<Comment> findList(@RequestBody Comment comment) {
-    return RowsResponse.ok(commentService.findList(comment));
+  public Response findList() {
+    Comment comment = new Comment();
+    return Response.success(commentService.findList(comment));
   }
 
   @GetMapping(value = "/{id}")
-  public DataResponse<Comment> findById(@PathVariable("id") Long id) {
-    return DataResponse.ok(commentService.findById(id));
+  public Response findById(@PathVariable("id") Long id) {
+    return Response.success(commentService.findById(id));
   }
 
   @PutMapping(value = "/{id}")
-  public DataResponse<Comment> update(@PathVariable("id") Long id, @RequestBody Comment comment) {
+  public Response update(@PathVariable("id") Long id, @RequestBody Comment comment) {
     comment.setId(id);
-    return DataResponse.ok(commentService.update(comment));
+    return Response.success(commentService.update(comment));
   }
 
   @DeleteMapping(value = "/{id}")
-  public DataResponse<Boolean> deleteById(@PathVariable("id") Long id) {
-    return DataResponse.ok(commentService.deleteById(id) == 1);
+  public Response deleteById(@PathVariable("id") Long id) {
+    return Response.success(commentService.deleteById(id) == 1);
   }
 
 }

@@ -1,7 +1,6 @@
 package com.tinysnow.system.controller;
 
-import io.mybatis.common.core.DataResponse;
-import io.mybatis.common.core.RowsResponse;
+import com.tinysnow.common.utils.response.Response;
 
 import com.tinysnow.system.model.Question;
 import com.tinysnow.system.service.QuestionService;
@@ -15,36 +14,37 @@ import org.springframework.web.bind.annotation.*;
  * @author Snow
  */
 @RestController
-@RequestMapping("questions")
+@RequestMapping("question")
 public class QuestionController {
 
   @Autowired
   private QuestionService questionService;
 
   @PostMapping
-  public DataResponse<Question> save(@RequestBody Question question) {
-    return DataResponse.ok(questionService.save(question));
+  public Response save(@RequestBody Question question) {
+    return Response.success(questionService.save(question));
   }
 
   @GetMapping
-  public RowsResponse<Question> findList(@RequestBody Question question) {
-    return RowsResponse.ok(questionService.findList(question));
+  public Response findList() {
+    Question question = new Question();
+    return Response.success(questionService.findList(question));
   }
 
   @GetMapping(value = "/{id}")
-  public DataResponse<Question> findById(@PathVariable("id") Long id) {
-    return DataResponse.ok(questionService.findById(id));
+  public Response findById(@PathVariable("id") Long id) {
+    return Response.success(questionService.findById(id));
   }
 
   @PutMapping(value = "/{id}")
-  public DataResponse<Question> update(@PathVariable("id") Long id, @RequestBody Question question) {
+  public Response update(@PathVariable("id") Long id, @RequestBody Question question) {
     question.setId(id);
-    return DataResponse.ok(questionService.update(question));
+    return Response.success(questionService.update(question));
   }
 
   @DeleteMapping(value = "/{id}")
-  public DataResponse<Boolean> deleteById(@PathVariable("id") Long id) {
-    return DataResponse.ok(questionService.deleteById(id) == 1);
+  public Response deleteById(@PathVariable("id") Long id) {
+    return Response.success(questionService.deleteById(id) == 1);
   }
 
 }

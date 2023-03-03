@@ -22,6 +22,7 @@ import type { FormInstance, FormRules } from 'element-plus'
 import { showMessagesForError } from "@/utils/show-messages";
 import { useRouter } from 'vue-router'
 import api from '@/utils/baseurl';
+import backend from '@/apis/api';
 import { useLoginedStore } from '@/stores/store';
 
 const router = useRouter()
@@ -51,9 +52,9 @@ const login = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
     await formEl.validate((valid, fields) => {
         if (valid) {
-            api.post('login/body', {
-                "email": ruleForm.email,
-                "password": ruleForm.password
+            api.post(backend.login, {
+                email: ruleForm.email,
+                password: ruleForm.password
             }).then(res => {
                 console.log(res);
                 if (res.data.success) {

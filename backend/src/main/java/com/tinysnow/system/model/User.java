@@ -32,7 +32,7 @@ public class User {
   @Entity.Column(value = "gender", remark = "性别，默认为 1，女性")
   private Boolean gender;
 
-  @Entity.Column(value = "birthday", remark = "生日，仅日期", jdbcType = JdbcType.DATE)
+  @Entity.Column(value = "birthday", remark = "生日，仅日期", jdbcType = JdbcType.TIMESTAMP)
   private Date birthday;
 
   @Entity.Column(value = "points", remark = "助人点分数")
