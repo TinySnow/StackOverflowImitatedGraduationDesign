@@ -42,6 +42,11 @@ public class TestController {
         return Response.success(questionService.findAll());
     }
 
+    @GetMapping(value = "/question-detail/{id}")
+    public Response findById(@PathVariable("id") Long id) {
+        return Response.success(questionService.findById(id));
+    }
+
     @GetMapping("/rank-lists")
     public Response rankLists() {
         return Response.success(questionService.findAll());

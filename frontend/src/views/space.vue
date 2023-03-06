@@ -11,7 +11,7 @@
 
 
 <script lang="ts" setup>
-import ProblemList from '@/components/lists/problem-list.vue';
+import ProblemList from '@/components/lists/question-list.vue';
 import RankList from '@/components/lists/rank-list.vue';
 
 

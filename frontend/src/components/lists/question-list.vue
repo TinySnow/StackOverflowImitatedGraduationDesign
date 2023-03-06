@@ -30,6 +30,9 @@ export default {
     methods: {
         intoProblem(item: Object) {
             console.log(item);
+            this.$router.push({
+                path: '/question/' + item.id
+            })
         }
     },
     created() {

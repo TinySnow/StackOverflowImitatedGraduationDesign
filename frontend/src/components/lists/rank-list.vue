@@ -2,15 +2,23 @@
   <h2 class="rank-head">助人点排行榜</h2>
   <el-space :fill=true>
     <el-card v-for="item in lists" :key="item.id">
-      <el-avatar size="" :src="'https://api.multiavatar.com/' + Math.random() + '.svg'" />
-      <span class="point">{{ item.points }} 分</span>
+      <el-row>
+        <el-col>
+          <el-avatar size="" :src="'https://api.multiavatar.com/' + Math.random() + '.svg'" />
+        </el-col>
+        <el-col :span="24">
+            <span>{{ item.username }}</span>
+            <hr />
+            <span class="point">{{ item.points }} 分</span>
+        </el-col>
+      </el-row>
     </el-card>
   </el-space>
 </template>
 
 
 <script lang="ts">
-
+// TODO: 修改卡片樣式，使其左右幷排
 import api from '@/utils/baseurl';
 
 export default {

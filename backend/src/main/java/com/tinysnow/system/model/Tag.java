@@ -2,7 +2,6 @@ package com.tinysnow.system.model;
 
 import io.mybatis.provider.Entity;
 import lombok.Data;
-import org.apache.ibatis.type.JdbcType;
 
 
 /**
