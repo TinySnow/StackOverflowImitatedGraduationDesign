@@ -54,6 +54,4 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

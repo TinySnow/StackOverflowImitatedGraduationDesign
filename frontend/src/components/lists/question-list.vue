@@ -1,5 +1,5 @@
 <template>
-    <el-card v-for="item in lists" @click="intoProblem(item)">
+    <el-card v-for="item in lists" @click="intoProblem(item.id)">
         <h3>{{ item.title }}</h3>
         <hr />
         <p>{{ item.content }}</p>
@@ -8,8 +8,8 @@
 
 
 <script lang="ts">
-import api from '@/utils/baseurl';
-import backend from "@/apis/api";
+import url from '@/utils/baseurl';
+import backend from "@/apis/backend";
 
 export default {
     data() {
@@ -28,15 +28,15 @@ export default {
         }
     },
     methods: {
-        intoProblem(item: Object) {
-            console.log(item);
+        intoProblem(id: Object) {
+            // console.log(id);
             this.$router.push({
-                path: '/question/' + item.id
+                path: '/question/' + id
             })
         }
     },
     created() {
-        api.get(backend.questionList).then(res => {
+        url.get(backend.questionList).then(res => {
             // console.log(res);
             this.$data.lists = res.data.data
         }).catch(error => {

@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     intoProblem(item: Object) {
-      console.log(item);
+      // console.log(item);
     },
     sort(lists: Array<any>) {
       const list = lists.sort((a, b) => b.points - a.points)
