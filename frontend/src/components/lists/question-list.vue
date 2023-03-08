@@ -8,8 +8,8 @@
 
 
 <script lang="ts">
-import url from '@/utils/baseurl';
-import backend from "@/apis/backend";
+import { backend } from '@/utils/baseurl';
+import api from "@/apis/main"
 
 export default {
     data() {
@@ -36,7 +36,7 @@ export default {
         }
     },
     created() {
-        url.get(backend.questionList).then(res => {
+        backend.get(api.questionList).then(res => {
             // console.log(res);
             this.$data.lists = res.data.data
         }).catch(error => {

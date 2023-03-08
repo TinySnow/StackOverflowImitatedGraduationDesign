@@ -22,19 +22,31 @@
             </el-col>
         </el-row>
     </div>
+    <div>
+        {{ result }}
+    </div>
 </template>
 
 
 <script lang="ts" setup>
 
-import { ref } from 'vue'
+import { ref,reactive } from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import { search } from "@/utils/baseurl";
+import api from '@/apis/main';
 
 const keywords = ref('')
 const type = ref('')
+const result = reactive([])
 
 const searchBackend = (type: string, keywords: string) => {
     console.log("类型：" + type + "\n" + "关键词：" + keywords);
+    search.post(api.elastic.search(type), api.elastic.content({username:"天"})).then(res => {
+        console.log(res);
+        Object.assign(result,res.data.hits.hits)
+    }).catch(err => {
+        console.log(err);
+    })
 }
 </script>
 

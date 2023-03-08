@@ -19,7 +19,8 @@
 
 <script lang="ts">
 // TODO: 修改卡片樣式，使其左右幷排
-import api from '@/utils/baseurl';
+import { backend } from '@/utils/baseurl';
+import api from "@/apis/main"
 
 export default {
   data() {
@@ -49,7 +50,7 @@ export default {
     }
   },
   created() {
-    api.get('user').then(res => {
+    backend.get(api.userList).then(res => {
       this.sort(res.data.data)
     }).catch(error => {
       console.log(error);

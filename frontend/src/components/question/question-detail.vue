@@ -5,8 +5,8 @@
 
 
 <script lang="ts" setup>
-import url from '@/utils/baseurl';
-import backend from "@/apis/backend";
+import { backend } from '@/utils/baseurl';
+import api from "@/apis/main";
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { reactive, onMounted } from 'vue';
@@ -26,9 +26,9 @@ let detail = reactive({
 })
 
 onMounted(async () => {
-    url.get(backend.questionDetail + detail.id).then(res => {
+    backend.get(api.questionDetail + detail.id).then(res => {
         // console.log(res);
-        Object.assign(detail,res.data.data)
+        Object.assign(detail, res.data.data)
     }).catch(error => {
         console.log(error);
     });
@@ -37,7 +37,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.title{
+.title {
     text-align: center;
 }
 </style>
