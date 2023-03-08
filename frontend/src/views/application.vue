@@ -8,7 +8,7 @@
         <RouterView />
       </el-main>
       <el-footer class="outer-footer">
-        <p> Temporary a footer. </p>
+        <p>Copyright ©2023 报错解决查助系统 All rights reserved. | 南国微雪 Miyuki 毕业设计制作 | For Bachelor Graduation.</p>
       </el-footer>
     </el-container>
   </div>
@@ -18,7 +18,7 @@
 <script setup lang="ts">
 
 import { RouterView } from 'vue-router'
-import single from '@/components/header-part/custom-header.vue'
+import single from '@/components/header/custom-header.vue'
 // import sidebar from '@/components/sidebar-part/custom-sidebar.vue'
 
 </script>
@@ -27,13 +27,15 @@ import single from '@/components/header-part/custom-header.vue'
 <style scoped>
 /* 测试，为使布局可见，临时样式 */
 .outer-footer {
-  background-color: orange;
+  background-color: rgb(196, 232, 255);
+  border-radius: 4px;
   text-align: center;
   padding: auto;
 }
 
 .outer-header {
-  background-color: orange;
+  background-color: rgb(196, 232, 255);
+  border-radius: 4px;
   text-align: center;
   padding: auto;
 }

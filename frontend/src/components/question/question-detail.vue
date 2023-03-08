@@ -1,5 +1,5 @@
 <template>
-    <h1>{{ detail.title }}</h1>
+    <h1 class="title">{{ detail.title }}</h1>
     <md-editor v-model="detail.content" preview-only />
 </template>
 
@@ -9,7 +9,7 @@ import url from '@/utils/baseurl';
 import backend from "@/apis/backend";
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
-import { reactive, onMounted,onBeforeMount } from 'vue';
+import { reactive, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute()
@@ -36,4 +36,8 @@ onMounted(async () => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.title{
+    text-align: center;
+}
+</style>

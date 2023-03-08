@@ -1,4 +1,4 @@
-// 此处可能需要加一个 store 用于缓存排行榜的 lists 变量，否则请求太频繁
+// TODO：此处可能需要加一个 store 用于缓存排行榜的 lists 变量，否则请求太频繁
 
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
@@ -21,4 +21,15 @@ export const useLoginedStore = defineStore("logined", () => {
     logined.value = false;
   }
   return { logined, login, loginout };
+});
+
+export const useTokenStore = defineStore("token", () => {
+  const token = ref("");
+  function login(jwt: string) {
+    token.value = jwt;
+  }
+  function loginout() {
+    token.value = "";
+  }
+  return { token, login, loginout };
 });

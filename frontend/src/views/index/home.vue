@@ -10,7 +10,7 @@
 
 
 <script lang="ts" setup>
-import PleaseLogin from '@/components/404/please-login.vue';
+import PleaseLogin from '@/components/premise/please-login.vue';
 import { useLoginedStore } from '@/stores/store';
 // import { onMounted } from 'vue';
 const judge = useLoginedStore()
