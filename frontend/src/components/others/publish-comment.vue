@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!judge.logined" class="notice">
+    <div v-if="storage.token === null && !judge.logined" class="notice">
         <el-card shadow="hover" class="remind-login-card">
             若要评论 请先登录
         </el-card>
@@ -7,7 +7,7 @@
     <div v-else>
         <el-row>
             <el-col :span="22">
-                <el-card shadow="hover">
+                <el-card shadow="hover" class="logined-card">
                     在下方，书写你的看法！
                 </el-card>
             </el-col>
@@ -25,11 +25,12 @@
 import { ref } from 'vue';
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
-import { useLoginedStore } from '@/stores/store';
+import { useLoginedStore,useTokenStore } from '@/stores/store';
+
+const judge = useLoginedStore()
+const storage = useTokenStore()
 
 const text = ref('');
-
-const judge = useLoginedStore();
 
 const publish = (text: string) => {
     console.log(text);
@@ -49,5 +50,9 @@ const publish = (text: string) => {
 
 .button-style {
     text-align: right;
+}
+
+.logined-card{
+    margin-bottom: 3%;
 }
 </style>

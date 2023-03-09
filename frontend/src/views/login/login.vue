@@ -23,10 +23,11 @@ import { showMessagesForError } from "@/utils/show-messages";
 import { useRouter } from 'vue-router'
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";
-import { useLoginedStore } from '@/stores/store';
+import { useLoginedStore,useTokenStore } from '@/stores/store';
 
 const router = useRouter()
 const logined = useLoginedStore()
+const save = useTokenStore();
 
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive({
@@ -56,9 +57,9 @@ const login = async (formEl: FormInstance | undefined) => {
                 email: ruleForm.email,
                 password: ruleForm.password
             }).then(res => {
-                // console.log(res);
+                console.log(res);
                 if (res.data.success) {
-                    logined.login()
+                    saveTokenToLocalStorage(res.data.token);
                     jumpToHome();
                 } else {
                     showMessagesForError(res.data.msg);
@@ -80,6 +81,13 @@ const jumpToHome = () => {
 const jumpToRegister = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     router.push('/register')
+}
+
+const saveTokenToLocalStorage = (token: string) => {
+    console.log(token)
+    logined.login()
+    localStorage.setItem("token", token)
+    save.login(token);
 }
 </script>
 

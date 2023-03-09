@@ -24,7 +24,7 @@ export const useLoginedStore = defineStore("logined", () => {
 });
 
 export const useTokenStore = defineStore("token", () => {
-  const token = ref("");
+  const token = ref(localStorage.getItem("token"));
   function login(jwt: string) {
     token.value = jwt;
   }
