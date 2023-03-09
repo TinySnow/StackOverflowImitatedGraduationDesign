@@ -4,6 +4,7 @@ const api = {
   registerUser: "/user",
   login: "/login/body",
   questionDetail: "test/question-detail/",
+  getCommentList: "test/comments/",
   elastic: {
     search: (type: string) => {
       return type + "/_search";

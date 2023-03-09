@@ -12,6 +12,7 @@
 
 
 <script lang="ts" setup>
+
 import PleaseLogin from '@/components/premise/please-login.vue';
 import HomeDetail from '@/components/details/home-detail.vue';
 

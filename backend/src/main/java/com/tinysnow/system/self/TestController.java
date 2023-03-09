@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.tinysnow.common.utils.response.Response;
+import com.tinysnow.system.model.Comment;
 import com.tinysnow.system.model.User;
+import com.tinysnow.system.service.CommentService;
 import com.tinysnow.system.service.QuestionService;
 import com.tinysnow.system.service.UserService;
 
@@ -21,6 +23,9 @@ public class TestController {
 
     @Autowired
     QuestionService questionService;
+
+    @Autowired
+    CommentService commentService;
 
     @GetMapping("/login")
     public Response login(HttpServletResponse response) {
@@ -50,5 +55,12 @@ public class TestController {
     @GetMapping("/rank-lists")
     public Response rankLists() {
         return Response.success(questionService.findAll());
+    }
+
+    @GetMapping("/comments/{questionId}")
+    public Response commentLists(@PathVariable("questionId") Long id) {
+        Comment foo = new Comment();
+        foo.setPost(Long.toString(id));
+        return Response.success(commentService.findList(foo));
     }
 }

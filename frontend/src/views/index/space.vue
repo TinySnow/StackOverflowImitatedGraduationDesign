@@ -4,16 +4,16 @@
             <rank-list />
         </el-col>
         <el-col :span="18">
-            <problem-list />
+            <question-list />
         </el-col>
     </el-row>
 </template>
 
 
 <script lang="ts" setup>
-import ProblemList from '@/components/lists/question-list.vue';
-import RankList from '@/components/lists/rank-list.vue';
 
+import QuestionList from '@/components/lists/question-list.vue';
+import RankList from '@/components/lists/rank-list.vue';
 
 </script>
 
