@@ -62,7 +62,7 @@ const result = reactive([])
 
 const searchElastic = (type: string, keywords: string) => {
     console.log("类型：" + type + "\n" + "关键词：" + keywords);
-    search.post(api.elastic.search(type), api.elastic.content({ username: "天" })).then(res => {
+    search.post(api.elastic.search(type), api.elastic.content({ username: keywords })).then(res => {
         console.log(res);
         Object.assign(result, res.data.hits.hits)
     }).catch(err => {
