@@ -17,8 +17,8 @@ public class Comment {
   @Entity.Column(value = "id", id = true, remark = "评论 id", updatable = false, insertable = false)
   private Long id;
 
-  @Entity.Column(value = "post", remark = "关联 question 的 id")
-  private String post;
+  @Entity.Column(value = "question", remark = "关联 question 的 id")
+  private String question;
 
   @Entity.Column(value = "parent", remark = "父评论 id，关联 comment 的 id，若无则为 question 的一级评论")
   private String parent;

@@ -60,7 +60,7 @@ public class TestController {
     @GetMapping("/comments/{questionId}")
     public Response commentLists(@PathVariable("questionId") Long id) {
         Comment foo = new Comment();
-        foo.setPost(Long.toString(id));
+        foo.setQuestion(Long.toString(id));
         return Response.success(commentService.findList(foo));
     }
 }

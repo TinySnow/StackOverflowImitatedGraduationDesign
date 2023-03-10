@@ -1,3 +1,4 @@
+# 执行代码：java -cp "library/*" io.mybatis.rui.cli.Main -p project.yml
 # 模板的名字，生成代码的根目录名称
 name: backend
 # 代码生成的路径，可以使用 SYS 和 ENV 等变量，具体包含的内容和运行环境有关
@@ -24,10 +25,10 @@ database:
   # 获取表配置，支持 % 和 _ 模糊匹配，可以配置多个值
   # 还有一个支持复杂规则 tableRules 属性后续单独介绍
   tables:
-    - user
-    - post
-    - tag
-    - question
+    # - user
+    # - post
+    # - tag
+    # - question
     - comment
   # 根据类型对字段类型打标签, 可以通过 column.tags.TAG 的 true/false 来判断当前列是否有该标签
   # 主要对列进行分类，方便后续模板中的使用

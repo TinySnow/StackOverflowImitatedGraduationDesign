@@ -1,7 +1,7 @@
 <template>
     <div v-if="storage.token === null && !judge.logined" class="notice">
         <el-card shadow="hover" class="remind-login-card">
-            若要评论 请先登录
+            若要回复 请先登录
         </el-card>
     </div>
     <div v-else>

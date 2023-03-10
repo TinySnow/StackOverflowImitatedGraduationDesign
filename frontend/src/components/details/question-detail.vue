@@ -15,7 +15,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 
 let detail = reactive({
-    id: route.params.id,
+    id: '',
     author: '',
     title: '',
     content: '',
@@ -26,7 +26,7 @@ let detail = reactive({
 })
 
 onMounted(async () => {
-    backend.get(api.questionDetail + detail.id).then(res => {
+    backend.get(api.questionDetail + route.params.id).then(res => {
         // console.log(res);
         Object.assign(detail, res.data.data)
     }).catch(error => {

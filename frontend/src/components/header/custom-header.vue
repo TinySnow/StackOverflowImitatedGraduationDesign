@@ -1,13 +1,13 @@
 <template>
     <!-- 考虑换成响应式布局 -->
     <el-row :gutter="20">
-        <el-col :span="4" @click="() => router.push('/search')">
+        <el-col :span="4" @click="() => router.replace('/search')">
             <p class="content">搜索</p>
         </el-col>
-        <el-col :span="16" @click="() => router.push('space')">
+        <el-col :span="16" @click="() => router.replace('space')">
             <p class="content">首页</p>
         </el-col>
-        <el-col :span="4" @click="() => router.push('/home')">
+        <el-col :span="4" @click="() => router.replace('/home')">
             <p class="content">个人中心</p>
             <!-- <el-avatar class="avatar-style" size="large" :src="imgurl" /> -->
         </el-col>
