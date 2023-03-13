@@ -1,14 +1,16 @@
 <template>
     <el-card v-if="total === 0" shadow="hover" class="no-comment">暂无回答</el-card>
-    <el-card v-else shadow="hover" v-for="item in comment" :key="item.id">
-        作者：{{ item.author }}
-        <hr />
-        内容：{{ item.content }}
-        <hr />
-        点赞数：{{ item.upvote }}
-        <hr />
-        点踩数：{{ item.devote }}
-    </el-card>
+    <el-space v-else fill direction="vertical" class="space" size="large">
+        <el-card shadow="hover" v-for="item in comment" :key="item.id">
+            作者：{{ item.author }}
+            <hr />
+            内容：{{ item.content }}
+            <hr />
+            点赞数：{{ item.upvote }}
+            <hr />
+            点踩数：{{ item.devote }}
+        </el-card>
+    </el-space>
 </template>
 
 
@@ -50,8 +52,11 @@ onMounted(async () => {
 
 
 <style scoped>
-.no-comment{
+.no-comment {
     background-color: rgb(209, 233, 248);
     text-align: center;
+}
+.space {
+    width: 100%;
 }
 </style>

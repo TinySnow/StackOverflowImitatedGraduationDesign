@@ -1,4 +1,5 @@
 <template>
+    <el-page-header @back="goBack" class="head"></el-page-header>
     <question-detail />
     <divider />
     <question-comment-list />
@@ -13,7 +14,13 @@ import QuestionCommentList from '@/components/lists/comment-list-question.vue';
 import QuestionDetail from '@/components/details/question-detail.vue';
 import Divider from "@/components/others/divider.vue";
 import PublishComment from "@/components/others/publish-comment.vue";
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+
+const goBack = () => {
+    router.back();
+}
 </script>
 
 

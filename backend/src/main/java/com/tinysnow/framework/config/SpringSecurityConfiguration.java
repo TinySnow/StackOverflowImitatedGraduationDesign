@@ -33,7 +33,7 @@ public class SpringSecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 // 过滤请求
                 .authorizeRequests()
-                // 对于登录 login、注册 register、验证码 captchaImage（还未实现），允许匿名访问
+                // 对于登录 login、注册 register、验证码 captchaImage（还未实现），测试资源，允许匿名访问
                 .antMatchers("/login/**", "/register", "/captchaImage","/test/**","/user/**").permitAll()
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**").permitAll()

@@ -3,13 +3,12 @@
   <el-space :fill=true>
     <el-card v-for="item in lists" :key="item.id">
       <el-row>
-        <el-col>
-          <el-avatar size="" :src="'https://api.multiavatar.com/' + Math.random() + '.svg'" />
+        <el-col class="avatar" :span="8">
+          <el-avatar size="large" :src="'https://api.multiavatar.com/' + Math.random() + '.svg'" />
         </el-col>
-        <el-col :span="24">
-            <span>{{ item.username }}</span>
-            <hr />
-            <span class="point">{{ item.points }} 分</span>
+        <el-col :span="16">
+            <p>{{ item.username }}</p>
+            <p class="point">{{ item.points }} 分</p>
         </el-col>
       </el-row>
     </el-card>
@@ -68,7 +67,13 @@ export default {
   color: rgb(228, 215, 44);
 }
 
-/* .point {
+.avatar{
   padding: auto;
-} */
+  text-align: start;
+  align-self: center;
+}
+.point {
+  padding: 0px auto;
+  text-align: right;
+}
 </style>

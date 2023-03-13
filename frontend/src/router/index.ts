@@ -40,6 +40,11 @@ const router = createRouter({
       component: () => import("@/views/detail/sigle-question.vue"),
     },
     {
+      path: "/question/new",
+      name: "提问页",
+      component: () => import("@/views/detail/new-question.vue"),
+    },
+    {
       path: "/search",
       name: "搜索页面",
       component: () => import("@/views/index/search.vue"),

@@ -1,9 +1,11 @@
 <template>
-    <el-card v-for="item in lists" @click="intoProblem(item.id)">
-        <h3>{{ item.title }}</h3>
-        <hr />
-        <p>{{ item.content }}</p>
-    </el-card>
+    <el-space fill direction="vertical" class="space" size="large">
+        <el-card shadow="hover" v-for="item in lists" @click="intoProblem(item.id)">
+            <h3>{{ item.title }}</h3>
+            <hr />
+            <p>{{ item.content }}</p>
+        </el-card>
+    </el-space>
 </template>
 
 
@@ -47,4 +49,8 @@ export default {
 </script>
 
 
-<style scoped></style>
+<style scoped>
+.space {
+    width: 100%;
+}
+</style>

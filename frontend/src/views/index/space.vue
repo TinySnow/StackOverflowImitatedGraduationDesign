@@ -7,6 +7,8 @@
             <question-list />
         </el-col>
     </el-row>
+    <!-- <el-backtop :right="100" :bottom="100"/> -->
+    <new-question-icon class="test" />
 </template>
 
 
@@ -14,8 +16,13 @@
 
 import QuestionList from '@/components/lists/question-list.vue';
 import RankList from '@/components/lists/rank-list.vue';
+import NewQuestionIcon from "@/components/others/new-question-icon.vue";
 
 </script>
 
 
-<style scoped></style>
+<style scoped>
+.test {
+    text-align: right;
+}
+</style>

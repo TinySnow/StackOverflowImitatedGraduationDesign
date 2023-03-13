@@ -1,6 +1,5 @@
 <template>
-    <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" size="large"
-        status-icon>
+    <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" size="large" status-icon>
         <el-form-item label="登录账户" prop="email">
             <el-input v-model="ruleForm.email" placeholder="仅支持邮箱登录" />
         </el-form-item>
@@ -23,7 +22,7 @@ import { showMessagesForError } from "@/utils/show-messages";
 import { useRouter } from 'vue-router'
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";
-import { useLoginedStore,useTokenStore } from '@/stores/store';
+import { useLoginedStore, useTokenStore } from '@/stores/store';
 
 const router = useRouter()
 const logined = useLoginedStore()
