@@ -63,4 +63,9 @@ public class TestController {
         foo.setQuestion(Long.toString(id));
         return Response.success(commentService.findList(foo));
     }
+
+    @GetMapping("/user/info")
+    public Response getInfo(Long id) {
+        return Response.success(userService.findById(id));
+    }
 }

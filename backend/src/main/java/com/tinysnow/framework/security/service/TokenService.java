@@ -65,9 +65,11 @@ public class TokenService {
             try {
                 Claims claims = parseToken(token);
                 // 解析对应的权限以及用户信息
-                String uuid = (String) claims.get(CommonConstants.LOGIN_USER_KEY);
-                String userKey = getTokenKey(uuid);
-                LoginUser user = redisCache.getCacheObject(userKey);
+                Long userId = Long.parseLong((String) claims.get(CommonConstants.LOGIN_USER_KEY));
+                LoginUser user = new LoginUser();
+                user.setUserId(userId);
+                user.setUser(userService.findById(userId));
+                System.out.println(user);
                 return user;
             } catch (Exception e) {
             }
@@ -101,14 +103,13 @@ public class TokenService {
      * @return 令牌
      */
     public String createToken(LoginUser loginUser) {
-        // String token = IdUtils.fastUUID();
-        String token = loginUser.getUser().getId().toString();
-        loginUser.setToken(token);
+        String UserId = loginUser.getUser().getId().toString();
+        loginUser.setToken(UserId);
         setUserAgent(loginUser);
         // refreshToken(loginUser);
 
         Map<String, Object> claims = new HashMap<>();
-        claims.put(CommonConstants.LOGIN_USER_KEY, token);
+        claims.put(CommonConstants.LOGIN_USER_KEY, UserId);
         return createToken(claims);
     }
 
@@ -185,7 +186,7 @@ public class TokenService {
      * @param token 令牌
      * @return 用户名
      */
-    public String getUsernameFromToken(String token) {
+    public String getUserIdFromToken(String token) {
         Claims claims = parseToken(token);
         return claims.getSubject();
     }

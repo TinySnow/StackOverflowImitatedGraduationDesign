@@ -1,9 +1,10 @@
 package com.tinysnow.system.controller;
 
 import com.tinysnow.common.utils.response.Response;
-
+import com.tinysnow.framework.security.service.TokenService;
 import com.tinysnow.system.model.User;
 import com.tinysnow.system.service.UserService;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class UserController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private TokenService tokenService;
+
   @PostMapping
   public Response save(@RequestBody User user) {
     return Response.success(userService.save(user));
@@ -34,6 +38,11 @@ public class UserController {
   @GetMapping(value = "/{id}")
   public Response findById(@PathVariable("id") Long id) {
     return Response.success(userService.findById(id));
+  }
+
+  @GetMapping(value = "/info")
+  public Response getInfo(HttpServletRequest request) {
+    return Response.success("用户信息",tokenService.getLoginUser(request));
   }
 
   @PutMapping(value = "/{id}")

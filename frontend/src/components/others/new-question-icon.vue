@@ -6,8 +6,13 @@
                 <el-button class="logined-button" type="primary" size="large" :icon="Edit" circle></el-button>
             </template>
         </el-popover>
-        <el-button v-else type="primary" size="large" :icon="Edit" @click="() => router.push('/question/new')"
+        <el-popover class="unlogined-popover"  v-else placement="top-start"
+            :width="200" trigger="hover" content="提出问题">
+            <template #reference>
+                <el-button class="logined-button" type="primary" size="large" :icon="Edit" @click="() => router.push('/question/new')"
             circle></el-button>
+            </template>
+        </el-popover>
     </el-affix>
 </template>
 
