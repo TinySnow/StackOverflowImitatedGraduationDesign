@@ -32,18 +32,18 @@ public class TagController {
   }
 
   @GetMapping(value = "/{id}")
-  public Response findById(@PathVariable("id") Long id) {
+  public Response find(@PathVariable("id") Long id) {
     return Response.success(tagService.findById(id));
   }
 
   @PutMapping(value = "/{id}")
-  public Response update(@PathVariable("id") Integer id, @RequestBody Tag tag) {
+  public Response update(@PathVariable("id") Long id, @RequestBody Tag tag) {
     tag.setId(id);
     return Response.success(tagService.update(tag));
   }
 
   @DeleteMapping(value = "/{id}")
-  public Response deleteById(@PathVariable("id") Long id) {
+  public Response delete(@PathVariable("id") Long id) {
     return Response.success(tagService.deleteById(id) == 1);
   }
 

@@ -35,9 +35,6 @@ public class User {
   @Entity.Column(value = "birthday", remark = "生日，仅日期", jdbcType = JdbcType.TIMESTAMP)
   private Date birthday;
 
-  @Entity.Column(value = "points", remark = "助人点分数")
-  private Long points;
-
   @Entity.Column(value = "register_time", remark = "注册时间", jdbcType = JdbcType.TIMESTAMP)
   private Date registerTime;
 

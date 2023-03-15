@@ -32,7 +32,7 @@ public class PostController {
   }
 
   @GetMapping(value = "/{id}")
-  public Response findById(@PathVariable("id") Long id) {
+  public Response find(@PathVariable("id") Long id) {
     return Response.success(postService.findById(id));
   }
 
@@ -43,7 +43,7 @@ public class PostController {
   }
 
   @DeleteMapping(value = "/{id}")
-  public Response deleteById(@PathVariable("id") Long id) {
+  public Response delete(@PathVariable("id") Long id) {
     return Response.success(postService.deleteById(id) == 1);
   }
 

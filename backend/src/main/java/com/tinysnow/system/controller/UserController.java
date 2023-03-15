@@ -4,6 +4,7 @@ import com.tinysnow.common.utils.response.Response;
 import com.tinysnow.framework.security.service.TokenService;
 import com.tinysnow.system.model.User;
 import com.tinysnow.system.service.UserService;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +35,14 @@ public class UserController {
     User user = new User();
     return Response.success(userService.findList(user));
   }
-
-  @GetMapping(value = "/{id}")
-  public Response findById(@PathVariable("id") Long id) {
-    return Response.success(userService.findById(id));
+  @GetMapping(value = "/info")
+  public Response info(HttpServletRequest request) {
+    return Response.success("用户信息",tokenService.getLoginUser(request));
   }
 
-  @GetMapping(value = "/info")
-  public Response getInfo(HttpServletRequest request) {
-    return Response.success("用户信息",tokenService.getLoginUser(request));
+  @GetMapping(value = "/{id}")
+  public Response find(@PathVariable("id") Long id) {
+    return Response.success(userService.findById(id));
   }
 
   @PutMapping(value = "/{id}")
@@ -52,7 +52,7 @@ public class UserController {
   }
 
   @DeleteMapping(value = "/{id}")
-  public Response deleteById(@PathVariable("id") Long id) {
+  public Response delete(@PathVariable("id") Long id) {
     return Response.success(userService.deleteById(id) == 1);
   }
 

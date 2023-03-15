@@ -32,7 +32,7 @@ public class ${it.name.className}Controller {
   }
 
   @GetMapping(value = "/{id}")
-  public Response findById(@PathVariable("id") Long id) {
+  public Response find(@PathVariable("id") Long id) {
     return Response.success(${it.name.fieldName}Service.findById(id));
   }
 
@@ -43,7 +43,7 @@ public class ${it.name.className}Controller {
   }
 
   @DeleteMapping(value = "/{id}")
-  public Response deleteById(@PathVariable("id") Long id) {
+  public Response delete(@PathVariable("id") Long id) {
     return Response.success(${it.name.fieldName}Service.deleteById(id) == 1);
   }
 

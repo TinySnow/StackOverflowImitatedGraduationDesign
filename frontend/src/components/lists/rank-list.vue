@@ -4,11 +4,12 @@
     <el-card v-for="item in lists" :key="item.id">
       <el-row>
         <el-col class="avatar" :span="8">
-          <el-avatar size="large" :src="'https://api.multiavatar.com/' + Math.random() + '.svg'" />
+          <el-avatar size="large"
+            :src="item.avatar !== '' ? item.avatar : ('https://api.multiavatar.com/' + Math.random() + '.svg')" />
         </el-col>
         <el-col :span="16">
-            <p>{{ item.username }}</p>
-            <p class="point">{{ item.points }} 分</p>
+          <p>{{ item.username }}</p>
+          <p class="point">{{ item.points }} 分</p>
         </el-col>
       </el-row>
     </el-card>
@@ -50,6 +51,8 @@ export default {
   },
   created() {
     backend.get(api.userList).then(res => {
+      console.log(res);
+      
       this.sort(res.data.data)
     }).catch(error => {
       console.log(error);
@@ -67,11 +70,12 @@ export default {
   color: rgb(228, 215, 44);
 }
 
-.avatar{
+.avatar {
   padding: auto;
   text-align: start;
   align-self: center;
 }
+
 .point {
   padding: 0px auto;
   text-align: right;

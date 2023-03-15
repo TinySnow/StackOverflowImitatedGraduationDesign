@@ -12,6 +12,5 @@
     <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
     <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更改时间，若无可为空 -->
     <result property="status" column="status" jdbcType="INTEGER"/><!-- 状态，是否可用 -->
-    <result property="isTop" column="is_top" jdbcType="BIT"/><!-- 置顶，即是否为最佳答案 -->
   </resultMap>
 </mapper>

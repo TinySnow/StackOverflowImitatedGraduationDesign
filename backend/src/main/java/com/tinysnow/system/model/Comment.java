@@ -44,7 +44,4 @@ public class Comment {
   @Entity.Column(value = "status", remark = "状态，是否可用")
   private Integer status;
 
-  @Entity.Column(value = "is_top", remark = "置顶，即是否为最佳答案")
-  private Boolean isTop;
-
 }

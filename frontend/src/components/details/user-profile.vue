@@ -1,25 +1,26 @@
 <template>
-    <el-row>
+    <el-row class="info">
         <el-col :span="3" class="avatar-col">
-            <el-avatar shape="circle" :size="100" fit="cover"
+            <el-avatar shape="circle" :size="100" fit="scale-down"
                 :src="user.avatar !== '' ? user.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'">
             </el-avatar>
         </el-col>
         <el-col :span="12">
             <el-row>
-                <el-col :span="14" class="to-center">
+                <el-col :span="10" class="to-center">
                     <h2>{{ user.username }}</h2>
                 </el-col>
-                <el-col :span="1" class="to-buttom">
+                <el-col :span="4" class="to-buttom-and-center">
                     <p>
-                        <el-icon>
+                        性别:
+                        <el-icon size="large">
                             <female v-if="user.gender" />
                             <male v-else />
                         </el-icon>
                     </p>
                 </el-col>
-                <el-col :span="9" class="to-buttom">
-                    <p>生日：{{ new Date(user.birthday).toLocaleDateString() }}</p>
+                <el-col :span="10" class="to-buttom-and-center">
+                    <p>出生日期：{{ new Date(user.birthday).toLocaleDateString() }}</p>
                 </el-col>
             </el-row>
             <el-row>
@@ -34,24 +35,24 @@
         <el-col :span="5">
             <el-space fill direction="vertical" class="space" size="large">
                 <el-row>
-                <el-col :span="16" class="to-center">
-                    <p class="points">{{ user.points }}</p>
-                </el-col>
-                <el-col :span="8" class="vertical-center to-center">
-                    <p>助人点</p>
-                </el-col>
-            </el-row>
-            <el-row>
-                <el-col>
-                    <p class="user-id">用户 ID：{{ user.id }}</p>
-                </el-col>
-            </el-row>
+                    <el-col :span="16" class="to-center">
+                        <p class="points">{{ user.points }}</p>
+                    </el-col>
+                    <el-col :span="8" class="vertical-center">
+                        <p>助人点</p>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col>
+                        <p class="user-id">用户 ID：{{ user.id }}</p>
+                    </el-col>
+                </el-row>
             </el-space>
         </el-col>
         <el-col :span="4" class="button-group">
             <el-space fill direction="vertical" class="space">
                 <el-row class="button-row">
-                    <el-button type="info">退出登录</el-button>
+                    <el-button type="info" @click="logout()">退出登录</el-button>
                 </el-row>
                 <el-row class="button-row">
                     <el-button type="warning">修改信息</el-button>
@@ -84,6 +85,9 @@ const user = reactive({
     registerTime: Date(),
 })
 
+const logout = () => {
+
+}
 
 onMounted(async () => {
     backend.get(api.getUserProfile, {
@@ -91,10 +95,19 @@ onMounted(async () => {
             Authorization: localStorage.getItem("token")
         }
     }).then(res => {
-        Object.assign(user, res.data.data.user)
+        // Object.assign(user, res.data.data.user)
         console.log(res);
-        console.log(user.username);
+    }).catch(err => {
+        console.log(err);
+    })
 
+    backend.get(api.getPoint, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(res => {
+        // Object.assign(user.points, res.data.data.user)
+        console.log(res);
     }).catch(err => {
         console.log(err);
     })
@@ -128,6 +141,11 @@ onMounted(async () => {
     text-align: center;
 }
 
+.to-buttom-and-center {
+    text-align: center;
+    align-self: center;
+}
+
 .to-right {
     text-align: right;
 }
@@ -147,10 +165,13 @@ onMounted(async () => {
     margin: 10% auto;
 }
 
-.user-id{
+.user-id {
     text-align: center;
     margin: 0% auto;
     align-self: bottom;
     font-size: smaller;
 }
-</style>
+
+.info {
+    background-color: lightskyblue;
+}</style>

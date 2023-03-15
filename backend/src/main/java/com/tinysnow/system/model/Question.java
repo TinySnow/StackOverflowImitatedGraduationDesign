@@ -26,9 +26,6 @@ public class Question {
   @Entity.Column(value = "content", remark = "文章内容")
   private String content;
 
-  @Entity.Column(value = "best_answer", remark = "最佳答案，关联 comment 的 id")
-  private String bestAnswer;
-
   @Entity.Column(value = "reward", remark = "悬赏分数，标注最佳答案后进行事务性扣除")
   private Integer reward;
 

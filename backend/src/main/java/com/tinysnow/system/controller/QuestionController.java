@@ -32,7 +32,7 @@ public class QuestionController {
   }
 
   @GetMapping(value = "/{id}")
-  public Response findById(@PathVariable("id") Long id) {
+  public Response find(@PathVariable("id") Long id) {
     return Response.success(questionService.findById(id));
   }
 
@@ -43,7 +43,7 @@ public class QuestionController {
   }
 
   @DeleteMapping(value = "/{id}")
-  public Response deleteById(@PathVariable("id") Long id) {
+  public Response delete(@PathVariable("id") Long id) {
     return Response.success(questionService.deleteById(id) == 1);
   }
 

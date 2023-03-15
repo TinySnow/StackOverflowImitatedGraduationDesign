@@ -9,7 +9,6 @@
     <result property="email" column="email" jdbcType="VARCHAR"/><!-- 邮箱，唯一凭证 -->
     <result property="gender" column="gender" jdbcType="BIT"/><!-- 性别，默认为 1，女性 -->
     <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/><!-- 生日，仅日期 -->
-    <result property="points" column="points" jdbcType="BIGINT"/><!-- 助人点分数 -->
     <result property="registerTime" column="register_time" jdbcType="TIMESTAMP"/><!-- 注册时间 -->
   </resultMap>
 </mapper>
