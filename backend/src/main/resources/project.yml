@@ -15,7 +15,7 @@ database:
     # 后续介绍如何通过字典匹配注释值
     dialect: MYSQL
     # jdbc驱动
-    driver: com.mysql.jdbc.Driver
+    driver: com.mysql.cj.jdbc.Driver
     # jdbc连接地址
     url: jdbc:mysql://localhost:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=utf8
     # 用户名

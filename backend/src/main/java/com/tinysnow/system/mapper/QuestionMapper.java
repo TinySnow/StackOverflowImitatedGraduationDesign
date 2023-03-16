@@ -1,15 +1,46 @@
 package com.tinysnow.system.mapper;
 
-import io.mybatis.mapper.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.Question;
+
 
 /**
  * question - 
  *
  * @author Snow
  */
-@org.apache.ibatis.annotations.Mapper
-public interface QuestionMapper extends Mapper<Question, Long> {
+@Mapper
+public interface QuestionMapper {
+
+    /**
+     * 保存 Question
+     */
+    public Question save(Question question);
+
+    /**
+     * 查找全部的 Question
+     */
+    public Question findList(Question question);
+
+    /**
+     * 查找全部 Question
+     */
+    public Question findAll();
+
+    /**
+     * 根据 id 查找 Question
+     */
+    public Question find(Long id);
+
+    /**
+     * 更新 Question
+     */
+    public Question update(Question question);
+
+    /**
+     * 根据 id 删除 Question
+     */
+    public int delete(Long id);
 
 }

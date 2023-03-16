@@ -28,9 +28,7 @@ public class LoginService {
      * @return 结果
      */
     public String login(String email, String password) {
-        User user = new User();
-        user.setEmail(email);
-        User findOne = userService.findOne(user);
+        User findOne = userService.findByEmail(email);
         if (findOne == null) {
             return null;
         }

@@ -33,7 +33,7 @@ public class CommentController {
 
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
-    return Response.success(commentService.findById(id));
+    return Response.success(commentService.find(id));
   }
 
   @PutMapping(value = "/{id}")
@@ -44,7 +44,7 @@ public class CommentController {
 
   @DeleteMapping(value = "/{id}")
   public Response delete(@PathVariable("id") Long id) {
-    return Response.success(commentService.deleteById(id) == 1);
+    return Response.success(commentService.delete(id) == 1);
   }
 
 }

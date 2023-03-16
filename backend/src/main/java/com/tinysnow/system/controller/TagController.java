@@ -33,7 +33,7 @@ public class TagController {
 
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
-    return Response.success(tagService.findById(id));
+    return Response.success(tagService.find(id));
   }
 
   @PutMapping(value = "/{id}")
@@ -44,7 +44,7 @@ public class TagController {
 
   @DeleteMapping(value = "/{id}")
   public Response delete(@PathVariable("id") Long id) {
-    return Response.success(tagService.deleteById(id) == 1);
+    return Response.success(tagService.delete(id) == 1);
   }
 
 }

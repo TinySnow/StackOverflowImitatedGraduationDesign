@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tinysnow.system.mapper.CollectionMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Collection">
-    <id property="id" column="id" jdbcType="BIGINT"/>
-    <result property="title" column="title" jdbcType="VARCHAR"/><!-- 问题集标题 -->
-    <result property="author" column="author" jdbcType="VARCHAR"/><!-- 创建者，关联 user 的 id -->
-    <result property="description" column="description" jdbcType="LONGVARCHAR"/><!-- 问题集描述 -->
-    <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
-    <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更改时间，若无可为空 -->
-  </resultMap>
+    <resultMap id="base" type="com.tinysnow.system.model.Collection">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/><!-- 问题集标题 -->
+        <result property="author" column="author" jdbcType="VARCHAR"/><!-- 创建者，关联 user 的 id -->
+        <result property="description" column="description" jdbcType="LONGVARCHAR"/><!-- 问题集描述 -->
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更改时间，若无可为空 -->
+    </resultMap>
+
+    <select id="find" resultMap="base">
+        select *
+        from collection
+        where id = #{id}
+    </select>
+
+    <select id="findList" resultMap="base">
+        select *
+        from collection
+        where id = #{id}
+    </select>
+
+    <insert id="save" parameterType="com.tinysnow.system.model.Collection">
+        insert into collection (id, title, author, description, created_time, updated_time)
+        values (#{id}, #{title}, #{author}, #{description}, #{created_time}, #{updated_time})
+    </insert>
+
+    <update id="update" parameterType="com.tinysnow.system.model.Collection">
+        update collection
+        set where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete
+        from collection
+        where id = #{id}
+    </delete>
 </mapper>

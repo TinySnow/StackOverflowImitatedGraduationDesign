@@ -33,7 +33,7 @@ public class CollectionController {
 
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
-    return Response.success(collectionService.findById(id));
+    return Response.success(collectionService.find(id));
   }
 
   @PutMapping(value = "/{id}")
@@ -44,7 +44,7 @@ public class CollectionController {
 
   @DeleteMapping(value = "/{id}")
   public Response delete(@PathVariable("id") Long id) {
-    return Response.success(collectionService.deleteById(id) == 1);
+    return Response.success(collectionService.delete(id) == 1);
   }
 
 }

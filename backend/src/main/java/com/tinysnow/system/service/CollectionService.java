@@ -1,7 +1,5 @@
 package com.tinysnow.system.service;
 
-import io.mybatis.service.BaseService;
-
 import com.tinysnow.system.model.Collection;
 
 /**
@@ -9,6 +7,30 @@ import com.tinysnow.system.model.Collection;
  *
  * @author Snow
  */
-public interface CollectionService extends BaseService<Collection, Long> {
+public interface CollectionService {
 
+    /**
+     * 保存 Collection
+     */
+    public Collection save(Collection collection);
+
+    /**
+     * 查找全部的 Collection
+     */
+    public Collection findList(Collection collection);
+
+    /**
+     * 根据 id 查找 Collection
+     */
+    public Collection find(Long id);
+
+    /**
+     * 更新 Collection
+     */
+    public Collection update(Collection collection);
+
+    /**
+     * 根据 id 删除 Collection
+     */
+    public int delete(Long id);
 }

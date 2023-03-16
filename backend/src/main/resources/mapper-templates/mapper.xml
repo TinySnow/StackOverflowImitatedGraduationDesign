@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${project.attrs.basePackage}.mapper.${it.name.className}Mapper">
-  <resultMap id="baseResultMap" type="${project.attrs.basePackage}.model.${it.name.className}">
+  <resultMap id="base" type="${project.attrs.basePackage}.model.${it.name.className}">
     <#list it.columns as column>
     <#if column.pk>
     <id property="${column.name.fieldName}" column="${column.name}" jdbcType="${column.jdbcType}"/>
@@ -10,4 +10,29 @@
     </#if>
     </#list>
   </resultMap>
+
+  <select id="find" resultMap="base">
+    select * from ${it.name.fieldName}
+    where id = <#noparse>#{id}</#noparse>
+  </select>
+
+  <select id="findList" resultMap="base">
+    select * from ${it.name.fieldName}
+    where id = <#noparse>#{id}</#noparse>
+  </select>
+
+  <insert id="save" parameterType="com.tinysnow.system.model.${it.name.className}">
+    insert into ${it.name.fieldName} (<#list it.columns as column>${column.name}, </#list>)
+    values (<#list it.columns as column><#noparse>#{</#noparse>${column.name}<#noparse>}</#noparse>, </#list>)
+  </insert>
+
+  <update id="update" parameterType="com.tinysnow.system.model.${it.name.className}">
+    update ${it.name.fieldName} set
+    where id = <#noparse>#{id}</#noparse>
+  </update>
+
+  <delete id="delete">
+    update ${it.name.fieldName} set
+    where id = <#noparse>#{id}</#noparse>
+  </delete>
 </mapper>

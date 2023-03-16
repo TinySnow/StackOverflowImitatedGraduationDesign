@@ -1,10 +1,9 @@
 package com.tinysnow.system.service.impl;
 
-import io.mybatis.service.AbstractService;
-
 import com.tinysnow.system.service.TagService;
 import com.tinysnow.system.mapper.TagMapper;
 import com.tinysnow.system.model.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +12,29 @@ import org.springframework.stereotype.Service;
  * @author Snow
  */
 @Service
-public class  TagServiceImpl extends AbstractService<Tag, Long, TagMapper> implements TagService {
+public class TagServiceImpl implements TagService {
 
+    @Autowired
+    TagMapper tagMapper;
+
+
+    public Tag save(Tag tag){
+        return tagMapper.save(tag);
+    }
+
+    public Tag findList(Tag tag){
+        return tagMapper.findList(tag);
+    }
+
+    public Tag find(Long id){
+        return tagMapper.find(id);
+    }
+
+    public Tag update(Tag tag){
+        return tagMapper.update(tag);
+    }
+
+    public int delete(Long id){
+        return tagMapper.delete(id);
+    }
 }

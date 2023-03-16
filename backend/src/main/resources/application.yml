@@ -28,3 +28,7 @@ token:
     expireTime: 30
     # 令牌签发者
     issuer: tinysnow
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  config-location: classpath:mybatis-config.xml

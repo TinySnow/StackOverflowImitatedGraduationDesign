@@ -49,7 +49,7 @@ public class TestController {
 
     @GetMapping(value = "/question-detail/{id}")
     public Response findById(@PathVariable("id") Long id) {
-        return Response.success(questionService.findById(id));
+        return Response.success(questionService.find(id));
     }
 
     @GetMapping("/rank-lists")
@@ -66,6 +66,6 @@ public class TestController {
 
     @GetMapping("/user/info")
     public Response getInfo(Long id) {
-        return Response.success(userService.findById(id));
+        return Response.success(userService.find(id));
     }
 }

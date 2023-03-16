@@ -33,7 +33,7 @@ public class ${it.name.className}Controller {
 
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
-    return Response.success(${it.name.fieldName}Service.findById(id));
+    return Response.success(${it.name.fieldName}Service.find(id));
   }
 
   @PutMapping(value = "/{id}")
@@ -44,7 +44,7 @@ public class ${it.name.className}Controller {
 
   @DeleteMapping(value = "/{id}")
   public Response delete(@PathVariable("id") Long id) {
-    return Response.success(${it.name.fieldName}Service.deleteById(id) == 1);
+    return Response.success(${it.name.fieldName}Service.delete(id) == 1);
   }
 
 }

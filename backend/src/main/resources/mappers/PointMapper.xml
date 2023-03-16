@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tinysnow.system.mapper.PointMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.system.model.Point">
-    <id property="id" column="id" jdbcType="BIGINT"/>
-    <result property="point" column="point" jdbcType="BIGINT"/><!-- 助人点分数 -->
-  </resultMap>
+    <resultMap id="base" type="com.tinysnow.system.model.Point">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="point" column="point" jdbcType="BIGINT"/><!-- 助人点分数 -->
+    </resultMap>
+
+    <select id="find" resultMap="base">
+        select *
+        from point
+        where id = #{id}
+    </select>
+
+    <select id="findList" resultMap="base">
+        select *
+        from point
+        where id = #{id}
+    </select>
+
+    <insert id="save" parameterType="com.tinysnow.system.model.Point">
+        insert into point (id, point)
+        values (#{id}, #{point})
+    </insert>
+
+    <update id="update" parameterType="com.tinysnow.system.model.Point">
+        update point
+        set where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete
+        from point
+        where id = #{id}
+    </delete>
 </mapper>

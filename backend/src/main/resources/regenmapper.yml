@@ -1,0 +1,69 @@
+# 执行代码：java -cp "library/*" io.mybatis.rui.cli.Main -p project.yml
+# 模板的名字，生成代码的根目录名称
+name: backend
+# 代码生成的路径，可以使用 SYS 和 ENV 等变量，具体包含的内容和运行环境有关
+# user.dir 为当前运行命令的目录，path 不设置时的默认值也是当前路径，在命令行中可以通过 —o 重新指定位置
+# 当 path 路径以 .zip 后缀结尾时，会将生成的目录结构和代码放到压缩包中
+path: ${SYS['user.dir']}\..\..\..\..\
+# 模板文件所在路径，默认为相对 path 所在的位置，不设置时和 path 相同
+templates: mapper-templates
+# 数据库配置
+database:
+  # 数据库连接配置
+  jdbcConnection:
+    # 使用方言，默认为 JDBC 方式，可能会取不到表或字段注释
+    # 后续介绍如何通过字典匹配注释值
+    dialect: MYSQL
+    # jdbc驱动
+    driver: com.mysql.cj.jdbc.Driver
+    # jdbc连接地址
+    url: jdbc:mysql://localhost:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    # 用户名
+    user: root
+    # 密码
+    password: tinysnow;
+  # 获取表配置，支持 % 和 _ 模糊匹配，可以配置多个值
+  # 还有一个支持复杂规则 tableRules 属性后续单独介绍
+  tables:
+    # - user
+    # - post
+    # - tag
+    # - question
+    # - comment
+    - '%'
+  # 根据类型对字段类型打标签, 可以通过 column.tags.TAG 的 true/false 来判断当前列是否有该标签
+  # 主要对列进行分类，方便后续模板中的使用
+  typeTags:
+    # 示例，针对日期时间设置 jdbcType 标签，生成的代码中，如果有该标签，会指定 jdbcType 的值
+    jdbcType:
+      - DATE
+      - TIME
+      - TIMESTAMP
+  # 关键字包装，这里的示例针对 MySQL，不提供默认值，需要根据数据库语法进行设置，其中的 %s 为关键字（表名或列名）
+  keywordWrap: "`%s`"
+  # 数据库关键字，列举的关键字会进行包装处理，没有默认值，需要自己配置所有可能的关键字
+  keywords:
+    - order
+    - desc
+# 附加属性
+attrs: # 子目录（文件）可以通过 parent.parent...attrs.属性名 可以逐级向上使用属性
+  # 这里设置了一个基础包名
+  basePackage: com.tinysnow.system
+# 子目录（文件）
+files:
+  # 文件名，可以 / 设置多级目录
+  - name: src/main
+    # 子目录（文件）
+    files:
+      - name: java
+        files:
+          # 包，可以多层，名称可以引用当前结构的所有属性，也可以使用 tables 数据表信息
+          - name: '${project.attrs.basePackage}'
+            # 设置类型为 package，尽可能都指定，默认会计算，默认为目录。包下面的默认都是包
+            type: PACKAGE
+            files:
+              - name: controller
+                files:
+                  - name: '${it.name.className}Controller.java'
+                    file: controller.java
+                    iter: tables

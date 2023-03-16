@@ -1,11 +1,9 @@
 package com.tinysnow.system.controller;
 
 import com.tinysnow.common.utils.response.Response;
-import com.tinysnow.framework.security.service.TokenService;
+
 import com.tinysnow.system.model.Point;
 import com.tinysnow.system.service.PointService;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +19,6 @@ public class PointController {
 
   @Autowired
   private PointService pointService;
-  
-  @Autowired
-  private TokenService tokenService;
 
   @PostMapping
   public Response save(@RequestBody Point point) {
@@ -38,12 +33,7 @@ public class PointController {
 
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
-    return Response.success(pointService.findById(id));
-  }
-
-  @GetMapping(value = "/info")
-  public Response info(HttpServletRequest request) {
-    return Response.success("用户信息",find(tokenService.getLoginUser(request).getUserId()));
+    return Response.success(pointService.find(id));
   }
 
   @PutMapping(value = "/{id}")
@@ -54,7 +44,7 @@ public class PointController {
 
   @DeleteMapping(value = "/{id}")
   public Response delete(@PathVariable("id") Long id) {
-    return Response.success(pointService.deleteById(id) == 1);
+    return Response.success(pointService.delete(id) == 1);
   }
 
 }

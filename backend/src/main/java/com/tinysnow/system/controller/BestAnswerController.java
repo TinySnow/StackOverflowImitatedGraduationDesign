@@ -33,7 +33,7 @@ public class BestAnswerController {
 
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
-    return Response.success(bestAnswerService.findById(id));
+    return Response.success(bestAnswerService.find(id));
   }
 
   @PutMapping(value = "/{id}")
@@ -44,7 +44,7 @@ public class BestAnswerController {
 
   @DeleteMapping(value = "/{id}")
   public Response delete(@PathVariable("id") Long id) {
-    return Response.success(bestAnswerService.deleteById(id) == 1);
+    return Response.success(bestAnswerService.delete(id) == 1);
   }
 
 }

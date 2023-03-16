@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tinysnow.system.mapper.BestAnswerMapper">
-  <resultMap id="baseResultMap" type="com.tinysnow.system.model.BestAnswer">
-    <id property="id" column="id" jdbcType="BIGINT"/>
-    <result property="bestAnswer" column="best_answer" jdbcType="BIGINT"/><!-- 关联 comment 的 id -->
-  </resultMap>
+    <resultMap id="base" type="com.tinysnow.system.model.BestAnswer">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="bestAnswer" column="best_answer" jdbcType="BIGINT"/><!-- 关联 comment 的 id -->
+    </resultMap>
+
+    <select id="find" resultMap="base">
+        select *
+        from best_answer
+        where id = #{id}
+    </select>
+
+    <select id="findList" resultMap="base">
+        select *
+        from best_answer
+        where id = #{id}
+    </select>
+
+    <insert id="save" parameterType="com.tinysnow.system.model.BestAnswer">
+        insert into best_answer (id, best_answer)
+        values (#{id}, #{best_answer})
+    </insert>
+
+    <update id="update" parameterType="com.tinysnow.system.model.BestAnswer">
+        update best_answer
+        set where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete
+        from best_answer
+        where id = #{id}
+    </delete>
 </mapper>

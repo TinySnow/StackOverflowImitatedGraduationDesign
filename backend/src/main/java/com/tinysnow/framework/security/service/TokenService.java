@@ -68,7 +68,7 @@ public class TokenService {
                 Long userId = Long.parseLong((String) claims.get(CommonConstants.LOGIN_USER_KEY));
                 LoginUser user = new LoginUser();
                 user.setUserId(userId);
-                user.setUser(userService.findById(userId));
+                user.setUser(userService.find(userId));
                 System.out.println(user);
                 return user;
             } catch (Exception e) {
