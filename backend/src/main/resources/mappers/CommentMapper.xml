@@ -59,7 +59,7 @@
                `status`
         FROM comment
         WHERE question = #{questionId}
-        ORDER BY CAST(parent_id AS UNSIGNED) ASC, id;
+        ORDER BY CAST(parent_id AS UNSIGNED), id;
     </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.Comment">

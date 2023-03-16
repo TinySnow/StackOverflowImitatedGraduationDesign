@@ -1,41 +1,22 @@
 package com.tinysnow.system.model;
 
-import io.mybatis.provider.Entity;
 import lombok.Data;
-import org.apache.ibatis.type.JdbcType;
 
 import java.util.Date;
 
 /**
- * user - 
+ * user -
  *
  * @author Snow
  */
 @Data
-@Entity.Table(value = "user", remark = "", autoResultMap = true)
 public class User {
-  @Entity.Column(value = "id", id = true, remark = "主键，自增", updatable = false, insertable = false)
-  private Long id;
-
-  @Entity.Column(value = "username", remark = "用户名")
-  private String username;
-
-  @Entity.Column(value = "password", remark = "密码，加密")
-  private String password;
-
-  @Entity.Column(value = "avatar", remark = "头像，链接存储")
-  private String avatar;
-
-  @Entity.Column(value = "email", remark = "邮箱，唯一凭证")
-  private String email;
-
-  @Entity.Column(value = "gender", remark = "性别，默认为 1，女性")
-  private Boolean gender;
-
-  @Entity.Column(value = "birthday", remark = "生日，仅日期", jdbcType = JdbcType.TIMESTAMP)
-  private Date birthday;
-
-  @Entity.Column(value = "register_time", remark = "注册时间", jdbcType = JdbcType.TIMESTAMP)
-  private Date registerTime;
-
+    private Long id;
+    private String username;
+    private String password;
+    private String avatar;
+    private String email;
+    private Boolean gender;
+    private Date birthday;
+    private Date registerTime;
 }

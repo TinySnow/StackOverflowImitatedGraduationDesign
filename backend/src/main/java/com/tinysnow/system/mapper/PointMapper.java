@@ -16,26 +16,26 @@ public interface PointMapper {
     /**
      * 保存 Point
      */
-    public int save(Point point);
+    int save(Point point);
 
     /**
      * 查找全部的 Point
      */
-    public Point findList(Point point);
+    Point findList(Point point);
 
     /**
      * 根据 id 查找 Point
      */
-    public Point find(Long id);
+    Point find(Long id);
 
     /**
      * 更新 Point
      */
-    public int update(Point point);
+    int update(Point point);
 
     /**
      * 根据 id 删除 Point
      */
-    public int delete(Long id);
+    int delete(Long id);
 
 }

@@ -1,4 +1,4 @@
-package com.tinysnow.system;
+package com.tinysnow.system.mapper;
 
 import com.tinysnow.system.model.Test;
 import org.apache.ibatis.annotations.Mapper;

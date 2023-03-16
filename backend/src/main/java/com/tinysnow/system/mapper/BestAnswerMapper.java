@@ -16,26 +16,26 @@ public interface BestAnswerMapper {
     /**
      * 保存 BestAnswer
      */
-    public int save(BestAnswer bestAnswer);
+    int save(BestAnswer bestAnswer);
 
     /**
      * 查找全部的 BestAnswer
      */
-    public BestAnswer findList(BestAnswer bestAnswer);
+    BestAnswer findList(BestAnswer bestAnswer);
 
     /**
      * 根据 id 查找 BestAnswer
      */
-    public BestAnswer find(Long id);
+    BestAnswer find(Long id);
 
     /**
      * 更新 BestAnswer
      */
-    public int update(BestAnswer bestAnswer);
+    int update(BestAnswer bestAnswer);
 
     /**
      * 根据 id 删除 BestAnswer
      */
-    public int delete(Long id);
+    int delete(Long id);
 
 }

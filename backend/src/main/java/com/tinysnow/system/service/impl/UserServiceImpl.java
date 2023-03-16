@@ -28,9 +28,6 @@ public class UserServiceImpl implements UserService {
      * 根据 email 查找用户
      * 可以用来检测邮箱是否占用
      * 也可以用来登录校验
-     *
-     * @param email
-     * @return
      */
     public User findByEmail(String email) {
         return userMapper.findByEmail(email);

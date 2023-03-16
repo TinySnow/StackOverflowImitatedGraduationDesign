@@ -1,6 +1,6 @@
 package com.tinysnow;
 
-import com.tinysnow.system.TestMapper;
+import com.tinysnow.system.mapper.TestMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

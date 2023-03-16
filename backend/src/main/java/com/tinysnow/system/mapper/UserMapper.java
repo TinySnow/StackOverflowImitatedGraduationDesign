@@ -18,12 +18,12 @@ public interface UserMapper {
     /**
      * 保存 User
      */
-    public int save(User user);
+    int save(User user);
 
     /**
      * 查找全部的 User
      */
-    public User findList(User user);
+    User findList(User user);
 
     /**
      * 根据 email 查找用户
@@ -33,23 +33,23 @@ public interface UserMapper {
      * @param email
      * @return
      */
-    public User findByEmail(String email);
+    User findByEmail(String email);
 
-    public List<User> findAll();
+    List<User> findAll();
 
     /**
      * 根据 id 查找 User
      */
-    public User find(Long id);
+    User find(Long id);
 
     /**
      * 更新 User
      */
-    public int update(User user);
+    int update(User user);
 
     /**
      * 根据 id 删除 User
      */
-    public int delete(Long id);
+    int delete(Long id);
 
 }
