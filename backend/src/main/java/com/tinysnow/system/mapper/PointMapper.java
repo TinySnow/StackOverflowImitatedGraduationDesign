@@ -16,7 +16,7 @@ public interface PointMapper {
     /**
      * 保存 Point
      */
-    public Point save(Point point);
+    public int save(Point point);
 
     /**
      * 查找全部的 Point
@@ -31,7 +31,7 @@ public interface PointMapper {
     /**
      * 更新 Point
      */
-    public Point update(Point point);
+    public int update(Point point);
 
     /**
      * 根据 id 删除 Point

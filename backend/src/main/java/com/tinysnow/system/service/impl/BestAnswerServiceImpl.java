@@ -18,7 +18,7 @@ public class BestAnswerServiceImpl implements BestAnswerService {
     BestAnswerMapper bestAnswerMapper;
 
 
-    public BestAnswer save(BestAnswer bestAnswer){
+    public int save(BestAnswer bestAnswer){
         return bestAnswerMapper.save(bestAnswer);
     }
 
@@ -30,7 +30,7 @@ public class BestAnswerServiceImpl implements BestAnswerService {
         return bestAnswerMapper.find(id);
     }
 
-    public BestAnswer update(BestAnswer bestAnswer){
+    public int update(BestAnswer bestAnswer){
         return bestAnswerMapper.update(bestAnswer);
     }
 

@@ -6,8 +6,10 @@ import com.tinysnow.system.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
- * comment - 
+ * comment -
  *
  * @author Snow
  */
@@ -18,23 +20,31 @@ public class CommentServiceImpl implements CommentService {
     CommentMapper commentMapper;
 
 
-    public Comment save(Comment comment){
+    public int save(Comment comment) {
         return commentMapper.save(comment);
     }
 
-    public Comment findList(Comment comment){
+    public Comment findList(Comment comment) {
         return commentMapper.findList(comment);
     }
 
-    public Comment find(Long id){
+    public List<Comment> findByOneColumn(String column, String value) {
+        return commentMapper.findByOneColumn(column, value);
+    }
+
+    public List<Comment> findComments(String questionId){
+        return commentMapper.findComments(questionId);
+    }
+
+    public Comment find(Long id) {
         return commentMapper.find(id);
     }
 
-    public Comment update(Comment comment){
+    public int update(Comment comment) {
         return commentMapper.update(comment);
     }
 
-    public int delete(Long id){
+    public int delete(Long id) {
         return commentMapper.delete(id);
     }
 }

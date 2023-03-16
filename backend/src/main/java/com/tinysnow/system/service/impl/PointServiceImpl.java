@@ -18,7 +18,7 @@ public class PointServiceImpl implements PointService {
     PointMapper pointMapper;
 
 
-    public Point save(Point point){
+    public int save(Point point){
         return pointMapper.save(point);
     }
 
@@ -30,7 +30,7 @@ public class PointServiceImpl implements PointService {
         return pointMapper.find(id);
     }
 
-    public Point update(Point point){
+    public int update(Point point){
         return pointMapper.update(point);
     }
 

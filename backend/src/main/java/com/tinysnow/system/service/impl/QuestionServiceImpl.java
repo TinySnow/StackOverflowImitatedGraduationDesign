@@ -6,6 +6,8 @@ import com.tinysnow.system.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * question - 
  *
@@ -18,7 +20,7 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionMapper questionMapper;
 
 
-    public Question save(Question question){
+    public int save(Question question){
         return questionMapper.save(question);
     }
 
@@ -29,7 +31,7 @@ public class QuestionServiceImpl implements QuestionService {
     /**
      * 查找全部 Question
      */
-    public Question findAll(){
+    public List<Question> findAll(){
         return questionMapper.findAll();
     }
 
@@ -37,7 +39,7 @@ public class QuestionServiceImpl implements QuestionService {
         return questionMapper.find(id);
     }
 
-    public Question update(Question question){
+    public int update(Question question){
         return questionMapper.update(question);
     }
 

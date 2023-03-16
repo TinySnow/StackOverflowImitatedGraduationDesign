@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.User;
 
+import java.util.List;
+
 
 /**
  * user -
@@ -16,7 +18,7 @@ public interface UserMapper {
     /**
      * 保存 User
      */
-    public User save(User user);
+    public int save(User user);
 
     /**
      * 查找全部的 User
@@ -33,6 +35,8 @@ public interface UserMapper {
      */
     public User findByEmail(String email);
 
+    public List<User> findAll();
+
     /**
      * 根据 id 查找 User
      */
@@ -41,7 +45,7 @@ public interface UserMapper {
     /**
      * 更新 User
      */
-    public User update(User user);
+    public int update(User user);
 
     /**
      * 根据 id 删除 User

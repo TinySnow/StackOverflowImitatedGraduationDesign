@@ -18,7 +18,7 @@ public class PostServiceImpl implements PostService {
     PostMapper postMapper;
 
 
-    public Post save(Post post){
+    public int save(Post post){
         return postMapper.save(post);
     }
 
@@ -30,7 +30,7 @@ public class PostServiceImpl implements PostService {
         return postMapper.find(id);
     }
 
-    public Post update(Post post){
+    public int update(Post post){
         return postMapper.update(post);
     }
 

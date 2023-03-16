@@ -16,7 +16,7 @@ public interface CollectionMapper {
     /**
      * 保存 Collection
      */
-    public Collection save(Collection collection);
+    public int save(Collection collection);
 
     /**
      * 查找全部的 Collection
@@ -31,7 +31,7 @@ public interface CollectionMapper {
     /**
      * 更新 Collection
      */
-    public Collection update(Collection collection);
+    public int update(Collection collection);
 
     /**
      * 根据 id 删除 Collection

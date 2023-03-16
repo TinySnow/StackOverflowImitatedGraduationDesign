@@ -1,6 +1,9 @@
 package com.tinysnow.system.service;
 
+import com.tinysnow.system.model.Question;
 import com.tinysnow.system.model.User;
+
+import java.util.List;
 
 /**
  * user -
@@ -12,12 +15,18 @@ public interface UserService {
     /**
      * 保存 User
      */
-    public User save(User user);
+    public int save(User user);
 
     /**
-     * 查找全部的 User
+     * 查找符合条件的全部 User
      */
     public User findList(User user);
+
+    /**
+     * 查找全部 User
+     * @return
+     */
+    public List<User> findAll();
 
     /**
      * 根据 email 查找用户
@@ -37,7 +46,7 @@ public interface UserService {
     /**
      * 更新 User
      */
-    public User update(User user);
+    public int update(User user);
 
     /**
      * 根据 id 删除 User

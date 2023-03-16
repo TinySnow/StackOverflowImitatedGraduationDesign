@@ -16,7 +16,7 @@ public interface BestAnswerMapper {
     /**
      * 保存 BestAnswer
      */
-    public BestAnswer save(BestAnswer bestAnswer);
+    public int save(BestAnswer bestAnswer);
 
     /**
      * 查找全部的 BestAnswer
@@ -31,7 +31,7 @@ public interface BestAnswerMapper {
     /**
      * 更新 BestAnswer
      */
-    public BestAnswer update(BestAnswer bestAnswer);
+    public int update(BestAnswer bestAnswer);
 
     /**
      * 根据 id 删除 BestAnswer

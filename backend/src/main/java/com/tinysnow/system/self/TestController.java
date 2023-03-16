@@ -4,15 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.tinysnow.common.utils.response.Response;
-import com.tinysnow.system.model.Comment;
 import com.tinysnow.system.model.User;
 import com.tinysnow.system.service.CommentService;
 import com.tinysnow.system.service.QuestionService;
 import com.tinysnow.system.service.UserService;
 
-import io.mybatis.common.core.DataResponse;
-
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/test")
@@ -28,23 +24,23 @@ public class TestController {
     CommentService commentService;
 
     @GetMapping("/login")
-    public Response login(HttpServletResponse response) {
+    public Response login() {
         return Response.success(null);
     }
 
     @GetMapping("/loginno")
-    public Response loginno(HttpServletResponse response) {
+    public Response loginno() {
         return Response.error("未认证");
     }
 
     @PostMapping("/save")
-    public DataResponse<User> save(@RequestBody User users) {
-        return DataResponse.ok(userService.save(users));
+    public Response save(@RequestBody User users) {
+        return Response.success(userService.save(users));
     }
 
     @GetMapping("/question-lists")
     public Response questionLists() {
-        return Response.success(questionService.findAll());
+        return Response.success("所有问题列表", questionService.findAll());
     }
 
     @GetMapping(value = "/question-detail/{id}")
@@ -54,14 +50,12 @@ public class TestController {
 
     @GetMapping("/rank-lists")
     public Response rankLists() {
-        return Response.success(questionService.findAll());
+        return Response.success(userService.findAll());
     }
 
     @GetMapping("/comments/{questionId}")
     public Response commentLists(@PathVariable("questionId") Long id) {
-        Comment foo = new Comment();
-        foo.setQuestion(Long.toString(id));
-        return Response.success(commentService.findList(foo));
+        return Response.success(commentService.findComments(id.toString()));
     }
 
     @GetMapping("/user/info")

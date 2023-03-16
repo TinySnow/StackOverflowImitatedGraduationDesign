@@ -4,9 +4,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.Comment;
 
+import java.util.List;
+
 
 /**
- * comment - 
+ * comment -
  *
  * @author Snow
  */
@@ -16,12 +18,16 @@ public interface CommentMapper {
     /**
      * 保存 Comment
      */
-    public Comment save(Comment comment);
+    public int save(Comment comment);
 
     /**
      * 查找全部的 Comment
      */
     public Comment findList(Comment comment);
+
+    public List<Comment> findByOneColumn(String column, String value);
+
+    public List<Comment> findComments(String questionId);
 
     /**
      * 根据 id 查找 Comment
@@ -31,7 +37,7 @@ public interface CommentMapper {
     /**
      * 更新 Comment
      */
-    public Comment update(Comment comment);
+    public int update(Comment comment);
 
     /**
      * 根据 id 删除 Comment

@@ -18,7 +18,7 @@ public class CollectionServiceImpl implements CollectionService {
     CollectionMapper collectionMapper;
 
 
-    public Collection save(Collection collection){
+    public int save(Collection collection){
         return collectionMapper.save(collection);
     }
 
@@ -30,7 +30,7 @@ public class CollectionServiceImpl implements CollectionService {
         return collectionMapper.find(id);
     }
 
-    public Collection update(Collection collection){
+    public int update(Collection collection){
         return collectionMapper.update(collection);
     }
 

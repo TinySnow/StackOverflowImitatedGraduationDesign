@@ -15,6 +15,20 @@
         <result property="status" column="status" jdbcType="INTEGER"/><!-- 状态，是否可用 -->
     </resultMap>
 
+    <sql id="columns">
+        select id,
+               question,
+               parent,
+               author,
+               content,
+               upvote,
+               devote,
+               created_time,
+               updated_time,
+               `status`
+        from comment
+    </sql>
+
     <select id="find" resultMap="base">
         select *
         from comment
@@ -27,8 +41,30 @@
         where id = #{id}
     </select>
 
+    <select id="findByOneColumn" resultMap="base">
+        <include refid="columns" />
+        where ${column} = #{value}
+    </select>
+    <select id="findComments" resultMap="base">
+        SELECT COALESCE(parent, id) AS parent_id,
+               id,
+               question,
+               parent,
+               author,
+               content,
+               upvote,
+               devote,
+               created_time,
+               updated_time,
+               `status`
+        FROM comment
+        WHERE question = #{questionId}
+        ORDER BY CAST(parent_id AS UNSIGNED) ASC, id;
+    </select>
+
     <insert id="save" parameterType="com.tinysnow.system.model.Comment">
-        insert into comment (id, question, parent, author, content, upvote, devote, created_time, updated_time, status)
+        insert into comment (id, question, parent, author, content, upvote, devote, created_time, updated_time,
+                             `status`)
         values (#{id}, #{question}, #{parent}, #{author}, #{content}, #{upvote}, #{devote}, #{created_time},
                 #{updated_time}, #{status})
     </insert>

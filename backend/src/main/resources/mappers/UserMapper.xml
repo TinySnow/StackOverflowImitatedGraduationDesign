@@ -23,15 +23,19 @@
         from user
         where id = #{id}
     </select>
-    <select id="findByEmail" resultType="com.tinysnow.system.model.User">
+    <select id="findByEmail" resultMap="base">
         select *
         from user
         where email = #{email}
     </select>
+    <select id="findAll" resultMap="base">
+        select *
+        from user
+    </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.User">
-        insert into user (id, username, password, avatar, email, gender, birthday, register_time,)
-        values (#{id}, #{username}, #{password}, #{avatar}, #{email}, #{gender}, #{birthday}, #{register_time},)
+        insert into user (username, password, avatar, email, gender, birthday, register_time)
+        values (#{username}, #{password}, #{avatar}, #{email}, #{gender}, #{birthday}, #{registerTime})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.User">

@@ -16,7 +16,7 @@ public interface PostMapper {
     /**
      * 保存 Post
      */
-    public Post save(Post post);
+    public int save(Post post);
 
     /**
      * 查找全部的 Post
@@ -31,7 +31,7 @@ public interface PostMapper {
     /**
      * 更新 Post
      */
-    public Post update(Post post);
+    public int update(Post post);
 
     /**
      * 根据 id 删除 Post

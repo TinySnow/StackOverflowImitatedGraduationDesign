@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.Question;
 
+import java.util.List;
+
 
 /**
  * question - 
@@ -16,7 +18,7 @@ public interface QuestionMapper {
     /**
      * 保存 Question
      */
-    public Question save(Question question);
+    public int save(Question question);
 
     /**
      * 查找全部的 Question
@@ -26,7 +28,7 @@ public interface QuestionMapper {
     /**
      * 查找全部 Question
      */
-    public Question findAll();
+    public List<Question> findAll();
 
     /**
      * 根据 id 查找 Question
@@ -36,7 +38,7 @@ public interface QuestionMapper {
     /**
      * 更新 Question
      */
-    public Question update(Question question);
+    public int update(Question question);
 
     /**
      * 根据 id 删除 Question

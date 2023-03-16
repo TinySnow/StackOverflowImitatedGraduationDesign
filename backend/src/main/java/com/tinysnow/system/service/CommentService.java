@@ -2,8 +2,10 @@ package com.tinysnow.system.service;
 
 import com.tinysnow.system.model.Comment;
 
+import java.util.List;
+
 /**
- * comment - 
+ * comment -
  *
  * @author Snow
  */
@@ -12,7 +14,7 @@ public interface CommentService {
     /**
      * 保存 Comment
      */
-    public Comment save(Comment comment);
+    public int save(Comment comment);
 
     /**
      * 查找全部的 Comment
@@ -24,10 +26,14 @@ public interface CommentService {
      */
     public Comment find(Long id);
 
+    public List<Comment> findByOneColumn(String column, String value);
+
+    public List<Comment> findComments(String questionId);
+
     /**
      * 更新 Comment
      */
-    public Comment update(Comment comment);
+    public int update(Comment comment);
 
     /**
      * 根据 id 删除 Comment

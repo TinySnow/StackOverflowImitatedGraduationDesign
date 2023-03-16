@@ -12,7 +12,7 @@ public interface TagService {
     /**
      * 保存 Tag
      */
-    public Tag save(Tag tag);
+    public int save(Tag tag);
 
     /**
      * 查找全部的 Tag
@@ -27,7 +27,7 @@ public interface TagService {
     /**
      * 更新 Tag
      */
-    public Tag update(Tag tag);
+    public int update(Tag tag);
 
     /**
      * 根据 id 删除 Tag

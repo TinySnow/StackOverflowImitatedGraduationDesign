@@ -6,6 +6,8 @@ import com.tinysnow.system.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * user -
  *
@@ -18,7 +20,7 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
 
-    public User save(User user) {
+    public int save(User user) {
         return userMapper.save(user);
     }
 
@@ -39,11 +41,14 @@ public class UserServiceImpl implements UserService {
         return userMapper.findList(user);
     }
 
+    public List<User> findAll(){
+        return userMapper.findAll();
+    }
     public User find(Long id) {
         return userMapper.find(id);
     }
 
-    public User update(User user) {
+    public int update(User user) {
         return userMapper.update(user);
     }
 

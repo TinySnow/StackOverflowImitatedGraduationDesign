@@ -23,10 +23,9 @@
         where id = #{id}
     </select>
 
-    <select id="findAll" resultType="com.tinysnow.system.model.Question">
+    <select id="findAll" resultMap="base">
         select *
         from question
-        where id = #{id}
     </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.Question">

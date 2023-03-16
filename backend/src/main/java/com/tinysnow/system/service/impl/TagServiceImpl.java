@@ -18,7 +18,7 @@ public class TagServiceImpl implements TagService {
     TagMapper tagMapper;
 
 
-    public Tag save(Tag tag){
+    public int save(Tag tag){
         return tagMapper.save(tag);
     }
 
@@ -30,7 +30,7 @@ public class TagServiceImpl implements TagService {
         return tagMapper.find(id);
     }
 
-    public Tag update(Tag tag){
+    public int update(Tag tag){
         return tagMapper.update(tag);
     }
 
