@@ -12,25 +12,44 @@
         <result property="registerTime" column="register_time" jdbcType="TIMESTAMP"/><!-- 注册时间 -->
     </resultMap>
 
-    <select id="find" resultMap="base">
-        select *
+    <resultMap id="withPoint" type="com.tinysnow.system.dto.UserDto">
+        <association property="user" resultMap="base"/>
+        <association property="point" resultMap="com.tinysnow.system.mapper.PointMapper.base"/>
+    </resultMap>
+
+    <sql id="columns">
+        select id,
+               username,
+               password,
+               avatar,
+               email,
+               gender,
+               birthday,
+               register_time
         from user
+    </sql>
+
+    <select id="find" resultMap="base">
+        <include refid="columns"/>
         where id = #{id}
     </select>
 
     <select id="findList" resultMap="base">
-        select *
-        from user
+        <include refid="columns"/>
         where id = #{id}
     </select>
     <select id="findByEmail" resultMap="base">
-        select *
-        from user
+        <include refid="columns"/>
         where email = #{email}
     </select>
     <select id="findAll" resultMap="base">
-        select *
-        from user
+        <include refid="columns"/>
+    </select>
+
+    <select id="findListsWithPoint" resultMap="withPoint">
+        select u.*, p.*
+        from user u
+                 left join point p on u.id = p.id
     </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.User">

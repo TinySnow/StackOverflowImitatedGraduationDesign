@@ -2,6 +2,7 @@ package com.tinysnow.framework.config;
 
 import java.util.List;
 
+import com.tinysnow.framework.security.filter.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -24,7 +26,17 @@ public class SpringSecurityConfiguration {
      */
     @Autowired
     private AuthenticationEntryPointHandler unauthorizedHandler;
+    /**
+     * token认证过滤器
+     */
+    @Autowired
+    private JwtAuthenticationFilter authenticationTokenFilter;
 
+    /**
+     * 跨域过滤器
+     */
+//    @Autowired
+//    private CorsFilter corsFilter;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -41,7 +53,7 @@ public class SpringSecurityConfiguration {
                 .authorizeHttpRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 对于登录 login、注册 register、验证码 captchaImage（还未实现），测试资源，允许匿名访问
-                .antMatchers("/login/**", "/register", "/captchaImage", "/test/**","/point/**").permitAll()
+                .antMatchers("/login/**", "/register", "/captchaImage", "/test/**", "/point/**", "/user/**").permitAll()
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**")
                 .permitAll()
@@ -52,6 +64,10 @@ public class SpringSecurityConfiguration {
                 .anyRequest().authenticated()
                 .and()
                 .headers().frameOptions().disable();
+        http.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        // 添加 CORS filter
+//        http.addFilterBefore(corsFilter, JwtAuthenticationFilter.class);
+
         return http.build();
     }
 

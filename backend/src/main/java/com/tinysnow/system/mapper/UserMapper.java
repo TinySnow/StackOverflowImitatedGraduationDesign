@@ -1,5 +1,6 @@
 package com.tinysnow.system.mapper;
 
+import com.tinysnow.system.dto.UserDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.User;
@@ -52,4 +53,5 @@ public interface UserMapper {
      */
     int delete(Long id);
 
+    List<UserDto> findListsWithPoint();
 }

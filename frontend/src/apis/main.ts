@@ -1,5 +1,5 @@
 const api = {
-  userList: "/user",
+  userList: "/user/all/point",
   questionList: "/test/question-lists",
   registerUser: "/user",
   login: "/login/body",

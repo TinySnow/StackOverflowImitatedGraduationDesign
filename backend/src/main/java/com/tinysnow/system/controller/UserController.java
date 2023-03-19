@@ -31,6 +31,11 @@ public class UserController {
     return Response.success(userService.findList(user));
   }
 
+  @GetMapping("/all/point")
+  public Response findListWithPoint() {
+    return Response.success(userService.findListsWithPoint());
+  }
+
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
     return Response.success(userService.find(id));

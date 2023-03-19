@@ -1,5 +1,6 @@
 package com.tinysnow.system.service.impl;
 
+import com.tinysnow.system.dto.UserDto;
 import com.tinysnow.system.service.UserService;
 import com.tinysnow.system.mapper.UserMapper;
 import com.tinysnow.system.model.User;
@@ -32,6 +33,10 @@ public class UserServiceImpl implements UserService {
     public User findByEmail(String email) {
         return userMapper.findByEmail(email);
 
+    }
+
+    public List<UserDto> findListsWithPoint() {
+        return userMapper.findListsWithPoint();
     }
 
     public User findList(User user) {

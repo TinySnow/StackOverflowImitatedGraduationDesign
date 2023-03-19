@@ -1,15 +1,16 @@
 <template>
   <h2 class="rank-head">助人点排行榜</h2>
   <el-space :fill=true>
-    <el-card v-for="item in lists" :key="item.id">
+    <el-card v-for="item in lists" :key="item.user.id">
       <el-row>
         <el-col class="avatar" :span="8">
           <el-avatar size="large"
-            :src="item.avatar !== '' ? item.avatar : ('https://api.multiavatar.com/' + Math.random() + '.svg')" />
+            :src="item.user.avatar !== '' ? item.user.avatar : ('https://api.multiavatar.com/' + Math.random() + '.svg')" />
         </el-col>
         <el-col :span="16">
-          <p>{{ item.username }}</p>
-          <p class="point">{{ item.points }} 分</p>
+          <p>{{ item.user.username }}</p>
+          <p class="point">{{ item.point.point }} 分</p>
+          <!-- <p>{{ item.user.avatar }}</p> -->
         </el-col>
       </el-row>
     </el-card>
@@ -18,7 +19,6 @@
 
 
 <script lang="ts">
-// TODO: 修改卡片樣式，使其左右幷排
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main"
 
@@ -27,15 +27,20 @@ export default {
     return {
       // 返回的数据结构类型
       lists: [{
-        id: Number,
-        username: '',
-        // password: '',
-        avatar: '',
-        // email: Number,
-        gender: Boolean,
-        // birthday: Date,
-        points: Number,
-        // registerTime: Date,
+        user: {
+          id: Number,
+          username: '',
+          // password: '',
+          avatar: '',
+          // email: Number,
+          gender: Boolean,
+          // birthday: Date,
+          points: Number,
+          // registerTime: Date,
+        },
+        point: {
+          point: Number,
+        }
       }]
     }
   },
@@ -44,15 +49,12 @@ export default {
       // console.log(item);
     },
     sort(lists: Array<any>) {
-      const list = lists.sort((a, b) => b.points - a.points)
-      // console.log(list);
-      this.$data.lists = list
+      const list = lists.sort((a, b) => b.point.point - a.point.point)
+      Object.assign(this.$data.lists,list)
     }
   },
   created() {
     backend.get(api.userList).then(res => {
-      console.log(res);
-      
       this.sort(res.data.data)
     }).catch(error => {
       console.log(error);

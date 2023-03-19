@@ -73,6 +73,12 @@ import { Male, Female } from '@element-plus/icons-vue'
 
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";
+import { useLoginedStore } from '@/stores/store';
+import { useRouter } from 'vue-router';
+
+const status = useLoginedStore();
+
+const router = useRouter();
 
 const user = reactive({
     id: Number,
@@ -86,7 +92,9 @@ const user = reactive({
 })
 
 const logout = () => {
-
+    localStorage.removeItem("token");
+    status.loginout();
+    router.push("/login");
 }
 
 onMounted(async () => {
@@ -121,10 +129,6 @@ onMounted(async () => {
     align-self: center;
     display: flex;
     justify-content: center;
-}
-
-.button-group {
-    /* background-color: lightpink; */
 }
 
 .space {
@@ -174,4 +178,5 @@ onMounted(async () => {
 
 .info {
     background-color: lightskyblue;
-}</style>
+}
+</style>

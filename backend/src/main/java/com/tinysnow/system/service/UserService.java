@@ -1,5 +1,6 @@
 package com.tinysnow.system.service;
 
+import com.tinysnow.system.dto.UserDto;
 import com.tinysnow.system.model.User;
 
 import java.util.List;
@@ -32,6 +33,8 @@ public interface UserService {
      * 也可以用来登录校验
      */
     User findByEmail(String email);
+
+    List<UserDto> findListsWithPoint();
 
     /**
      * 根据 id 查找 User

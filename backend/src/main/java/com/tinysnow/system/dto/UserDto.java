@@ -1,11 +1,13 @@
 package com.tinysnow.system.dto;
 
+import com.tinysnow.system.model.Point;
 import com.tinysnow.system.model.User;
 
 import lombok.Data;
 
+
 @Data
 public class UserDto {
-    public User user;
-    public Long point;
+    private User user;
+    private Point point;
 }
