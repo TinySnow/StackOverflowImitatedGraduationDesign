@@ -31,7 +31,7 @@
 </template>
   
 <script lang="ts" setup>
-// TODO：接入 api
+// TODO：触发刷新评论页面
 import { ref } from 'vue';
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
@@ -59,6 +59,7 @@ const publish = (text: string) => {
         showMessagesForError("评论不能为空");
     } else {
         request()
+        reset()
     }
 }
 

@@ -58,7 +58,13 @@
                     <el-button type="warning">修改信息</el-button>
                 </el-row>
                 <el-row class="button-row">
-                    <el-button type="danger">删除账号</el-button>
+                    <el-popconfirm width="220" title="确认删除账号？此操作不可撤销！" :icon="InfoFilled" icon-color="#FF0000"
+                        confirm-button-text="确认" cancel-button-text="取消" @confirm="delAccount()">
+                        <template #reference>
+                            <el-button type="danger">删除账号</el-button>
+                        </template>
+                    </el-popconfirm>
+
                 </el-row>
             </el-space>
         </el-col>
@@ -70,13 +76,16 @@
 
 import { onMounted, reactive } from 'vue'
 import { Male, Female } from '@element-plus/icons-vue'
-
+import { InfoFilled } from '@element-plus/icons-vue'
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";
-import { useLoginedStore } from '@/stores/store';
+import { useLoginedStore, useTokenStore, useUserIdStore } from '@/stores/store';
 import { useRouter } from 'vue-router';
+import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
 
 const status = useLoginedStore();
+const user = useUserIdStore();
+const token = useTokenStore();
 
 const router = useRouter();
 
@@ -98,7 +107,27 @@ const profile = reactive({
 const logout = () => {
     localStorage.removeItem("token");
     status.loginout();
+    token.loginout();
+    user.loginout();
     router.push("/login");
+}
+
+const delAccount = ()=>{
+    backend.delete(api.deleteComment + profile.user.id, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(res => {
+        console.log(res);
+        if (res.data.success) {
+            showMessagesForSuccess(res.data.msg)
+        } else {
+            showMessagesForError(res.data.msg);
+        }
+    }).catch(error => {
+        console.log(error);
+    })
+    logout();
 }
 
 onMounted(async () => {

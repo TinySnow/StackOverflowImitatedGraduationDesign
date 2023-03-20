@@ -19,7 +19,19 @@
                     </el-row>
                 </el-col>
                 <el-col :span="2">
-                    <el-button type="primary" @click="reply()">回复</el-button>
+                    <el-space fill direction="vertical" class="space">
+                        <el-row class="button-row">
+                            <el-button type="primary" @click="reply()">回复</el-button>
+                        </el-row>
+                        <el-row class="button-row" v-if="props.comment.author === user.userId">
+                            <el-popconfirm width="220" title="确认删除评论？" :icon="InfoFilled" icon-color="#FF0000"
+                                confirm-button-text="确认" cancel-button-text="取消" @confirm="del()">
+                                <template #reference>
+                                    <el-button type="danger">删除</el-button>
+                                </template>
+                            </el-popconfirm>
+                        </el-row>
+                    </el-space>
                 </el-col>
                 <el-col :span="4">
                     <el-space fill direction="vertical" class="space">
@@ -46,15 +58,23 @@
 
 
 <script lang="ts" setup>
-import { Top, Bottom, Male, Female } from '@element-plus/icons-vue'
+import { useUserIdStore } from '@/stores/store';
+import { InfoFilled } from '@element-plus/icons-vue'
+import { backend } from '@/utils/baseurl';
+import { Top, Bottom, Male, Female } from '@element-plus/icons-vue';
+import api from "@/apis/main";
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
+import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
+
+const user = useUserIdStore()
 
 const props = defineProps<{
     comment: {
         id: number,
         questionId: number,
         parent: number,
+        author: string,
         content: string,
         upvote: number,
         devote: number,
@@ -81,7 +101,26 @@ const props = defineProps<{
 
 
 const reply = () => {
+    // TODO：子传父组件，标记回复 ID
+}
 
+const del = () => {
+    console.log("yes");
+
+    backend.delete(api.deleteComment + props.comment.id, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(res => {
+        console.log(res);
+        if (res.data.success) {
+            showMessagesForSuccess(res.data.msg)
+        } else {
+            showMessagesForError(res.data.msg);
+        }
+    }).catch(error => {
+        console.log(error);
+    })
 }
 </script>
 

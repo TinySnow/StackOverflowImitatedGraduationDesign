@@ -26,7 +26,7 @@ public class CommentController {
   @PostMapping
   public Response save(HttpServletRequest request, @RequestBody Comment comment) {
     LoginUser o = (LoginUser)request.getAttribute("LoginUser");
-    comment.setAuthor(o.getUsername());
+    comment.setAuthor(o.getUserId().toString());
     return Response.success(commentService.save(comment));
   }
 

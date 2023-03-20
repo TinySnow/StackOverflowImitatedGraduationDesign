@@ -54,7 +54,7 @@
     <select id="findComments" resultMap="withUser">
         SELECT COALESCE(parent, c.id) AS parent_id, c.*, u.*, p.*
         FROM comment c
-        left join user u on c.id = u.id
+        left join user u on c.author = u.id
         left join point p on p.id = u.id
         WHERE c.question = #{questionId}
         ORDER BY CAST(parent_id AS UNSIGNED), c.id;

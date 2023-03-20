@@ -1,6 +1,8 @@
 <template>
     <el-card v-if="total === 0" shadow="hover" class="no-comment">暂无回答</el-card>
-    <comment-card v-else v-for="item in data" :key="item.comment.id" :comment="item.comment" :userDto="item.userDto" />
+    <el-space v-else fill direction="vertical" size="large" class="space">
+        <comment-card v-for="item in data" :key="item.comment.id" :comment="item.comment" :userDto="item.userDto" />
+    </el-space>
 </template>
 
 
@@ -16,7 +18,7 @@ const route = useRoute()
 
 const data = reactive([{
     comment: {
-        id: Number,
+        id: Number(),
         questionId: Number,
         parent: Number,
         content: '',
@@ -48,9 +50,7 @@ let total = ref(0)
 onMounted(async () => {
     backend.get(api.getCommentList + route.params.id).then(res => {
         total.value = res.data.data.length
-        console.log(res.data.data);
         Object.assign(data, res.data.data)
-        console.log(data);
     }).catch(err => {
         console.log(err);
     })

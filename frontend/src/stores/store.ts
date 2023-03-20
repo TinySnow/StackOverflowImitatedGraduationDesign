@@ -25,6 +25,7 @@ export const useLoginedStore = defineStore("logined", () => {
 
 export const useTokenStore = defineStore("token", () => {
   const token = ref(localStorage.getItem("token"));
+
   function login(jwt: string) {
     token.value = jwt;
   }
@@ -32,4 +33,16 @@ export const useTokenStore = defineStore("token", () => {
     token.value = "";
   }
   return { token, login, loginout };
+});
+
+export const useUserIdStore = defineStore("userId", () => {
+  const userId = ref(localStorage.getItem("userId"));
+
+  function login(id: string) {
+    userId.value = id
+  }
+  function loginout() {
+    userId.value = "";
+  }
+  return { userId, login, loginout };
 });

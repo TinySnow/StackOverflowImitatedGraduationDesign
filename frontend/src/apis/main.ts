@@ -9,6 +9,7 @@ const api = {
   getPoint: "/point/info",
   newQuestion: "/question",
   newComment: "/comment",
+  deleteComment: "/comment/",
   elastic: {
     search: (type: string) => {
       return type + "/_search";

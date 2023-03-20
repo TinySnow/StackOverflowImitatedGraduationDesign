@@ -22,22 +22,22 @@ public class LoginService {
 
     /**
      * 登录验证
-     * 
-     * @param email 邮箱
+     *
+     * @param email    邮箱
      * @param password 密码
      * @return 结果
      */
-    public String login(String email, String password) {
+    public String[] login(String email, String password) {
         User findOne = userService.findByEmail(email);
         if (findOne == null) {
             return null;
         }
         if (!findOne.getPassword().equals(password)) {
-            return ServiceConstants.PASSWORD_INCORRECT;
+            return new String[]{ServiceConstants.PASSWORD_INCORRECT};
         }
         LoginUser loginUser = new LoginUser();
         loginUser.setUser(findOne);
-        return tokenService.createToken(loginUser);
+        return new String[]{tokenService.createToken(loginUser), findOne.getId().toString()};
         // boolean captchaEnabled = configService.selectCaptchaEnabled();
         // // 验证码开关
         // if (captchaEnabled) {
