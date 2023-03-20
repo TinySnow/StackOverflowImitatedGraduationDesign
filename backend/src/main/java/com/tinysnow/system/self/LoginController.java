@@ -30,7 +30,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @PostMapping("/body")
+    @PostMapping
     public Response body(@RequestBody LoginBody loginBody) {
         // 生成令牌
         String token = loginService.login(loginBody.getEmail(), loginBody.getPassword());
@@ -43,44 +43,4 @@ public class LoginController {
         response.put(CommonConstants.TOKEN, token);
         return response;
     }
-
-    @PostMapping("/param")
-    public Response param(@RequestParam LoginBody loginBody) {
-        Response response = Response.success();
-        // 生成令牌
-        String token = loginService.login(loginBody.getEmail(), loginBody.getPassword());
-        response.put(CommonConstants.TOKEN, token);
-        return response;
-    }
-
-    /**
-     * 获取用户信息
-     * 
-     * @return 用户信息
-     */
-    @GetMapping("/getInfo")
-    public Response getInfo() {
-        User user = SecurityUtil.getLoginUser().getUser();
-        // // 角色集合
-        // Set<String> roles = permissionService.getRolePermission(user);
-        // // 权限集合
-        // Set<String> permissions = permissionService.getMenuPermission(user);
-        Response response = Response.success();
-        response.put("user", user);
-        // response.put("roles", roles);
-        // response.put("permissions", permissions);
-        return response;
-    }
-
-    // /**
-    //  * 获取路由信息
-    //  * 
-    //  * @return 路由信息
-    //  */
-    // @GetMapping("getRouters")
-    // public Response getRouters() {
-    //     Long userId = SecurityUtil.getUserId();
-    //     List<SysMenu> menus = menuService.selectMenuTreeByUserId(userId);
-    //     return Response.success(menuService.buildMenus(menus));
-    // }
 }

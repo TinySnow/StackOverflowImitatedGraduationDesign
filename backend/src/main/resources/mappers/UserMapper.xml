@@ -51,6 +51,12 @@
         from user u
                  left join point p on u.id = p.id
     </select>
+    <select id="getProfile" resultMap="withPoint">
+        select u.*, p.point
+        from user u
+                 left join point p on u.id = p.id
+        where u.id = #{id}
+    </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.User">
         insert into user (username, password, avatar, email, gender, birthday, register_time)

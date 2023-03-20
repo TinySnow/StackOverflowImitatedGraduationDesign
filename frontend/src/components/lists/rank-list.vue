@@ -5,7 +5,7 @@
       <el-row>
         <el-col class="avatar" :span="8">
           <el-avatar size="large"
-            :src="item.user.avatar !== '' ? item.user.avatar : ('https://api.multiavatar.com/' + Math.random() + '.svg')" />
+            :src="item.user.avatar !== null ? item.user.avatar : ('https://api.multiavatar.com/' + Math.random() + '.svg')" />
         </el-col>
         <el-col :span="16">
           <p>{{ item.user.username }}</p>

@@ -57,4 +57,13 @@ public class UserServiceImpl implements UserService {
     public int delete(Long id) {
         return userMapper.delete(id);
     }
+
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public UserDto getProfile(Long id) {
+        return userMapper.getProfile(id);
+    }
 }

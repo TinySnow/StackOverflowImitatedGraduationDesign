@@ -51,9 +51,11 @@ public class SpringSecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 // 过滤请求
                 .authorizeHttpRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "**").permitAll()
                 // 对于登录 login、注册 register、验证码 captchaImage（还未实现），测试资源，允许匿名访问
-                .antMatchers("/login/**", "/register", "/captchaImage", "/test/**", "/point/**", "/user/**").permitAll()
+                .antMatchers("/login/**","/register", "/captchaImage").permitAll()
+                .antMatchers("/test/**").permitAll()
+                .antMatchers("/user/all/*").permitAll()
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**")
                 .permitAll()
@@ -76,6 +78,7 @@ public class SpringSecurityConfiguration {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("*"));
         configuration.setAllowedMethods(List.of("*"));
+        configuration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

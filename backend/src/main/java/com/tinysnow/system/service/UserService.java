@@ -50,4 +50,6 @@ public interface UserService {
      * 根据 id 删除 User
      */
     int delete(Long id);
+
+    UserDto getProfile(Long id);
 }

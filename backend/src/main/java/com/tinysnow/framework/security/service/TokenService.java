@@ -69,7 +69,6 @@ public class TokenService {
                 LoginUser user = new LoginUser();
                 user.setUserId(userId);
                 user.setUser(userService.find(userId));
-                System.out.println(user);
                 return user;
             } catch (Exception ignored) {
             }

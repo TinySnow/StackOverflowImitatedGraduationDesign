@@ -54,4 +54,6 @@ public interface UserMapper {
     int delete(Long id);
 
     List<UserDto> findListsWithPoint();
+
+    UserDto getProfile(Long id);
 }

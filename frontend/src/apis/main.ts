@@ -2,7 +2,7 @@ const api = {
   userList: "/user/all/point",
   questionList: "/test/question-lists",
   registerUser: "/user",
-  login: "/login/body",
+  login: "/login",
   questionDetail: "/test/question-detail/",
   getCommentList: "/test/comments/",
   getUserProfile: "/user/info",
