@@ -31,6 +31,9 @@ import type { FormInstance, FormRules } from 'element-plus'
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { useRouter } from 'vue-router';
+import { backend } from '@/utils/baseurl';
+import api from '@/apis/main';
+import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
 
 const router = useRouter();
 
@@ -38,7 +41,7 @@ const alert = '注意：悬赏点数可不填，不填写即为不进行悬赏�
 
 const form = reactive({
     title: '',
-    reward: '',
+    reward: null,
     content: ''
 })
 
@@ -71,8 +74,31 @@ const goBack = () => {
     router.back();
 }
 
-const save = ()=>{
+const save = () => {
+    backend.post(api.newQuestion, {
+        title: form.title,
+        reward: form.reward,
+        content: form.content,
+        createdTime: new Date().toJSON()
+    }, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(res => {
+        if (res.data.success) {
+            // console.log(res);
+            showMessagesForSuccess("发表成功！")
+            jumpToSpace();
+        } else {
+            showMessagesForError(res.data.msg);
+        }
+    }).catch(err => {
+        showMessagesForError(err);
+    })
+}
 
+const jumpToSpace = () => {
+    router.push('/space')
 }
 </script>
   

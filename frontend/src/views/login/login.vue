@@ -56,7 +56,6 @@ const login = async (formEl: FormInstance | undefined) => {
                 email: ruleForm.email,
                 password: ruleForm.password
             }).then(res => {
-                console.log(res);
                 if (res.data.success) {
                     saveTokenToLocalStorage(res.data.token);
                     jumpToHome();
@@ -66,7 +65,6 @@ const login = async (formEl: FormInstance | undefined) => {
             }).catch(error => {
                 console.log(error);
             })
-            // console.log('submit!')
         } else {
             console.log('error submit!', fields)
         }
@@ -83,7 +81,6 @@ const jumpToRegister = (formEl: FormInstance | undefined) => {
 }
 
 const saveTokenToLocalStorage = (token: string) => {
-    console.log(token)
     logined.login()
     localStorage.setItem("token", token)
     save.login(token);

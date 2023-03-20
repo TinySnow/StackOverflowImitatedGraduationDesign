@@ -30,7 +30,7 @@
 
     <insert id="save" parameterType="com.tinysnow.system.model.Question">
         insert into question (id, author, title, content, reward, created_time, updated_time)
-        values (#{id}, #{author}, #{title}, #{content}, #{reward}, #{created_time}, #{updated_time})
+        values (#{id}, #{author}, #{title}, #{content}, #{reward}, #{createdTime}, #{updatedTime})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.Question">

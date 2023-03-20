@@ -1,5 +1,6 @@
 package com.tinysnow.system.service.impl;
 
+import com.tinysnow.system.dto.CommentDto;
 import com.tinysnow.system.service.CommentService;
 import com.tinysnow.system.mapper.CommentMapper;
 import com.tinysnow.system.model.Comment;
@@ -32,7 +33,7 @@ public class CommentServiceImpl implements CommentService {
         return commentMapper.findByOneColumn(column, value);
     }
 
-    public List<Comment> findComments(String questionId){
+    public List<CommentDto> findComments(String questionId){
         return commentMapper.findComments(questionId);
     }
 

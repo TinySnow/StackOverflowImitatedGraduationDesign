@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const numbers = ref(['1'])
+const numbers = ref(['0'])
 </script>
 
 

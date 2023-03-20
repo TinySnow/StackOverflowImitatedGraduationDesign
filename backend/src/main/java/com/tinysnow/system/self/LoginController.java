@@ -5,20 +5,16 @@ package com.tinysnow.system.self;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tinysnow.common.constant.CommonConstants;
 import com.tinysnow.common.constant.HttpStatus;
 import com.tinysnow.common.constant.ServiceConstants;
-import com.tinysnow.common.utils.others.SecurityUtil;
 import com.tinysnow.common.utils.response.Response;
 import com.tinysnow.framework.security.service.LoginService;
 import com.tinysnow.framework.security.util.LoginBody;
-import com.tinysnow.system.model.User;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 

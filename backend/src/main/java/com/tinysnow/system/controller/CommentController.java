@@ -2,11 +2,14 @@ package com.tinysnow.system.controller;
 
 import com.tinysnow.common.utils.response.Response;
 
+import com.tinysnow.framework.security.util.LoginUser;
 import com.tinysnow.system.model.Comment;
 import com.tinysnow.system.service.CommentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * comment - 
@@ -21,7 +24,9 @@ public class CommentController {
   private CommentService commentService;
 
   @PostMapping
-  public Response save(@RequestBody Comment comment) {
+  public Response save(HttpServletRequest request, @RequestBody Comment comment) {
+    LoginUser o = (LoginUser)request.getAttribute("LoginUser");
+    comment.setAuthor(o.getUsername());
     return Response.success(commentService.save(comment));
   }
 

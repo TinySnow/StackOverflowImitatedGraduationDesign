@@ -15,6 +15,11 @@
         <result property="status" column="status" jdbcType="INTEGER"/><!-- 状态，是否可用 -->
     </resultMap>
 
+    <resultMap id="withUser" type="com.tinysnow.system.dto.CommentDto">
+        <association property="comment" resultMap="base" />
+        <association property="userDto" resultMap="com.tinysnow.system.mapper.UserMapper.withPoint" />
+    </resultMap>
+
     <sql id="columns">
         select id,
                question,
@@ -45,28 +50,21 @@
         <include refid="columns" />
         where ${column} = #{value}
     </select>
-    <select id="findComments" resultMap="base">
-        SELECT COALESCE(parent, id) AS parent_id,
-               id,
-               question,
-               parent,
-               author,
-               content,
-               upvote,
-               devote,
-               created_time,
-               updated_time,
-               `status`
-        FROM comment
-        WHERE question = #{questionId}
-        ORDER BY CAST(parent_id AS UNSIGNED), id;
+
+    <select id="findComments" resultMap="withUser">
+        SELECT COALESCE(parent, c.id) AS parent_id, c.*, u.*, p.*
+        FROM comment c
+        left join user u on c.id = u.id
+        left join point p on p.id = u.id
+        WHERE c.question = #{questionId}
+        ORDER BY CAST(parent_id AS UNSIGNED), c.id;
     </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.Comment">
         insert into comment (id, question, parent, author, content, upvote, devote, created_time, updated_time,
                              `status`)
-        values (#{id}, #{question}, #{parent}, #{author}, #{content}, #{upvote}, #{devote}, #{created_time},
-                #{updated_time}, #{status})
+        values (#{id}, #{question}, #{parent}, #{author}, #{content}, #{upvote}, #{devote}, #{createdTime},
+                #{updatedTime}, #{status})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.Comment">

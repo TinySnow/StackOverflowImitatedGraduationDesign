@@ -6,7 +6,9 @@ const api = {
   questionDetail: "/test/question-detail/",
   getCommentList: "/test/comments/",
   getUserProfile: "/user/info",
-  getPoint:"/point/info",
+  getPoint: "/point/info",
+  newQuestion: "/question",
+  newComment: "/comment",
   elastic: {
     search: (type: string) => {
       return type + "/_search";

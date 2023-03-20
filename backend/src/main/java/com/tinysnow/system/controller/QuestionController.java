@@ -2,11 +2,14 @@ package com.tinysnow.system.controller;
 
 import com.tinysnow.common.utils.response.Response;
 
+import com.tinysnow.framework.security.util.LoginUser;
 import com.tinysnow.system.model.Question;
 import com.tinysnow.system.service.QuestionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * question - 
@@ -21,7 +24,9 @@ public class QuestionController {
   private QuestionService questionService;
 
   @PostMapping
-  public Response save(@RequestBody Question question) {
+  public Response save(HttpServletRequest request, @RequestBody Question question) {
+    LoginUser o = (LoginUser)request.getAttribute("LoginUser");
+    question.setAuthor(o.getUserId().toString());
     return Response.success(questionService.save(question));
   }
 

@@ -25,9 +25,6 @@
     </div>
     <div>
         <el-tabs type="border-card" :stretch="true">
-            <el-tab-pane label="全部">
-                {{ result }}
-            </el-tab-pane>
             <el-tab-pane label="用户">
                 {{ result }}
             </el-tab-pane>

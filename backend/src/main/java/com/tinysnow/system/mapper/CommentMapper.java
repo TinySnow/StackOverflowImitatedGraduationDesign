@@ -1,5 +1,6 @@
 package com.tinysnow.system.mapper;
 
+import com.tinysnow.system.dto.CommentDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.Comment;
@@ -27,7 +28,7 @@ public interface CommentMapper {
 
     List<Comment> findByOneColumn(String column, String value);
 
-    List<Comment> findComments(String questionId);
+    List<CommentDto> findComments(String questionId);
 
     /**
      * 根据 id 查找 Comment

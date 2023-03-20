@@ -4,7 +4,7 @@
     <divider />
     <question-comment-list />
     <divider />
-    <publish-comment />
+    <publish-comment type="question" :id="questionId"/>
 </template>
 
 
@@ -14,9 +14,12 @@ import QuestionCommentList from '@/components/lists/comment-list-question.vue';
 import QuestionDetail from '@/components/details/question-detail.vue';
 import Divider from "@/components/others/divider.vue";
 import PublishComment from "@/components/others/publish-comment.vue";
-import { useRouter } from 'vue-router';
+import { useRoute,useRouter } from 'vue-router';
 
+const route = useRoute();
 const router = useRouter();
+
+const questionId = route.params.id.toString()
 
 const goBack = () => {
     router.back();

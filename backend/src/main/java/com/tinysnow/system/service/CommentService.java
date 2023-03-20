@@ -1,5 +1,6 @@
 package com.tinysnow.system.service;
 
+import com.tinysnow.system.dto.CommentDto;
 import com.tinysnow.system.model.Comment;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public interface CommentService {
 
     List<Comment> findByOneColumn(String column, String value);
 
-    List<Comment> findComments(String questionId);
+    List<CommentDto> findComments(String questionId);
 
     /**
      * 更新 Comment
