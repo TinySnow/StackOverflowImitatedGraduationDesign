@@ -31,6 +31,11 @@ public class TagController {
     return Response.success(tagService.findList(tag));
   }
 
+  @GetMapping(value = "/tags/{id}")
+  public Response findTagsByQuestionId(@PathVariable("id") Long id) {
+    return Response.success(tagService.findTagsByQuestionId(id));
+  }
+
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
     return Response.success(tagService.find(id));

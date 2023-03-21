@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.Tag;
 
+import java.util.List;
+
 
 /**
  * tag - 
@@ -17,6 +19,9 @@ public interface TagMapper {
      * 保存 Tag
      */
     int save(Tag tag);
+
+
+    List<Tag> findTagsByQuestionId(Long id);
 
     /**
      * 查找全部的 Tag

@@ -6,6 +6,8 @@ import com.tinysnow.system.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * tag - 
  *
@@ -36,5 +38,14 @@ public class TagServiceImpl implements TagService {
 
     public int delete(Long id){
         return tagMapper.delete(id);
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Tag> findTagsByQuestionId(Long id) {
+        return tagMapper.findTagsByQuestionId(id);
     }
 }

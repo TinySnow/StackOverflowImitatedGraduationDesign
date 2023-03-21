@@ -10,6 +10,7 @@ const api = {
   newQuestion: "/question",
   newComment: "/comment",
   deleteComment: "/comment/",
+  getTagList: "/tag/tags/",
   elastic: {
     search: (type: string) => {
       return type + "/_search";

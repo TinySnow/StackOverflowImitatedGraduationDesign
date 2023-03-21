@@ -1,10 +1,17 @@
 <template>
     <h1 class="title">{{ detail.title }}</h1>
     <md-editor v-model="detail.content" preview-only />
+    <el-space size="large">
+        <el-tag v-for="item in tags" :key="item.label" effect="light">
+            {{ item.label }}
+        </el-tag>
+    </el-space>
 </template>
 
 
 <script lang="ts" setup>
+// TODO：加入收藏问题集功能
+// TODO：显示悬赏助人点
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";
 import MdEditor from 'md-editor-v3';
@@ -14,7 +21,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute()
 
-let detail = reactive({
+const detail = reactive({
     id: '',
     author: '',
     title: '',
@@ -25,10 +32,22 @@ let detail = reactive({
     updatedTime: Date,
 })
 
+const tags = reactive([{
+    id: '',
+    label: ''
+}])
+
 onMounted(async () => {
     backend.get(api.questionDetail + route.params.id).then(res => {
         // console.log(res);
         Object.assign(detail, res.data.data)
+    }).catch(error => {
+        console.log(error);
+    });
+
+    backend.get(api.getTagList + route.params.id).then(res => {
+        // console.log(res);
+        Object.assign(tags, res.data.data)
     }).catch(error => {
         console.log(error);
     });

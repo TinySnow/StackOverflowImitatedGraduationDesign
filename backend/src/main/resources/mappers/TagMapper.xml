@@ -17,10 +17,16 @@
         from tag
         where id = #{id}
     </select>
+    <select id="findTagsByQuestionId" resultMap="base">
+        select t.id, t.label
+        from tag_question_relation r
+                 left join tag t on r.tag_id = t.id
+        where r.question_id = #{id}
+    </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.Tag">
-        insert into tag (id, label,)
-        values (#{id}, #{label},)
+        insert into tag (id, label)
+        values (#{id}, #{label})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.Tag">

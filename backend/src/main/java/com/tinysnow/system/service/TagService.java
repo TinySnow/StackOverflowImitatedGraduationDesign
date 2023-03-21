@@ -2,6 +2,8 @@ package com.tinysnow.system.service;
 
 import com.tinysnow.system.model.Tag;
 
+import java.util.List;
+
 /**
  * tag - 
  *
@@ -33,4 +35,6 @@ public interface TagService {
      * 根据 id 删除 Tag
      */
     int delete(Long id);
+
+    List<Tag> findTagsByQuestionId(Long id);
 }
