@@ -1,11 +1,13 @@
 <template>
     <h1 class="title">{{ detail.title }}</h1>
     <md-editor v-model="detail.content" preview-only />
-    <el-space size="large">
-        <el-tag v-for="item in tags" :key="item.label" effect="light">
-            {{ item.label }}
-        </el-tag>
-    </el-space>
+    <div v-if="tags[0].id !== ''">
+        <el-space size="large">
+            <el-tag v-for="item in tags" :key="item.label" effect="light">
+                {{ item.label }}
+            </el-tag>
+        </el-space>
+    </div>
 </template>
 
 
@@ -48,6 +50,8 @@ onMounted(async () => {
     backend.get(api.getTagList + route.params.id).then(res => {
         // console.log(res);
         Object.assign(tags, res.data.data)
+        console.log(tags);
+
     }).catch(error => {
         console.log(error);
     });

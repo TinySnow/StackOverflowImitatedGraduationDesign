@@ -48,4 +48,13 @@ public class CommentServiceImpl implements CommentService {
     public int delete(Long id) {
         return commentMapper.delete(id);
     }
+
+    /**
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Comment> findAllOfOneAuthor(Long userId) {
+        return commentMapper.findAllOfOneAuthor(userId);
+    }
 }

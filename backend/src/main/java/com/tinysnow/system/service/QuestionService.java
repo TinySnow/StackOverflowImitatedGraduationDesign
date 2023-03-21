@@ -1,6 +1,7 @@
 package com.tinysnow.system.service;
 
 import com.tinysnow.system.model.Question;
+import com.tinysnow.system.model.User;
 
 import java.util.List;
 
@@ -40,4 +41,8 @@ public interface QuestionService {
      * 根据 id 删除 Question
      */
     int delete(Long id);
+
+    User findAuthor(Long id);
+
+    List<Question> findAllOfOneAuthor(Long id);
 }

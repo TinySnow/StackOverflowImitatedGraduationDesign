@@ -40,4 +40,6 @@ public interface CommentService {
      * 根据 id 删除 Comment
      */
     int delete(Long id);
+
+    List<Comment> findAllOfOneAuthor(Long userId);
 }

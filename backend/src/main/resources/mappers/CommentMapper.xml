@@ -35,14 +35,12 @@
     </sql>
 
     <select id="find" resultMap="base">
-        select *
-        from comment
+        <include refid="columns"/>
         where id = #{id}
     </select>
 
     <select id="findList" resultMap="base">
-        select *
-        from comment
+        <include refid="columns"/>
         where id = #{id}
     </select>
 
@@ -58,6 +56,10 @@
         left join point p on p.id = u.id
         WHERE c.question = #{questionId}
         ORDER BY CAST(parent_id AS UNSIGNED), c.id;
+    </select>
+    <select id="findAllOfOneAuthor" resultMap="base">
+        <include refid="columns"/>
+        where author = #{userId}
     </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.Comment">

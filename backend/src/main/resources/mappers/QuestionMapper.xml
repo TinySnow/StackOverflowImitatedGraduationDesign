@@ -11,21 +11,33 @@
         <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更新时间，若无更改可为空 -->
     </resultMap>
 
-    <select id="find" resultMap="base">
-        select *
+    <sql id="columns">
+        select id, author, title, content, reward, created_time, updated_time
         from question
+    </sql>
+
+    <select id="find" resultMap="base">
+        <include refid="columns"/>
         where id = #{id}
     </select>
 
     <select id="findList" resultMap="base">
-        select *
-        from question
+        <include refid="columns"/>
         where id = #{id}
     </select>
 
     <select id="findAll" resultMap="base">
-        select *
-        from question
+        <include refid="columns"/>
+    </select>
+    <select id="findAuthor" resultMap="com.tinysnow.system.mapper.UserMapper.base">
+        select u.*
+        from question q
+                 join user u on q.author = u.id
+        where q.id = #{id}
+    </select>
+    <select id="findAllOfOneAuthor" resultMap="base">
+        <include refid="columns"/>
+        where author = #{id}
     </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.Question">

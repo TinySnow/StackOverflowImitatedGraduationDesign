@@ -1,5 +1,6 @@
 package com.tinysnow.system.service.impl;
 
+import com.tinysnow.system.model.User;
 import com.tinysnow.system.service.QuestionService;
 import com.tinysnow.system.mapper.QuestionMapper;
 import com.tinysnow.system.model.Question;
@@ -45,5 +46,23 @@ public class QuestionServiceImpl implements QuestionService {
 
     public int delete(Long id){
         return questionMapper.delete(id);
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public User findAuthor(Long id) {
+        return questionMapper.findAuthor(id);
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Question> findAllOfOneAuthor(Long id) {
+        return questionMapper.findAllOfOneAuthor(id);
     }
 }

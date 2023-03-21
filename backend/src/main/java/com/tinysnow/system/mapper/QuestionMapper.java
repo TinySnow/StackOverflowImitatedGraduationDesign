@@ -1,5 +1,6 @@
 package com.tinysnow.system.mapper;
 
+import com.tinysnow.system.model.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.Question;
@@ -45,4 +46,7 @@ public interface QuestionMapper {
      */
     int delete(Long id);
 
+    User findAuthor(Long id);
+
+    List<Question> findAllOfOneAuthor(Long id);
 }

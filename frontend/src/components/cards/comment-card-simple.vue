@@ -2,11 +2,9 @@
     <el-space fill direction="vertical" class="space" size="large">
         <el-row>
             <el-col :span="me ? 22 : 24">
-                <el-collapse v-model="activeNames">
-                    <el-collapse-item :title="data.question.title" :name="data.question.id">
-                        <md-editor v-model="data.question.content" preview-only />
-                    </el-collapse-item>
-                </el-collapse>
+                <el-card shadow="hover">
+                    <md-editor v-model="data.comment.content" preview-only />
+                </el-card>
             </el-col>
             <el-col v-if="me" :span="2" class="button-style">
                 <el-dropdown>
@@ -34,34 +32,32 @@
 
 
 <script lang="ts" setup>
-// TODO：编辑问题
-// TODO：删除问题
 import { useUserIdStore } from '@/stores/store';
 import { ref } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
-
-const activeNames = ref([''])
 const userIdStore = useUserIdStore()
 
 const data = defineProps<{
-    question: {
-        id: string,
-        title: string,
+    comment: {
+        id: number,
+        questionId: number,
+        parent: number,
         author: string,
         content: string,
-        reward: number,
-        bestAnswer: boolean,
+        upvote: number,
+        devote: number,
         createdTime: Date,
-        updatedTime: Date
+        updatedTime: Date,
+        status: boolean,
     }, userId: string
 }>()
 
 const me = data.userId === userIdStore.userId
 
-const questionDetail = () => {
+const questionDetail = ()=>{
 
 }
 
@@ -72,20 +68,10 @@ const deleteQuestion = () => {
 
 }
 
-
 </script>
 
 
 <style scoped>
-.button-style {
-    text-align: right;
-}
-
-.space {
-    width: 100%;
-    justify-content: space-between;
-}
-
 .primary {
     color: var(--el-color-primary)
 }

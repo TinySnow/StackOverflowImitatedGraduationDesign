@@ -73,7 +73,7 @@
 
 
 <script lang="ts" setup>
-
+// TODO：修改个人信息
 import { onMounted, reactive } from 'vue'
 import { Male, Female } from '@element-plus/icons-vue'
 import { InfoFilled } from '@element-plus/icons-vue'
@@ -113,7 +113,7 @@ const logout = () => {
 }
 
 const delAccount = ()=>{
-    backend.delete(api.deleteComment + profile.user.id, {
+    backend.delete(api.deleteUser + profile.user.id, {
         headers: {
             Authorization: localStorage.getItem("token")
         }

@@ -23,31 +23,43 @@ public class QuestionController {
   @Autowired
   private QuestionService questionService;
 
-  @PostMapping
+  @PostMapping("/no-pass")
   public Response save(HttpServletRequest request, @RequestBody Question question) {
     LoginUser o = (LoginUser)request.getAttribute("LoginUser");
     question.setAuthor(o.getUserId().toString());
     return Response.success(questionService.save(question));
   }
 
-  @GetMapping
+  @GetMapping("/pass")
   public Response findList() {
     Question question = new Question();
     return Response.success(questionService.findList(question));
   }
 
-  @GetMapping(value = "/{id}")
+  @GetMapping(value = "/pass/{id}/author")
+  public Response findAuthor(@PathVariable("id") Long id) {
+    return Response.success(questionService.findAuthor(id));
+  }
+
+  @GetMapping(value = "/no-pass/author-all/{id}")
+  public Response findAllOfOneAuthor(@PathVariable("id") Long userId) {
+    return Response.success(questionService.findAllOfOneAuthor(userId));
+  }
+
+
+
+  @GetMapping(value = "/pass/{id}")
   public Response find(@PathVariable("id") Long id) {
     return Response.success(questionService.find(id));
   }
 
-  @PutMapping(value = "/{id}")
+  @PutMapping(value = "/no-pass/{id}")
   public Response update(@PathVariable("id") Long id, @RequestBody Question question) {
     question.setId(id);
     return Response.success(questionService.update(question));
   }
 
-  @DeleteMapping(value = "/{id}")
+  @DeleteMapping(value = "/no-pass/{id}")
   public Response delete(@PathVariable("id") Long id) {
     return Response.success(questionService.delete(id) == 1);
   }

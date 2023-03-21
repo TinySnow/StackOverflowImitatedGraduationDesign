@@ -36,6 +36,11 @@ public class CommentController {
     return Response.success(commentService.findList(comment));
   }
 
+  @GetMapping(value = "/no-pass/author-all/{id}")
+  public Response findAllOfOneAuthor(@PathVariable("id") Long userId) {
+    return Response.success(commentService.findAllOfOneAuthor(userId));
+  }
+
   @GetMapping(value = "/{id}")
   public Response find(@PathVariable("id") Long id) {
     return Response.success(commentService.find(id));

@@ -39,7 +39,7 @@ export const useUserIdStore = defineStore("userId", () => {
   const userId = ref(localStorage.getItem("userId"));
 
   function login(id: string) {
-    userId.value = id
+    userId.value = id;
   }
   function loginout() {
     userId.value = "";
