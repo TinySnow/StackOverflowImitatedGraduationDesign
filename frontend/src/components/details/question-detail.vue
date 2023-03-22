@@ -41,17 +41,13 @@ const tags = reactive([{
 
 onMounted(async () => {
     backend.get(api.questionDetail + route.params.id).then(res => {
-        // console.log(res);
         Object.assign(detail, res.data.data)
     }).catch(error => {
         console.log(error);
     });
 
     backend.get(api.getTagList + route.params.id).then(res => {
-        // console.log(res);
         Object.assign(tags, res.data.data)
-        console.log(tags);
-
     }).catch(error => {
         console.log(error);
     });
