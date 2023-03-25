@@ -1,59 +1,57 @@
 <template>
-    <el-space fill direction="vertical" class="whole-line" size="large">
-        <el-card shadow="hover">
-            <el-row>
-                <el-col :span="2">
-                    <el-avatar size="large"
-                        :src="props.userDto.user.avatar !== null ? props.userDto.user.avatar : ('https://api.multiavatar.com/' + Math.random() + '.svg')" />
-                </el-col>
-                <el-col :span="16">
-                    <el-row>
-                        {{ props.userDto.user.username }}
-                        <el-icon size="large">
-                            <female v-if="props.userDto.user.gender" />
-                            <male v-else />
-                        </el-icon>
+    <el-card shadow="hover">
+        <el-row>
+            <el-col :span="2">
+                <el-avatar size="large"
+                    :src="userDto.user.avatar !== null ? userDto.user.avatar : ('https://api.multiavatar.com/' + Math.random() + '.svg')" />
+            </el-col>
+            <el-col :span="16">
+                <el-row>
+                    {{ props.userDto.user.username }}
+                    <el-icon size="large">
+                        <female v-if="props.userDto.user.gender" />
+                        <male v-else />
+                    </el-icon>
+                </el-row>
+                <el-row>
+                    <p class="points">{{ props.userDto.point.point }} 助人点</p>
+                </el-row>
+            </el-col>
+            <el-col :span="2">
+                <el-space fill direction="vertical" class="space">
+                    <el-row class="button-row">
+                        <el-button type="primary" @click="reply()">回复</el-button>
                     </el-row>
-                    <el-row>
-                        <p class="points">{{ props.userDto.point.point }} 助人点</p>
+                    <el-row class="button-row" v-if="props.comment.author === user.userId">
+                        <el-popconfirm width="220" title="确认删除评论？" :icon="InfoFilled" icon-color="#FF0000"
+                            confirm-button-text="确认" cancel-button-text="取消" @confirm="del()">
+                            <template #reference>
+                                <el-button type="danger">删除</el-button>
+                            </template>
+                        </el-popconfirm>
                     </el-row>
-                </el-col>
-                <el-col :span="2">
-                    <el-space fill direction="vertical" class="space">
-                        <el-row class="button-row">
-                            <el-button type="primary" @click="reply()">回复</el-button>
-                        </el-row>
-                        <el-row class="button-row" v-if="props.comment.author === user.userId">
-                            <el-popconfirm width="220" title="确认删除评论？" :icon="InfoFilled" icon-color="#FF0000"
-                                confirm-button-text="确认" cancel-button-text="取消" @confirm="del()">
-                                <template #reference>
-                                    <el-button type="danger">删除</el-button>
-                                </template>
-                            </el-popconfirm>
-                        </el-row>
-                    </el-space>
-                </el-col>
-                <el-col :span="4">
-                    <el-space fill direction="vertical" class="space">
-                        <el-row class="button-row">
-                            <el-button type="primary">
-                                <Top class="svg" />
-                                赞：{{ props.comment.upvote }}
-                            </el-button>
-                        </el-row>
-                        <el-row class="button-row">
-                            <el-button type="info">
-                                <Bottom class="svg" />
-                                踩：{{ props.comment.devote }}
-                            </el-button>
-                        </el-row>
-                    </el-space>
-                </el-col>
-            </el-row>
-            <hr />
-            <md-editor v-model="props.comment.content" preview-only />
-        </el-card>
-    </el-space>
+                </el-space>
+            </el-col>
+            <el-col :span="4">
+                <el-space fill direction="vertical" class="space">
+                    <el-row class="button-row">
+                        <el-button type="primary">
+                            <Top class="svg" />
+                            赞：{{ props.comment.upvote }}
+                        </el-button>
+                    </el-row>
+                    <el-row class="button-row">
+                        <el-button type="info">
+                            <Bottom class="svg" />
+                            踩：{{ props.comment.devote }}
+                        </el-button>
+                    </el-row>
+                </el-space>
+            </el-col>
+        </el-row>
+        <hr />
+        <md-editor v-model="props.comment.content" preview-only />
+    </el-card>
 </template>
 
 

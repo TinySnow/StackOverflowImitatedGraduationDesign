@@ -1,7 +1,7 @@
 <template>
     <el-row class="info">
         <el-col :span="3" class="avatar-col">
-            <el-avatar shape="circle" :size="100" fit="scale-down"
+            <el-avatar shape="circle" :size="100" fit="scale-down" @click="isUploadShow = true"
                 :src="profile.user.avatar !== null ? profile.user.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'">
             </el-avatar>
         </el-col>
@@ -69,12 +69,13 @@
             </el-space>
         </el-col>
     </el-row>
+    <update-avatar :user-id="user.userId" :show="isUploadShow" @close="close" />
 </template>
 
 
 <script lang="ts" setup>
 // TODO：修改个人信息
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { Male, Female } from '@element-plus/icons-vue'
 import { InfoFilled } from '@element-plus/icons-vue'
 import { backend } from '@/utils/baseurl';
@@ -82,12 +83,13 @@ import api from "@/apis/main";
 import { useLoginedStore, useTokenStore, useUserIdStore } from '@/stores/store';
 import { useRouter } from 'vue-router';
 import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
+import UpdateAvatar from "@/components/others/update-avatar.vue";
 
 const status = useLoginedStore();
 const user = useUserIdStore();
 const token = useTokenStore();
-
 const router = useRouter();
+const isUploadShow = ref(false);
 
 const profile = reactive({
     user: {
@@ -112,7 +114,7 @@ const logout = () => {
     router.push("/login");
 }
 
-const delAccount = ()=>{
+const delAccount = () => {
     backend.delete(api.deleteUser + profile.user.id, {
         headers: {
             Authorization: localStorage.getItem("token")
@@ -130,7 +132,17 @@ const delAccount = ()=>{
     logout();
 }
 
-onMounted(async () => {
+const delay = (ms: number) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+const close = async () => {
+    isUploadShow.value = false
+    await delay(1000);
+    await getProfile();
+}
+
+const getProfile = async () => {
     backend.get(api.getUserProfile, {
         headers: {
             Authorization: localStorage.getItem("token")
@@ -138,12 +150,13 @@ onMounted(async () => {
     }).then(res => {
         Object.assign(profile.user, res.data.data.user)
         Object.assign(profile.point, res.data.data.point)
-        // console.log(res);
-        // console.log(profile.user.avatar);
     }).catch(err => {
         console.log(err);
     })
-})
+}
+
+
+onMounted(getProfile)
 </script>
 
 
@@ -172,14 +185,6 @@ onMounted(async () => {
 .to-buttom-and-center {
     text-align: center;
     align-self: center;
-}
-
-.to-right {
-    text-align: right;
-}
-
-.to-buttom {
-    align-self: flex-end;
 }
 
 .vertical-center {

@@ -3,6 +3,7 @@ package com.tinysnow.system.controller;
 import com.tinysnow.common.utils.response.Response;
 
 import com.tinysnow.framework.security.util.LoginUser;
+import com.tinysnow.system.model.Avatar;
 import com.tinysnow.system.model.User;
 import com.tinysnow.system.service.UserService;
 
@@ -50,6 +51,11 @@ public class UserController {
         return Response.success(userService.update(user));
     }
 
+    @PutMapping(value = "/no-pass/avatar/{id}")
+    public Response updateAvatar(@PathVariable("id") Long id, @RequestBody Avatar avatar) {
+        return Response.success(userService.updateAvatar(id, avatar.getUrl()) == 1);
+    }
+
     @DeleteMapping(value = "/{id}")
     public Response delete(@PathVariable("id") Long id) {
         return Response.success(userService.delete(id) == 1);
@@ -57,7 +63,7 @@ public class UserController {
 
     @GetMapping("/info")
     public Response getProfile(HttpServletRequest request) {
-        LoginUser o = (LoginUser)request.getAttribute("LoginUser");
+        LoginUser o = (LoginUser) request.getAttribute("LoginUser");
         return Response.success(userService.getProfile(o.getUserId()));
     }
 }

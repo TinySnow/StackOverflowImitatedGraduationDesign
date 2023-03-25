@@ -66,4 +66,14 @@ public class UserServiceImpl implements UserService {
     public UserDto getProfile(Long id) {
         return userMapper.getProfile(id);
     }
+
+    /**
+     * @param id
+     * @param url
+     * @return
+     */
+    @Override
+    public int updateAvatar(Long id, String url) {
+        return userMapper.updateAvatar(id,url);
+    }
 }

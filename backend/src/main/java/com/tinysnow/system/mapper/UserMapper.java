@@ -56,4 +56,6 @@ public interface UserMapper {
     List<UserDto> findListsWithPoint();
 
     UserDto getProfile(Long id);
+
+    int updateAvatar(Long id, String url);
 }

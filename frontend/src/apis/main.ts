@@ -1,6 +1,7 @@
 const api = {
   login: "/login",
 
+  updateAvatar: "/user/no-pass/avatar/",
   getUserProfile: "/user/info",
   userList: "/user/all/point",
   registerUser: "/user",

@@ -68,6 +68,12 @@
         set where id = #{id}
     </update>
 
+    <update id="updateAvatar">
+        update user
+        set avatar = #{url}
+        where id = #{id}
+    </update>
+
     <delete id="delete">
         delete
         from user

@@ -52,4 +52,6 @@ public interface UserService {
     int delete(Long id);
 
     UserDto getProfile(Long id);
+
+    int updateAvatar(Long id, String url);
 }
