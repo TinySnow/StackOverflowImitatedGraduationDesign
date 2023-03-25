@@ -10,6 +10,11 @@ const router = createRouter({
       redirect: "/space",
     },
     {
+      path: "/admin",
+      name: "admin",
+      component: () => import("@/views/admin/index.vue"),
+    },
+    {
       path: "/space",
       name: "主页",
       component: space,
@@ -53,11 +58,11 @@ const router = createRouter({
       path: "/404",
       name: "页面不存在",
       component: () => import("@/views/404.vue"),
-    },    
+    },
     {
       path: "/:pathMatch(.*)*",
-      redirect: "/404"
-    }
+      redirect: "/404",
+    },
   ],
 });
 

@@ -79,7 +79,7 @@ const uploadAvatar = () => {
     }).then(res => {
         console.log(res);
         if (res.data.success) {
-            // showMessagesForSuccess("头像更新成功，请刷新页面")
+            showMessagesForSuccess("头像更新成功")
         } else {
             showMessagesForError(res.data.msg);
         }

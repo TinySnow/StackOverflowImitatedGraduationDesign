@@ -19,7 +19,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const imgurl = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
+// const imgurl = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png';
 
 
 </script>
@@ -30,9 +30,5 @@ const imgurl = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.
     text-align: center;
     border-radius: 10px;
     font-size: larger;
-}
-
-.avatar-style {
-    text-align: right;
 }
 </style>
