@@ -55,7 +55,7 @@
                     <el-button type="info" @click="logout()">退出登录</el-button>
                 </el-row>
                 <el-row class="button-row">
-                    <el-button type="warning">修改信息</el-button>
+                    <el-button type="warning" @click="isUpdateShow = true">修改信息</el-button>
                 </el-row>
                 <el-row class="button-row">
                     <el-popconfirm width="220" title="确认删除账号？此操作不可撤销！" :icon="InfoFilled" icon-color="#FF0000"
@@ -70,11 +70,11 @@
         </el-col>
     </el-row>
     <update-avatar :user-id="user.userId" :show="isUploadShow" @close="close" />
+    <update-profile :user-id="user.userId" :show="isUpdateShow" @close="close"/>
 </template>
 
 
 <script lang="ts" setup>
-// TODO：修改个人信息
 import { onMounted, reactive, ref } from 'vue'
 import { Male, Female } from '@element-plus/icons-vue'
 import { InfoFilled } from '@element-plus/icons-vue'
@@ -83,13 +83,15 @@ import api from "@/apis/main";
 import { useLoginedStore, useTokenStore, useUserIdStore } from '@/stores/store';
 import { useRouter } from 'vue-router';
 import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
-import UpdateAvatar from "@/components/others/update-avatar.vue";
+import UpdateAvatar from "@/components/update/update-avatar.vue";
+import UpdateProfile from "@/components/update/update-profile.vue";
 
 const status = useLoginedStore();
 const user = useUserIdStore();
 const token = useTokenStore();
 const router = useRouter();
 const isUploadShow = ref(false);
+const isUpdateShow = ref(false);
 
 const profile = reactive({
     user: {
@@ -138,6 +140,7 @@ const delay = (ms: number) => {
 
 const close = async () => {
     isUploadShow.value = false
+    isUpdateShow.value = false
     await delay(1000);
     await getProfile();
 }

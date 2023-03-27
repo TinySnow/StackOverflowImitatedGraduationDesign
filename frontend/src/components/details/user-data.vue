@@ -10,7 +10,7 @@
     </el-col>
     <el-col :span="21">
       <home-question-list v-if="active === 'question'" />
-      <home-post-list v-if="active === 'post'" />
+      <!-- <home-post-list v-if="active === 'post'" /> -->
       <home-comment-list v-if="active === 'comment'" />
       <home-collection-list v-if="active === 'collection'" />
     </el-col>
@@ -22,7 +22,7 @@
 import { ref } from 'vue'
 
 import HomeQuestionList from "@/components/lists/home-question-list.vue";
-import HomePostList from "@/components/lists/home-post-list.vue";
+// import HomePostList from "@/components/lists/home-post-list.vue";
 import HomeCommentList from "@/components/lists/home-comment-list.vue";
 import HomeCollectionList from "@/components/lists/home-collection-list.vue";
 

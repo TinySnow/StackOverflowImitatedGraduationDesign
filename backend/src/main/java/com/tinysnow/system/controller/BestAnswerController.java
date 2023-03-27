@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @author Snow
  */
 @RestController
-@RequestMapping("bestAnswer")
+@RequestMapping("best-answer")
 public class BestAnswerController {
 
   @Autowired
@@ -31,14 +31,14 @@ public class BestAnswerController {
     return Response.success(bestAnswerService.findList(bestAnswer));
   }
 
-  @GetMapping(value = "/{id}")
+  @GetMapping(value = "/pass/{id}")
   public Response find(@PathVariable("id") Long id) {
     return Response.success(bestAnswerService.find(id));
   }
 
   @PutMapping(value = "/{id}")
   public Response update(@PathVariable("id") Long id, @RequestBody BestAnswer bestAnswer) {
-    bestAnswer.setId(id);
+    bestAnswer.setBestAnswerId(id);
     return Response.success(bestAnswerService.update(bestAnswer));
   }
 

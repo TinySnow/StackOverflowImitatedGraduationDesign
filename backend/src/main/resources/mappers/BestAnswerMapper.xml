@@ -2,35 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tinysnow.system.mapper.BestAnswerMapper">
     <resultMap id="base" type="com.tinysnow.system.model.BestAnswer">
-        <id property="id" column="id" jdbcType="BIGINT"/>
-        <result property="bestAnswer" column="best_answer" jdbcType="BIGINT"/><!-- 关联 comment 的 id -->
+        <id property="questionId" column="question_id" jdbcType="BIGINT"/>
+        <result property="bestAnswerId" column="best_answer_id" jdbcType="BIGINT"/><!-- 关联 comment 的 id -->
     </resultMap>
 
-    <select id="find" resultMap="base">
-        select *
+    <sql id="columns">
+        select question_id, best_answer_id
         from best_answer
-        where id = #{id}
+    </sql>
+
+    <select id="find" resultMap="com.tinysnow.system.mapper.CommentMapper.withUser">
+        SELECT c.*, u.*, p.*
+        FROM best_answer b
+                inner join comment c on c.id = b.best_answer_id
+                inner join user u on c.author = u.id
+                inner join point p on p.id = u.id
+        where b.question_id = #{id}
     </select>
 
     <select id="findList" resultMap="base">
-        select *
-        from best_answer
-        where id = #{id}
+        <include refid="columns"/>
+        where question_id = #{id}
     </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.BestAnswer">
-        insert into best_answer (id, best_answer)
+        insert into best_answer (question_id, best_answer_id)
         values (#{id}, #{best_answer})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.BestAnswer">
         update best_answer
-        set where id = #{id}
+        set where question_id = #{id}
     </update>
 
     <delete id="delete">
         delete
         from best_answer
-        where id = #{id}
+        where question_id = #{id}
     </delete>
 </mapper>

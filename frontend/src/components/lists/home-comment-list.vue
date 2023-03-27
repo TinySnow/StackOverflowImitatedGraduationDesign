@@ -34,7 +34,7 @@ onMounted(async () => {
             Authorization: localStorage.getItem("token")
         }
     }).then(res => {
-        console.log(res);
+        // console.log(res);
         Object.assign(comments, res.data.data)
     }).catch(error => {
         console.log(error);

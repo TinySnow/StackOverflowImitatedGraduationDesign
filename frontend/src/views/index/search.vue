@@ -5,7 +5,7 @@
                 <el-select size="large" v-model="type" placeholder="搜索类型" style="width: 115px" @change="validate()">
                     <el-option label="用户" value="user" />
                     <el-option label="问题" value="question" />
-                    <el-option label="文章" value="post" />
+                    <!-- <el-option label="文章" value="post" /> -->
                     <el-option label="评论" value="comment" />
                     <el-option label="问题集" value="collection" />
                 </el-select>
@@ -18,7 +18,7 @@
     <div>
         <search-user-list v-if="type === 'user'" :hits="result" />
         <search-question-list v-if="type === 'question'" :hits="result" />
-        <search-post-list v-if="type === 'post'" :hits="result" />
+        <!-- <search-post-list v-if="type === 'post'" :hits="result" /> -->
         <search-comment-list v-if="type === 'comment'" :hits="result" />
         <search-collection-list v-if="type === 'collection'" :hits="result" />
     </div>
@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import SearchUserList from "@/components/lists/search-user-list.vue";
 import SearchQuestionList from "@/components/lists/search-question-list.vue";
-import SearchPostList from "@/components/lists/search-post-list.vue";
+// import SearchPostList from "@/components/lists/search-post-list.vue";
 import SearchCommentList from "@/components/lists/search-comment-list.vue";
 import SearchCollectionList from "@/components/lists/search-collection-list.vue";
 import { showMessagesForError } from "@/utils/show-messages";

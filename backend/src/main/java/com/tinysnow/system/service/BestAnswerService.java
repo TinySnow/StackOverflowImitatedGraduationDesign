@@ -1,5 +1,6 @@
 package com.tinysnow.system.service;
 
+import com.tinysnow.system.dto.CommentDto;
 import com.tinysnow.system.model.BestAnswer;
 
 /**
@@ -22,7 +23,7 @@ public interface BestAnswerService {
     /**
      * 根据 id 查找 BestAnswer
      */
-    BestAnswer find(Long id);
+    CommentDto find(Long id);
 
     /**
      * 更新 BestAnswer

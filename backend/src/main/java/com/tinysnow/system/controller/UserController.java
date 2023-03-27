@@ -56,6 +56,11 @@ public class UserController {
         return Response.success(userService.updateAvatar(id, avatar.getUrl()) == 1);
     }
 
+    @PutMapping(value = "/no-pass/profile/{id}")
+    public Response updateProfile(@PathVariable("id") Long id, @RequestBody User user) {
+        return Response.success(userService.updateProfile(id, user));
+    }
+
     @DeleteMapping(value = "/{id}")
     public Response delete(@PathVariable("id") Long id) {
         return Response.success(userService.delete(id) == 1);

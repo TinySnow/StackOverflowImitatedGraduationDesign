@@ -1,29 +1,27 @@
 <template>
-    <div v-if="isShow">
-        <el-dialog v-model="isShow" title="上传头像" width="70%" :show-close="false">
-            <el-upload ref="upload" drag action="#" :auto-upload="false" :on-change="onChange" :limit="1"
-                :on-exceed="handleExceed">
-                <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-                <div class="el-upload__text">
-                    拖拽图片 或 <em>点击上传</em>
+    <el-dialog v-model="isShow" title="上传头像" width="70%" :show-close="false" @close="closeDialog" draggable>
+        <el-upload ref="upload" drag action="#" :auto-upload="false" :on-change="onChange" :limit="1"
+            :on-exceed="handleExceed">
+            <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+            <div class="el-upload__text">
+                拖拽图片 或 <em>点击上传</em>
+            </div>
+            <template #tip>
+                <div class="el-upload__tip">
+                    jpg/png 文件应小于 500kb
                 </div>
-                <template #tip>
-                    <div class="el-upload__tip">
-                        jpg/png 文件应小于 500kb
-                    </div>
-                </template>
-            </el-upload>
-            <img w-full class="img" :src="imageUrl" />
-            <template #footer>
-                <span class="dialog-footer">
-                    <el-button @click="closeDialog()">取消</el-button>
-                    <el-button type="primary" @click="uploadAvatar()">
-                        确定
-                    </el-button>
-                </span>
             </template>
-        </el-dialog>
-    </div>
+        </el-upload>
+        <img w-full class="img" :src="imageUrl" />
+        <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="closeDialog()">取消</el-button>
+                <el-button type="primary" @click="uploadAvatar()">
+                    确定
+                </el-button>
+            </span>
+        </template>
+    </el-dialog>
 </template>
 
 
@@ -42,7 +40,6 @@ const props = defineProps<{
 }>()
 
 const emits = defineEmits(["close"])
-
 const isShow = ref(props.show);
 const imageUrl = ref('')
 const upload = ref<UploadInstance>()

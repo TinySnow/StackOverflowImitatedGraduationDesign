@@ -10,6 +10,6 @@ import lombok.Data;
  */
 @Data
 public class BestAnswer {
-  private Long id;
-  private Long bestAnswer;
+  private Long questionId;
+  private Long bestAnswerId;
 }

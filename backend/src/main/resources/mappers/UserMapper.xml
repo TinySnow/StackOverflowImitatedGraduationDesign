@@ -74,6 +74,15 @@
         where id = #{id}
     </update>
 
+    <update id="updateProfile" parameterType="com.tinysnow.system.model.User">
+        update user
+        set username = #{user.username},
+            email = #{user.email},
+            gender = #{user.gender},
+            birthday = #{user.birthday}
+        where id = #{id}
+    </update>
+
     <delete id="delete">
         delete
         from user

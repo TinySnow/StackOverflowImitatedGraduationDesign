@@ -4,6 +4,7 @@ import com.tinysnow.system.dto.UserDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -58,4 +59,6 @@ public interface UserMapper {
     UserDto getProfile(Long id);
 
     int updateAvatar(Long id, String url);
+
+    int updateProfile(Long id, @Param("user") User user);
 }

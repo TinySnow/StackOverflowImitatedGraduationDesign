@@ -13,13 +13,13 @@
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item>
-                            <span class="primary" @click="questionDetail()">详情</span>
+                            <span class="primary" @click="commentDetail()">详情</span>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <span class="warning" @click="editQuestion()">编辑</span>
+                            <span class="warning" @click="editComment()">编辑</span>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <span class="danger" @click="deleteQuestion()">删除</span>
+                            <span class="danger" @click="deleteComment()">删除</span>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -56,15 +56,15 @@ const data = defineProps<{
 
 const me = data.userId === userIdStore.userId
 
-const questionDetail = () => {
+const commentDetail = () => {
     console.log("/question/" + data.comment.question);
     router.push("/question/" + data.comment.question)
 }
 
-const editQuestion = () => {
+const editComment = () => {
 
 }
-const deleteQuestion = () => {
+const deleteComment = () => {
 
 }
 

@@ -1,6 +1,3 @@
-<!-- TODO: birthday 日期存入数据库格式不正常 -->
-
-
 <template>
     <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" size="large"
         status-icon>

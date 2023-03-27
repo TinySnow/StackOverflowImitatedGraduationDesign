@@ -54,4 +54,6 @@ public interface UserService {
     UserDto getProfile(Long id);
 
     int updateAvatar(Long id, String url);
+
+    int updateProfile(Long id, User user);
 }

@@ -39,7 +39,9 @@ import { ref } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 
 const activeNames = ref([''])
 const userIdStore = useUserIdStore()
@@ -60,7 +62,8 @@ const data = defineProps<{
 const me = data.userId === userIdStore.userId
 
 const questionDetail = () => {
-
+    console.log("/question/" + data.question.id);
+    router.push("/question/" + data.question.id)
 }
 
 const editQuestion = () => {

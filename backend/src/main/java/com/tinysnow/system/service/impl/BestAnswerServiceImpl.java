@@ -1,5 +1,6 @@
 package com.tinysnow.system.service.impl;
 
+import com.tinysnow.system.dto.CommentDto;
 import com.tinysnow.system.service.BestAnswerService;
 import com.tinysnow.system.mapper.BestAnswerMapper;
 import com.tinysnow.system.model.BestAnswer;
@@ -26,7 +27,7 @@ public class BestAnswerServiceImpl implements BestAnswerService {
         return bestAnswerMapper.findList(bestAnswer);
     }
 
-    public BestAnswer find(Long id){
+    public CommentDto find(Long id){
         return bestAnswerMapper.find(id);
     }
 

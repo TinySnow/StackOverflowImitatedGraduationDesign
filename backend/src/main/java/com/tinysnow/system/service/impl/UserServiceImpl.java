@@ -43,9 +43,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.findList(user);
     }
 
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userMapper.findAll();
     }
+
     public User find(Long id) {
         return userMapper.find(id);
     }
@@ -74,6 +75,16 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int updateAvatar(Long id, String url) {
-        return userMapper.updateAvatar(id,url);
+        return userMapper.updateAvatar(id, url);
+    }
+
+    /**
+     * @param id
+     * @param user
+     * @return
+     */
+    @Override
+    public int updateProfile(Long id, User user) {
+        return userMapper.updateProfile(id, user);
     }
 }
