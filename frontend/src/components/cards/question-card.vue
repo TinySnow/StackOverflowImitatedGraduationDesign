@@ -28,6 +28,7 @@
             </el-dropdown>
         </el-col>
     </el-row>
+    <update-question :question-id="data.question.id.toString()" :show="isUpdateShow" @close="close" />
 </template>
 
 
@@ -37,11 +38,13 @@
 import { useUserIdStore } from '@/stores/store';
 import { ref } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
+import UpdateQuestion from "@/components/update/update-question.vue";
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
+const isUpdateShow = ref(false);
 
 const activeNames = ref([''])
 const userIdStore = useUserIdStore()
@@ -56,24 +59,32 @@ const data = defineProps<{
         bestAnswer: boolean,
         createdTime: Date,
         updatedTime: Date
-    }, userId: string
+    }, userId: string | null
 }>()
 
 const me = data.userId === userIdStore.userId
 
 const questionDetail = () => {
-    console.log("/question/" + data.question.id);
     router.push("/question/" + data.question.id)
 }
 
 const editQuestion = () => {
-
+    isUpdateShow.value = true
 }
 const deleteQuestion = () => {
 
 }
+const emits = defineEmits(["update"])
 
+const delay = (ms: number) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
 
+const close = async () => {
+    isUpdateShow.value = false
+    await delay(1000)
+    await emits("update", false)
+}
 </script>
 
 

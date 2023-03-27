@@ -1,6 +1,6 @@
 <template>
     <el-space fill direction="vertical" class="space">
-        <question-card v-for="question in questions" :question="question" :userId="userIdStore.userId" />
+        <question-card v-for="question in questions" :question="question" :user-id="userIdStore.userId" @update="update"/>
     </el-space>
 </template>
 
@@ -25,8 +25,11 @@ const questions = reactive([{
     updatedTime: Date,
 }])
 
+const update = ()=>{
+    getQuestionListOfOneAuthor()
+}
 
-onMounted(async () => {
+const getQuestionListOfOneAuthor = async () => {
     backend.get(api.getQuestionListOfOneAuthor + userIdStore.userId, {
         headers: {
             Authorization: localStorage.getItem("token")
@@ -37,7 +40,10 @@ onMounted(async () => {
     }).catch(error => {
         console.log(error);
     });
-})
+}
+
+
+onMounted(getQuestionListOfOneAuthor)
 </script>
 
 

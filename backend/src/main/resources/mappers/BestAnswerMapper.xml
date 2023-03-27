@@ -27,7 +27,7 @@
 
     <insert id="save" parameterType="com.tinysnow.system.model.BestAnswer">
         insert into best_answer (question_id, best_answer_id)
-        values (#{id}, #{best_answer})
+        values (#{questionId}, #{bestAnswerId})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.BestAnswer">

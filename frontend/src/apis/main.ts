@@ -8,6 +8,8 @@ const api = {
   registerUser: "/user",
   deleteUser: "/user/",
 
+  updateQuestion: "/question/no-pass",
+  getQuestion: "/question/pass/",
   questionList: "/test/question-lists",
   getQuestionListOfOneAuthor: "/question/no-pass/author-all/",
   newQuestion: "/question/no-pass",

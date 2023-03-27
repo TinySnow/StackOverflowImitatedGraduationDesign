@@ -53,9 +53,8 @@ public class QuestionController {
     return Response.success(questionService.find(id));
   }
 
-  @PutMapping(value = "/no-pass/{id}")
-  public Response update(@PathVariable("id") Long id, @RequestBody Question question) {
-    question.setId(id);
+  @PutMapping(value = "/no-pass")
+  public Response update(@RequestBody Question question) {
     return Response.success(questionService.update(question));
   }
 

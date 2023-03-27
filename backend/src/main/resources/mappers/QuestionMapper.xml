@@ -40,14 +40,17 @@
         where author = #{id}
     </select>
 
-    <insert id="save" parameterType="com.tinysnow.system.model.Question">
-        insert into question (id, author, title, content, reward, created_time, updated_time)
-        values (#{id}, #{author}, #{title}, #{content}, #{reward}, #{createdTime}, #{updatedTime})
+    <insert useGeneratedKeys="true" keyProperty="id" id="save" parameterType="com.tinysnow.system.model.Question">
+        insert into question (author, title, content, reward, created_time, updated_time)
+        values (#{author}, #{title}, #{content}, #{reward}, #{createdTime}, #{updatedTime})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.Question">
         update question
-        set where id = #{id}
+        set title        = #{title},
+            content      = #{content},
+            updated_time = NOW()
+        where id = #{id}
     </update>
 
     <delete id="delete">

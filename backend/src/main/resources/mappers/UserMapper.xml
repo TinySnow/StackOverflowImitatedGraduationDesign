@@ -58,7 +58,7 @@
         where u.id = #{id}
     </select>
 
-    <insert id="save" parameterType="com.tinysnow.system.model.User">
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.tinysnow.system.model.User">
         insert into user (username, password, avatar, email, gender, birthday, register_time)
         values (#{username}, #{password}, #{avatar}, #{email}, #{gender}, #{birthday}, #{registerTime})
     </insert>

@@ -1,11 +1,14 @@
 package com.tinysnow.system.service.impl;
 
 import com.tinysnow.system.dto.UserDto;
+import com.tinysnow.system.mapper.PointMapper;
+import com.tinysnow.system.model.Point;
 import com.tinysnow.system.service.UserService;
 import com.tinysnow.system.mapper.UserMapper;
 import com.tinysnow.system.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,9 +23,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    PointMapper pointMapper;
 
+    @Transactional
     public int save(User user) {
-        return userMapper.save(user);
+        userMapper.save(user);
+        Point point = new Point();
+        point.setId(user.getId());
+        return pointMapper.save(point);
     }
 
     /**

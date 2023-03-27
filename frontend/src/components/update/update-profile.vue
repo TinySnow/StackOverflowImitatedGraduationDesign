@@ -28,11 +28,11 @@
 
 
 <script lang="ts" setup>
-import { ref, watchEffect, reactive, onMounted } from 'vue';
+import { ref, watchEffect, reactive } from 'vue';
 import { backend } from '@/utils/baseurl';
 import type { FormInstance, FormRules } from 'element-plus'
+import { showMessagesForSuccess } from '@/utils/show-messages';
 import api from "@/apis/main";
-import UserCard from '../cards/user-card.vue';
 
 const props = defineProps<{
     userId: string | null,
@@ -74,6 +74,7 @@ const isShow = ref(props.show);
 watchEffect(() => {
     if (props.show) {
         isShow.value = true
+        getProfile()
     }
 })
 
@@ -94,7 +95,8 @@ const updateProfile = () => {
             Authorization: localStorage.getItem("token")
         }
     }).then(res => {
-        console.log(res);
+        showMessagesForSuccess("个人资料更新成功")
+        // console.log(res);
     }).catch(error => {
         console.log(error);
     })
@@ -105,7 +107,7 @@ const closeDialog = () => {
     emits("close", false);
 }
 
-onMounted(async () => {
+const getProfile = async () => {
     backend.get(api.getUserProfile, {
         headers: {
             Authorization: localStorage.getItem("token")
@@ -116,7 +118,7 @@ onMounted(async () => {
     }).catch(err => {
         console.log(err);
     })
-})
+}
 </script>
 
 
