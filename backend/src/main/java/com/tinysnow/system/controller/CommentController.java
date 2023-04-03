@@ -41,14 +41,13 @@ public class CommentController {
     return Response.success(commentService.findAllOfOneAuthor(userId));
   }
 
-  @GetMapping(value = "/{id}")
+  @GetMapping(value = "/pass/{id}")
   public Response find(@PathVariable("id") Long id) {
     return Response.success(commentService.find(id));
   }
 
-  @PutMapping(value = "/{id}")
-  public Response update(@PathVariable("id") Long id, @RequestBody Comment comment) {
-    comment.setId(id);
+  @PutMapping(value = "/no-pass")
+  public Response update(@RequestBody Comment comment) {
     return Response.success(commentService.update(comment));
   }
 

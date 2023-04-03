@@ -1,6 +1,6 @@
 <template>
     <el-space fill direction="vertical" class="space">
-        <comment-card-simple v-for="comment in comments" :comment="comment" :userId="userIdStore.userId" />
+        <comment-card-simple v-for="comment in comments" :comment="comment" :userId="userIdStore.userId" @update="update"/>
     </el-space>
 </template>
 
@@ -27,19 +27,24 @@ const comments = reactive([{
     status: Boolean,
 }])
 
+const update = () => {
+    comments.length = 0
+    getCommentListOfOneAuthor()
+}
 
-onMounted(async () => {
+const getCommentListOfOneAuthor = async () => {
     backend.get(api.getCommentListOfOneAuthor + userIdStore.userId, {
         headers: {
             Authorization: localStorage.getItem("token")
         }
     }).then(res => {
-        // console.log(res);
         Object.assign(comments, res.data.data)
     }).catch(error => {
         console.log(error);
     });
-})
+}
+
+onMounted(getCommentListOfOneAuthor)
 </script>
 
 

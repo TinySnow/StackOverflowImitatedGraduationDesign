@@ -88,7 +88,7 @@ onBeforeUnmount(() => {
     clearInterval(timer)
     timer = null;
 })
-
+// TODO：加密密码
 const register = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
     console.log(ruleForm.birthday);
@@ -116,7 +116,6 @@ const register = async (formEl: FormInstance | undefined) => {
             }).catch(error => {
                 console.log(error);
             })
-
         } else {
             console.log('error submit!', fields)
         }

@@ -1,6 +1,6 @@
 <template>
     <el-space fill direction="vertical" class="space">
-        <question-card v-for="question in questions" :question="question" :user-id="userIdStore.userId" @update="update"/>
+        <question-card v-for="question in questions" :question="question" :user-id="userIdStore.userId" @update="update" />
     </el-space>
 </template>
 
@@ -25,7 +25,8 @@ const questions = reactive([{
     updatedTime: Date,
 }])
 
-const update = ()=>{
+const update = () => {
+    questions.length = 0
     getQuestionListOfOneAuthor()
 }
 

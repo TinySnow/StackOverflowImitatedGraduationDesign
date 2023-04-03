@@ -62,7 +62,7 @@ const onChange = (uploadFile: UploadFile) => {
     reader.onload = () => {
         imageUrl.value = reader.result as string;
     };
-    console.log(imageUrl.value);
+    // console.log(imageUrl.value);
 }
 
 const uploadAvatar = () => {

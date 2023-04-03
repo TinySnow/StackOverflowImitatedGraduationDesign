@@ -53,9 +53,10 @@ public class SpringSecurityConfiguration {
                 .authorizeHttpRequests()
                 .antMatchers(HttpMethod.OPTIONS, "**").permitAll()
                 // 对于登录 login、注册 register、验证码 captchaImage（还未实现），测试资源，允许匿名访问
-                .antMatchers("/login/**","/register", "/captchaImage").permitAll()
+                .antMatchers("/login/**", "/register", "/captchaImage").permitAll()
                 .antMatchers("/test/**").permitAll()
-                .antMatchers("/user/all/*","/tag/tags/*","/question/pass/**","/best-answer/pass/**").permitAll()
+                .antMatchers("/user/all/*", "/tag/tags/*",
+                        "/question/pass/**", "/best-answer/pass/**", "/comment/pass/**").permitAll()
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**")
                 .permitAll()

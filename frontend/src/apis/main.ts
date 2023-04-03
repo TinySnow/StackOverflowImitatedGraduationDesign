@@ -14,11 +14,14 @@ const api = {
   getQuestionListOfOneAuthor: "/question/no-pass/author-all/",
   newQuestion: "/question/no-pass",
   questionDetail: "/test/question-detail/",
+  deleteQuestion: "/question/no-pass/",
 
   getCommentList: "/test/comments/",
   getCommentListOfOneAuthor: "/comment/no-pass/author-all/",
   newComment: "/comment",
   deleteComment: "/comment/",
+  updateComment: "/comment/no-pass",
+  getSingleComment: "/comment/pass/",
 
   getPoint: "/point/info",
 

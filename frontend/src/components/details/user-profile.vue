@@ -64,7 +64,6 @@
                             <el-button type="danger">删除账号</el-button>
                         </template>
                     </el-popconfirm>
-
                 </el-row>
             </el-space>
         </el-col>
@@ -76,8 +75,7 @@
 
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue'
-import { Male, Female } from '@element-plus/icons-vue'
-import { InfoFilled } from '@element-plus/icons-vue'
+import { Male, Female, InfoFilled } from '@element-plus/icons-vue'
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";
 import { useLoginedStore, useTokenStore, useUserIdStore } from '@/stores/store';

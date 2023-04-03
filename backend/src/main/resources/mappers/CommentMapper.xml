@@ -16,8 +16,8 @@
     </resultMap>
 
     <resultMap id="withUser" type="com.tinysnow.system.dto.CommentDto">
-        <association property="comment" resultMap="base" />
-        <association property="userDto" resultMap="com.tinysnow.system.mapper.UserMapper.withPoint" />
+        <association property="comment" resultMap="base"/>
+        <association property="userDto" resultMap="com.tinysnow.system.mapper.UserMapper.withPoint"/>
     </resultMap>
 
     <sql id="columns">
@@ -45,18 +45,19 @@
     </select>
 
     <select id="findByOneColumn" resultMap="base">
-        <include refid="columns" />
+        <include refid="columns"/>
         where ${column} = #{value}
     </select>
 
     <select id="findComments" resultMap="withUser">
         SELECT COALESCE(parent, c.id) AS parent_id, c.*, u.*, p.*
         FROM comment c
-        left join user u on c.author = u.id
-        left join point p on p.id = u.id
+                 left join user u on c.author = u.id
+                 left join point p on p.id = u.id
         WHERE c.question = #{questionId}
         ORDER BY CAST(parent_id AS UNSIGNED), c.id;
     </select>
+
     <select id="findAllOfOneAuthor" resultMap="base">
         <include refid="columns"/>
         where author = #{userId}
@@ -71,7 +72,9 @@
 
     <update id="update" parameterType="com.tinysnow.system.model.Comment">
         update comment
-        set where id = #{id}
+        set content = #{content},
+            updated_time = NOW()
+        where id = #{id}
     </update>
 
     <delete id="delete">

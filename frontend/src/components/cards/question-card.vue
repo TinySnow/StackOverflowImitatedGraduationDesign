@@ -21,7 +21,7 @@
                             <span class="warning" @click="editQuestion()">编辑</span>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <span class="danger" @click="deleteQuestion()">删除</span>
+                            <span class="danger" @click="reconfirmVisiable = true">删除</span>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -29,12 +29,22 @@
         </el-col>
     </el-row>
     <update-question :question-id="data.question.id.toString()" :show="isUpdateShow" @close="close" />
+    <el-dialog v-model="reconfirmVisiable" title="最终确认" width="30%">
+        <p>问题标题：</p>
+        <p>{{ data.question.title }}</p>
+        <br />
+        <p>确认删除此问题？此操作不可撤销！</p>
+        <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="reconfirmVisiable = false">取消</el-button>
+                <el-button type="primary" @click="deleteQuestion">确定</el-button>
+            </span>
+        </template>
+    </el-dialog>
 </template>
 
 
 <script lang="ts" setup>
-// TODO：编辑问题
-// TODO：删除问题
 import { useUserIdStore } from '@/stores/store';
 import { ref } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
@@ -42,12 +52,17 @@ import UpdateQuestion from "@/components/update/update-question.vue";
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { useRouter } from 'vue-router';
+import { backend } from '@/utils/baseurl';
+import api from "@/apis/main";
+import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
+
 
 const router = useRouter()
 const isUpdateShow = ref(false);
 
 const activeNames = ref([''])
 const userIdStore = useUserIdStore()
+const reconfirmVisiable = ref(false)
 
 const data = defineProps<{
     question: {
@@ -71,8 +86,24 @@ const questionDetail = () => {
 const editQuestion = () => {
     isUpdateShow.value = true
 }
-const deleteQuestion = () => {
 
+
+const deleteQuestion = () => {
+    backend.delete(api.deleteQuestion + data.question.id, {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(res => {
+        if (res.data.success) {
+            showMessagesForSuccess("成功删除问题！问题 id：" + data.question.id)
+        } else {
+            showMessagesForError(res.data.msg);
+        }
+        reconfirmVisiable.value = false
+        close()
+    }).catch(error => {
+        console.log(error);
+    })
 }
 const emits = defineEmits(["update"])
 
