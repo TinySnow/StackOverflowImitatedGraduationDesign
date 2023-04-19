@@ -57,4 +57,12 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> findAllOfOneAuthor(Long userId) {
         return commentMapper.findAllOfOneAuthor(userId);
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public List<Comment> findAll() {
+        return commentMapper.findAll();
+    }
 }

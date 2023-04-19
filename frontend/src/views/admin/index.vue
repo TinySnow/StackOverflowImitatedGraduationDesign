@@ -2,21 +2,19 @@
     <div>
         <el-container>
             <el-header class="outer-header">
-                <!-- <el-row> -->
-                <el-col class="header">
-                    管理员后端
-                </el-col>
-                <!-- </el-row> -->
+                <el-col class="header">管理员端</el-col>
             </el-header>
             <el-container>
                 <el-aside class="sidebar">
                     <sidebar />
                 </el-aside>
-                <el-container>
-                    <el-main>Main</el-main>
-                    <el-footer>Footer</el-footer>
-                </el-container>
+                <el-main>
+                    <RouterView />
+                </el-main>
             </el-container>
+            <el-footer class="outer-footer">
+                <custom-footer />
+            </el-footer>
         </el-container>
     </div>
 </template>
@@ -24,8 +22,8 @@
 
 <script lang="ts" setup>
 
-import Sidebar from "@/components/sidebar/custom-sidebar.vue";
-
+import Sidebar from "@/components/layout/custom-sidebar.vue";
+import customFooter from '@/components/layout/custom-footer.vue'
 
 </script>
 
@@ -46,7 +44,7 @@ import Sidebar from "@/components/sidebar/custom-sidebar.vue";
 }
 
 .sidebar {
-    width: 150px;
+    width: 120px;
     height: 100%;
 }
 </style>

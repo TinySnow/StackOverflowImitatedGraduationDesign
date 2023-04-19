@@ -30,10 +30,9 @@ public class CommentController {
     return Response.success(commentService.save(comment));
   }
 
-  @GetMapping
+  @GetMapping("/pass")
   public Response findList() {
-    Comment comment = new Comment();
-    return Response.success(commentService.findList(comment));
+    return Response.success(commentService.findAll());
   }
 
   @GetMapping(value = "/no-pass/author-all/{id}")

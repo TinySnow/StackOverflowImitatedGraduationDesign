@@ -36,9 +36,8 @@ public class BestAnswerController {
     return Response.success(bestAnswerService.find(id));
   }
 
-  @PutMapping(value = "/{id}")
-  public Response update(@PathVariable("id") Long id, @RequestBody BestAnswer bestAnswer) {
-    bestAnswer.setBestAnswerId(id);
+  @PutMapping(value = "/no-pass/mark-best")
+  public Response update(@RequestBody BestAnswer bestAnswer) {
     return Response.success(bestAnswerService.update(bestAnswer));
   }
 

@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import QuestionCommentList from '@/components/lists/comment-list-question.vue';
 import QuestionDetail from '@/components/details/question-detail.vue';
-import Divider from "@/components/others/divider.vue";
+import Divider from "@/components/layout/divider.vue";
 import QuestionHeader from "@/components/others/question-header.vue";
 import PublishComment from "@/components/others/publish-comment.vue";
 import BestAnswer from "@/components/others/best-answer.vue";

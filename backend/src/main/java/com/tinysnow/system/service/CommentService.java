@@ -42,4 +42,6 @@ public interface CommentService {
     int delete(Long id);
 
     List<Comment> findAllOfOneAuthor(Long userId);
+
+    List<Comment> findAll();
 }

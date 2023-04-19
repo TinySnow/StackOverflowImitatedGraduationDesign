@@ -7,7 +7,6 @@
 
 
 <script lang="ts" setup>
-// TODO：显示最佳回答
 import api from "@/apis/main";
 import CommentCard from "@/components/cards/comment-card.vue";
 import { backend } from "@/utils/baseurl";

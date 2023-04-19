@@ -62,6 +62,9 @@
         <include refid="columns"/>
         where author = #{userId}
     </select>
+    <select id="findAll" resultMap="base">
+        <include refid="columns"/>
+    </select>
 
     <insert id="save" parameterType="com.tinysnow.system.model.Comment">
         insert into comment (id, question, parent, author, content, upvote, devote, created_time, updated_time,
@@ -72,7 +75,7 @@
 
     <update id="update" parameterType="com.tinysnow.system.model.Comment">
         update comment
-        set content = #{content},
+        set content      = #{content},
             updated_time = NOW()
         where id = #{id}
     </update>

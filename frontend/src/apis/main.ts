@@ -16,6 +16,7 @@ const api = {
   questionDetail: "/test/question-detail/",
   deleteQuestion: "/question/no-pass/",
 
+  getAllComments: "/comment/pass",
   getCommentList: "/test/comments/",
   getCommentListOfOneAuthor: "/comment/no-pass/author-all/",
   newComment: "/comment",
@@ -28,6 +29,9 @@ const api = {
   getTagList: "/tag/tags/",
 
   getBestAnswer: "/best-answer/pass/",
+  markBest: "/best-answer/no-pass/mark-best",
+
+  getCollectionListOfOneAuthor:"/collection/no-pass/",
 
   getQuestionAuthor: (questionId: string) => {
     return "/question/pass/" + questionId + "/author";

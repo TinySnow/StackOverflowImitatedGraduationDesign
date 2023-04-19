@@ -29,10 +29,9 @@ public class UserController {
         return Response.success(userService.save(user));
     }
 
-    @GetMapping
+    @GetMapping("/pass")
     public Response findList() {
-        User user = new User();
-        return Response.success(userService.findList(user));
+        return Response.success(userService.findAll());
     }
 
     @GetMapping("/all/point")

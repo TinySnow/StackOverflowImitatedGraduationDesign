@@ -46,4 +46,6 @@ public interface CommentMapper {
     int delete(Long id);
 
     List<Comment> findAllOfOneAuthor(Long userId);
+
+    List<Comment> findAll();
 }

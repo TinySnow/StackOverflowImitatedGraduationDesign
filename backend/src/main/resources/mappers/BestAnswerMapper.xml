@@ -32,7 +32,8 @@
 
     <update id="update" parameterType="com.tinysnow.system.model.BestAnswer">
         update best_answer
-        set where question_id = #{id}
+        set best_answer_id = #{bestAnswerId}
+        where question_id = #{questionId}
     </update>
 
     <delete id="delete">

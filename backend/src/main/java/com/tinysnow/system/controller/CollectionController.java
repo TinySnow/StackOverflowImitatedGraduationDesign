@@ -31,7 +31,7 @@ public class CollectionController {
     return Response.success(collectionService.findList(collection));
   }
 
-  @GetMapping(value = "/{id}")
+  @GetMapping(value = "/no-pass/{id}")
   public Response find(@PathVariable("id") Long id) {
     return Response.success(collectionService.find(id));
   }

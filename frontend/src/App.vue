@@ -1,6 +1,8 @@
 <template>
-  <admin v-if="route.path.match('/admin')" />
-  <application v-else />
+  <RouterView>
+    <admin v-if="route.path.match('/admin')" />
+    <application v-else />
+  </RouterView>
 </template>
 
 <script setup lang="ts">
@@ -14,5 +16,17 @@ const route = useRoute()
 </script>
 
 <style>
+.outer-header {
+  background-color: rgb(196, 232, 255);
+  border-radius: 4px;
+  text-align: center;
+  padding: auto;
+}
 
+.outer-footer {
+  background-color: rgb(196, 232, 255);
+  border-radius: 4px;
+  text-align: center;
+  padding: auto;
+}
 </style>

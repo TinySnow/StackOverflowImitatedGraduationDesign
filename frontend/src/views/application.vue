@@ -2,13 +2,13 @@
   <div>
     <el-container>
       <el-header class="outer-header">
-        <single />
+        <custom-header />
       </el-header>
       <el-main>
         <RouterView />
       </el-main>
       <el-footer class="outer-footer">
-        <p>Copyright ©2023 报错解决查助系统 All rights reserved. | 南国微雪 Miyuki 毕业设计制作 | For Bachelor Graduation.</p>
+        <custom-footer />
       </el-footer>
     </el-container>
   </div>
@@ -18,23 +18,10 @@
 <script setup lang="ts">
 
 import { RouterView } from 'vue-router'
-import single from '@/components/header/custom-header.vue'
+import customHeader from '@/components/layout/custom-header.vue'
+import customFooter from '@/components/layout/custom-footer.vue'
 
 </script>
 
 
-<style scoped>
-.outer-footer {
-  background-color: rgb(196, 232, 255);
-  border-radius: 4px;
-  text-align: center;
-  padding: auto;
-}
-
-.outer-header {
-  background-color: rgb(196, 232, 255);
-  border-radius: 4px;
-  text-align: center;
-  padding: auto;
-}
-</style>
+<style scoped></style>
