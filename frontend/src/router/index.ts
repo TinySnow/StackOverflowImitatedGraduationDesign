@@ -12,33 +12,31 @@ const router = createRouter({
     {
       path: "/admin",
       component: () => import("@/views/admin/index.vue"),
-      children: [
-        {
-          path: "",
-          name: "管理界面",
-          component: () => import("@/template/new.vue"),
-        },
-        {
-          path: "user",
-          name: "管理用户界面",
-          component: () => import("@/components/admin/user.vue"),
-        },
-        {
-          path: "question",
-          name: "管理问题界面",
-          component: () => import("@/components/admin/question.vue"),
-        },
-        {
-          path: "comment",
-          name: "管理评论界面",
-          component: () => import("@/components/admin/comment.vue"),
-        },
-        {
-          path: "collection",
-          name: "管理问题集界面",
-          component: () => import("@/components/admin/collection.vue"),
-        }
-      ]
+    },
+    {
+      path: "/admin/",
+      name: "管理界面",
+      component: () => import("@/template/new.vue"),
+    },
+    {
+      path: "/admin/user",
+      name: "管理用户界面",
+      component: () => import("@/components/admin/user.vue"),
+    },
+    {
+      path: "/admin/question",
+      name: "管理问题界面",
+      component: () => import("@/components/admin/question.vue"),
+    },
+    {
+      path: "/admin/comment",
+      name: "管理评论界面",
+      component: () => import("@/components/admin/comment.vue"),
+    },
+    {
+      path: "/admin/collection",
+      name: "管理问题集界面",
+      component: () => import("@/components/admin/collection.vue"),
     },
     {
       path: "/space",

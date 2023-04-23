@@ -31,7 +31,8 @@ const api = {
   getBestAnswer: "/best-answer/pass/",
   markBest: "/best-answer/no-pass/mark-best",
 
-  getCollectionListOfOneAuthor:"/collection/no-pass/",
+  getCollectionListOfOneAuthor: "/collection/no-pass/user/",
+  newCollection: "/collection",
 
   getQuestionAuthor: (questionId: string) => {
     return "/question/pass/" + questionId + "/author";

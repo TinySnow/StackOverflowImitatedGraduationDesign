@@ -1,8 +1,6 @@
 <template>
-  <RouterView>
     <admin v-if="route.path.match('/admin')" />
     <application v-else />
-  </RouterView>
 </template>
 
 <script setup lang="ts">

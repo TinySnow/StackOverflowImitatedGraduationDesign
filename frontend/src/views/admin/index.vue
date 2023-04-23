@@ -1,22 +1,20 @@
 <template>
-    <div>
+    <el-container>
+        <el-header class="outer-header">
+            <el-col class="header">管理员端</el-col>
+        </el-header>
         <el-container>
-            <el-header class="outer-header">
-                <el-col class="header">管理员端</el-col>
-            </el-header>
-            <el-container>
-                <el-aside class="sidebar">
-                    <sidebar />
-                </el-aside>
-                <el-main>
-                    <RouterView />
-                </el-main>
-            </el-container>
-            <el-footer class="outer-footer">
-                <custom-footer />
-            </el-footer>
+            <el-aside class="sidebar">
+                <sidebar />
+            </el-aside>
+            <el-main>
+                <RouterView />
+            </el-main>
         </el-container>
-    </div>
+        <el-footer class="outer-footer">
+            <custom-footer />
+        </el-footer>
+    </el-container>
 </template>
 
 

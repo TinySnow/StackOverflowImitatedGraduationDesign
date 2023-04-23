@@ -16,9 +16,6 @@
 
 <script lang="ts" setup>
 import { useUserIdStore } from '@/stores/store';
-import { ref } from 'vue'
-import { ArrowDown } from '@element-plus/icons-vue'
-import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 
 const userIdStore = useUserIdStore()

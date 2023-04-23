@@ -1,6 +1,9 @@
 package com.tinysnow.system.service;
 
+import com.tinysnow.system.dto.CollectionDto;
 import com.tinysnow.system.model.Collection;
+
+import java.util.List;
 
 /**
  * collection - 
@@ -17,7 +20,7 @@ public interface CollectionService {
     /**
      * 查找全部的 Collection
      */
-    Collection findList(Collection collection);
+    List<CollectionDto> findList(Long id);
 
     /**
      * 根据 id 查找 Collection

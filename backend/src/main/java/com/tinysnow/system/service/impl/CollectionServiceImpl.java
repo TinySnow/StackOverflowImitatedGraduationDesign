@@ -1,10 +1,13 @@
 package com.tinysnow.system.service.impl;
 
+import com.tinysnow.system.dto.CollectionDto;
 import com.tinysnow.system.service.CollectionService;
 import com.tinysnow.system.mapper.CollectionMapper;
 import com.tinysnow.system.model.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * collection - 
@@ -22,8 +25,8 @@ public class CollectionServiceImpl implements CollectionService {
         return collectionMapper.save(collection);
     }
 
-    public Collection findList(Collection collection){
-        return collectionMapper.findList(collection);
+    public List<CollectionDto> findList(Long id){
+        return collectionMapper.findList(id);
     }
 
     public Collection find(Long id){

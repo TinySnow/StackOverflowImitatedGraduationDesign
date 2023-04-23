@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <el-container>
-      <el-header class="outer-header">
-        <custom-header />
-      </el-header>
-      <el-main>
-        <RouterView />
-      </el-main>
-      <el-footer class="outer-footer">
-        <custom-footer />
-      </el-footer>
-    </el-container>
-  </div>
+  <el-container>
+    <el-header class="outer-header">
+      <custom-header />
+    </el-header>
+    <el-main>
+      <RouterView />
+    </el-main>
+    <el-footer class="outer-footer">
+      <custom-footer />
+    </el-footer>
+  </el-container>
 </template>
 
 

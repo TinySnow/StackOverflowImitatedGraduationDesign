@@ -25,10 +25,9 @@ public class CollectionController {
     return Response.success(collectionService.save(collection));
   }
 
-  @GetMapping
-  public Response findList() {
-    Collection collection = new Collection();
-    return Response.success(collectionService.findList(collection));
+  @GetMapping(value = "/no-pass/user/{id}")
+  public Response findList(@PathVariable("id") Long id) {
+    return Response.success(collectionService.findList(id));
   }
 
   @GetMapping(value = "/no-pass/{id}")

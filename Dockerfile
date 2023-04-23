@@ -2,11 +2,6 @@ FROM ubuntu:latest AS BASE
 
 WORKDIR /home/snow/
 
-# 复制文件
-COPY backend-0.0.1-SNAPSHOT.jar backend/src/main/resources/library/mysql-connector-java-8.0.30.jar /home/snow/
-COPY scripts/ /home/snow/scripts
-COPY frontend/dist/ /home/snow/frontend
-
 # 更新 apt-get 包管理器
 RUN sed -i s@/archive.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list \
     && apt-get clean \
@@ -16,6 +11,11 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sour
     && apt-get install -y wget curl tmux mysql-server openjdk-17-jre
 
 EXPOSE 5173 38643
+
+# 复制文件
+COPY backend-0.0.1-SNAPSHOT.jar backend/src/main/resources/library/mysql-connector-java-8.0.30.jar /home/snow/
+COPY scripts/ /home/snow/scripts
+COPY frontend/dist/ /home/snow/frontend
 
 # 启动前端和后端
 RUN curl -sL https://deb.nodesource.com/setup_19.x | bash - \
