@@ -43,7 +43,7 @@ const judge = useLoginedStore()
 const storage = useTokenStore()
 const route = useRoute();
 const router = useRouter();
-const collections = JSON.parse(localStorage.getItem('collections') || '')
+const collections = storage.token === null && !judge.logined ? null : JSON.parse(localStorage.getItem('collections') || '')
 const questionId = route.params.id.toString()
 
 const goBack = () => {
@@ -64,7 +64,7 @@ const addToCollection = async (collection: { id: string }) => {
     backend.post(api.addQuestion, {
         questionId: questionId,
         collectionId: collection.id
-    },{
+    }, {
         headers: {
             Authorization: localStorage.getItem("token")
         }

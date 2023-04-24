@@ -1,9 +1,9 @@
 <template>
-    <el-space fill direction="vertical" class="space">
+    <el-empty v-if="comments[0].id === ''" description="暂无发表的评论" />
+    <el-space v-else fill direction="vertical" class="space">
         <comment-card-simple v-for="comment in comments" :comment="comment" :userId="userIdStore.userId" @update="update"/>
     </el-space>
 </template>
-
 
 <script lang="ts" setup>
 import CommentCardSimple from "@/components/cards/comment-card-simple.vue";

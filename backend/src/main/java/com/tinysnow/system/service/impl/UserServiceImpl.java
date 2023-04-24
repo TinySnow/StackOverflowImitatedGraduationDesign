@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
         userMapper.save(user);
         Point point = new Point();
         point.setId(user.getId());
+        point.setPoint(0L);
         return pointMapper.save(point);
     }
 

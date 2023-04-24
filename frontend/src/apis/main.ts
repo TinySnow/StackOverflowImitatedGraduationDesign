@@ -5,7 +5,7 @@ const api = {
   updateProfile: "/user/no-pass/profile/",
   getUserProfile: "/user/info",
   userList: "/user/all/point",
-  registerUser: "/user",
+  registerUser: "/user/pass",
   deleteUser: "/user/",
 
   updateQuestion: "/question/no-pass",

@@ -45,11 +45,6 @@ public class CollectionServiceImpl implements CollectionService {
         return collectionMapper.delete(id);
     }
 
-    /**
-     * @param questionId
-     * @param collectionId
-     * @return
-     */
     @Override
     public int saveToCollection(CollectionQuestionRelation cqr) {
         return collectionMapper.saveToCollection(cqr);

@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping("/pass")
     public Response save(@RequestBody User user) {
         return Response.success(userService.save(user));
     }

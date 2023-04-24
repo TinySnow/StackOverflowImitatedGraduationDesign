@@ -3,7 +3,8 @@
         <el-link type="primary">创建新的问题集</el-link>
     </el-card>
     <custom-divider />
-    <el-space fill direction="vertical" class="space">
+    <el-empty v-if="collections[0].id === ''" description="暂无收藏的问题集" />
+    <el-space v-else fill direction="vertical" class="space">
         <collection-card v-for="collection in collections" :collection="collection" :userId="userIdStore.userId" />
     </el-space>
     <new-collection :user-id="userIdStore.userId" :show="isDialogShow" @close="close" />

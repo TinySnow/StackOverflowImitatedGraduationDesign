@@ -91,12 +91,9 @@ onBeforeUnmount(() => {
 // TODO：加密密码
 const register = async (formEl: FormInstance | undefined) => {
     if (!formEl) return
-    console.log(ruleForm.birthday);
-    console.log(new Date(Date.parse(ruleForm.birthday)).toJSON());
     await formEl.validate((valid, fields) => {
         if (valid) {
             // 推送至后端
-            console.log(ruleForm);
             backend.post(api.registerUser, {
                 username: ruleForm.username,
                 email: ruleForm.email,
@@ -106,7 +103,6 @@ const register = async (formEl: FormInstance | undefined) => {
                 registerTime: ruleForm.registerTime,
                 points: 0
             }).then(res => {
-                console.log(res);
                 if (res.data.success) {
                     // 注册成功后跳转至登录
                     router.push('/login')

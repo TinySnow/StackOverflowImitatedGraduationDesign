@@ -1,5 +1,6 @@
 <template>
-    <el-space fill direction="vertical" class="space">
+    <el-empty v-if="questions[0].id === ''" description="暂无已提出的问题" />
+    <el-space v-else fill direction="vertical" class="space">
         <question-card v-for="question in questions" :question="question" :user-id="userIdStore.userId" @update="update" />
     </el-space>
 </template>
