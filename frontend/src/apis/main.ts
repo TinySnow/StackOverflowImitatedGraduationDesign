@@ -33,6 +33,8 @@ const api = {
 
   getCollectionListOfOneAuthor: "/collection/no-pass/user/",
   newCollection: "/collection",
+  deleteCollection: "/collection/",
+  addQuestion: "/collection/no-pass/add-question",
 
   getQuestionAuthor: (questionId: string) => {
     return "/question/pass/" + questionId + "/author";

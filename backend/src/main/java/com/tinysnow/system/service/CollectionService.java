@@ -2,6 +2,7 @@ package com.tinysnow.system.service;
 
 import com.tinysnow.system.dto.CollectionDto;
 import com.tinysnow.system.model.Collection;
+import com.tinysnow.system.model.CollectionQuestionRelation;
 
 import java.util.List;
 
@@ -36,4 +37,6 @@ public interface CollectionService {
      * 根据 id 删除 Collection
      */
     int delete(Long id);
+
+    int saveToCollection(CollectionQuestionRelation cqr);
 }

@@ -107,7 +107,9 @@ const profile = reactive({
 })
 
 const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("token")
+    localStorage.removeItem("userId")
+    localStorage.removeItem("collections")
     status.loginout();
     token.loginout();
     user.loginout();

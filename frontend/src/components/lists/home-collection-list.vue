@@ -46,6 +46,7 @@ onMounted(async () => {
     }).then(res => {
         console.log(res.data.data);
         Object.assign(collections, res.data.data)
+        localStorage.setItem("collections",JSON.stringify(res.data.data))
     }).catch(error => {
         console.log(error);
     });

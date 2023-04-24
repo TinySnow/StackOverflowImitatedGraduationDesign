@@ -18,13 +18,13 @@
         <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
         <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更改时间，若无可为空 -->
         <collection property="question" ofType="com.tinysnow.system.model.Question">
-            <result property="id" column="id" jdbcType="BIGINT"/>
-            <result property="author" column="author" jdbcType="VARCHAR"/><!-- 作者，关联 user 的 id -->
-            <result property="title" column="title" jdbcType="LONGVARCHAR"/><!-- 文章标题 -->
+            <result property="id" column="question_id" jdbcType="BIGINT"/>
+            <result property="author" column="question_author" jdbcType="VARCHAR"/><!-- 作者，关联 user 的 id -->
+            <result property="title" column="question_title" jdbcType="LONGVARCHAR"/><!-- 文章标题 -->
             <result property="content" column="content" jdbcType="LONGVARCHAR"/><!-- 文章内容 -->
             <result property="reward" column="reward" jdbcType="INTEGER"/><!-- 悬赏分数，标注最佳答案后进行事务性扣除 -->
-            <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
-            <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/><!-- 更新时间，若无更改可为空 -->
+            <result property="createdTime" column="question_created_time" jdbcType="TIMESTAMP"/><!-- 创建时间 -->
+            <result property="updatedTime" column="question_updated_time" jdbcType="TIMESTAMP"/><!-- 更新时间，若无更改可为空 -->
         </collection>
     </resultMap>
 
@@ -35,8 +35,19 @@
     </select>
 
     <select id="findList" resultMap="withQuestion">
-        select c.id, c.title, c.author, c.description, c.created_time, c.updated_time,
-               q.id, q.author, q.title, q.content, q.reward, q.created_time, q.updated_time
+        select c.id,
+               c.title,
+               c.author,
+               c.description,
+               c.created_time,
+               c.updated_time,
+               q.id           as question_id,
+               q.author       as question_author,
+               q.title        as question_title,
+               q.content,
+               q.reward,
+               q.created_time as question_created_time,
+               q.updated_time as question_updated_time
         from collection c
                  join collection_question_relation cqr on c.id = cqr.collection_id
                  join question q on cqr.question_id = q.id
@@ -44,8 +55,13 @@
     </select>
 
     <insert id="save" useGeneratedKeys="true" parameterType="com.tinysnow.system.model.Collection">
-        insert into collection (title, author, description, created_time)
+        insert into collection (title, author, `description`, created_time)
         values (#{title}, #{author}, #{description}, NOW())
+    </insert>
+
+    <insert id="saveToCollection" parameterType="com.tinysnow.system.model.CollectionQuestionRelation">
+        insert into collection_question_relation(collection_id, question_id)
+        values (#{collectionId}, #{questionId})
     </insert>
 
     <update id="update" parameterType="com.tinysnow.system.model.Collection">
@@ -57,5 +73,11 @@
         delete
         from collection
         where id = #{id}
+    </delete>
+
+    <delete id="deleteRelation">
+        delete
+        from collection_question_relation
+        where collection_id = #{id}
     </delete>
 </mapper>

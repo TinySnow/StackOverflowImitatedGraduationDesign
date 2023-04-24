@@ -3,7 +3,18 @@
         <el-col :span="me ? 22 : 24">
             <el-collapse v-model="activeNames">
                 <el-collapse-item :title="data.collection.title" :name="data.collection.id">
-                    
+                    <el-row v-for="item in data.collection.question">
+                        <el-col :span="2">
+                            <p class="question-id">问题 ID<br />{{ item.id }}</p>
+                        </el-col>
+                        <el-col :span="22">
+                            <el-collapse v-model="inner">
+                                <el-collapse-item :title="item.title" :name="item.id">
+                                    <md-editor v-model="item.content" preview-only />
+                                </el-collapse-item>
+                            </el-collapse>
+                        </el-col>
+                    </el-row>
                 </el-collapse-item>
             </el-collapse>
         </el-col>
@@ -15,13 +26,10 @@
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item>
-                            <span class="primary" @click="questionDetail()">详情</span>
+                            <span class="warning" @click="edit">编辑</span>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <span class="warning" @click="editQuestion()">编辑</span>
-                        </el-dropdown-item>
-                        <el-dropdown-item>
-                            <span class="danger" @click="reconfirmVisiable = true">删除</span>
+                            <span class="danger" @click="reconfirm = true">删除</span>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -29,15 +37,15 @@
         </el-col>
     </el-row>
     <!-- <update-question :question-id="data.collection.id.toString()" :show="isUpdateShow" @close="close" /> -->
-    <el-dialog v-model="reconfirmVisiable" title="最终确认" width="30%">
-        <p>问题标题：</p>
+    <el-dialog v-model="reconfirm" title="最终确认" width="30%">
+        <p>问题集标题：</p>
         <p>{{ data.collection.title }}</p>
         <br />
-        <p>确认删除此问题？此操作不可撤销！</p>
+        <p>确认删除此问题集？此操作不可撤销！</p>
         <template #footer>
             <span class="dialog-footer">
-                <el-button @click="reconfirmVisiable = false">取消</el-button>
-                <el-button type="primary" @click="deleteQuestion">确定</el-button>
+                <el-button @click="reconfirm = false">取消</el-button>
+                <el-button type="primary" @click="deletee">确定</el-button>
             </span>
         </template>
     </el-dialog>
@@ -48,8 +56,6 @@
 import { useUserIdStore } from '@/stores/store';
 import { ref } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
-import QuestionCard from "@/components/cards/question-card.vue";
-import UpdateQuestion from "@/components/update/update-question.vue";
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { useRouter } from 'vue-router';
@@ -62,8 +68,9 @@ const router = useRouter()
 const isUpdateShow = ref(false);
 
 const activeNames = ref([''])
+const inner = ref([''])
 const userIdStore = useUserIdStore()
-const reconfirmVisiable = ref(false)
+const reconfirm = ref(false)
 
 const data = defineProps<{
     collection: {
@@ -73,24 +80,29 @@ const data = defineProps<{
         description: string,
         createdTime: Date,
         updatedTime: Date
-        question: []
+        question: [{
+            id: string,
+            title: string,
+            author: string,
+            content: string,
+            reward: number,
+            bestAnswer: boolean,
+            createdTime: Date,
+            updatedTime: Date
+        }]
     },
     userId: string | null
 }>()
 
 const me = data.userId === userIdStore.userId
 
-const questionDetail = () => {
-
+const edit = () => {
+    // isUpdateShow.value = true
 }
 
-const editQuestion = () => {
-    isUpdateShow.value = true
-}
-
-
-const deleteQuestion = () => {
-
+const deletee = () => {
+    reconfirm.value = false
+    del()
 }
 const emits = defineEmits(["update"])
 
@@ -102,6 +114,22 @@ const close = async () => {
     isUpdateShow.value = false
     await delay(1000)
     await emits("update", false)
+}
+
+const del = async () => {
+    backend.delete(api.deleteCollection + data.collection.id,{
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(res => {
+        if (res.data.success) {
+            showMessagesForSuccess("成功删除问题！问题集 id：" + data.collection.id)
+        } else {
+            showMessagesForError(res.data.msg);
+        }
+    }).catch(error => {
+        console.log(error);
+    })
 }
 </script>
 
@@ -121,5 +149,10 @@ const close = async () => {
 
 .danger {
     color: var(--el-color-danger)
+}
+
+.question-id {
+    margin-top: 0%;
+    color: var(--el-color-info);
 }
 </style>

@@ -20,9 +20,8 @@
                         <el-dropdown-item>请先登录</el-dropdown-item>
                     </el-dropdown-menu>
                     <el-dropdown-menu v-else>
-                        <el-dropdown-item>Action 1</el-dropdown-item>
-                        <el-dropdown-item>Action 2</el-dropdown-item>
-                        <el-dropdown-item>Action 3</el-dropdown-item>
+                        <el-dropdown-item v-for="item in collections" @click="addToCollection(item)">{{ item.title
+                        }}</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -38,12 +37,13 @@ import { reactive, onMounted } from 'vue';
 import { ArrowDown } from '@element-plus/icons-vue'
 import { useRoute, useRouter } from 'vue-router';
 import { useLoginedStore, useTokenStore } from '@/stores/store';
+import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
 
 const judge = useLoginedStore()
 const storage = useTokenStore()
 const route = useRoute();
 const router = useRouter();
-
+const collections = JSON.parse(localStorage.getItem('collections') || '')
 const questionId = route.params.id.toString()
 
 const goBack = () => {
@@ -59,6 +59,25 @@ const user = reactive({
     birthday: '',
     registerTime: Date(),
 })
+
+const addToCollection = async (collection: { id: string }) => {
+    backend.post(api.addQuestion, {
+        questionId: questionId,
+        collectionId: collection.id
+    },{
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }).then(res => {
+        if (res.data.success) {
+            showMessagesForSuccess("添加问题成功！")
+        } else {
+            showMessagesForError(res.data.msg);
+        }
+    }).catch(error => {
+        console.log(error);
+    });
+}
 
 onMounted(async () => {
     backend.get(api.getQuestionAuthor(questionId)).then(res => {
