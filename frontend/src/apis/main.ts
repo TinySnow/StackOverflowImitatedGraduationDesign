@@ -32,6 +32,8 @@ const api = {
   markBest: "/best-answer/no-pass/mark-best",
 
   getCollectionListOfOneAuthor: "/collection/no-pass/user/",
+  getQuestionsOfSpecificCollection: "/collection/no-pass/get-questions/",
+  updateCollection: "/collection/no-pass/",
   newCollection: "/collection",
   deleteCollection: "/collection/",
   addQuestion: "/collection/no-pass/add-question",

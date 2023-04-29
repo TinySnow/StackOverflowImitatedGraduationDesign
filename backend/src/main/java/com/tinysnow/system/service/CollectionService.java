@@ -3,6 +3,7 @@ package com.tinysnow.system.service;
 import com.tinysnow.system.dto.CollectionDto;
 import com.tinysnow.system.model.Collection;
 import com.tinysnow.system.model.CollectionQuestionRelation;
+import com.tinysnow.system.model.Question;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public interface CollectionService {
     /**
      * 更新 Collection
      */
-    int update(Collection collection);
+    int update(CollectionQuestionRelation collection);
 
     /**
      * 根据 id 删除 Collection
@@ -39,4 +40,6 @@ public interface CollectionService {
     int delete(Long id);
 
     int saveToCollection(CollectionQuestionRelation cqr);
+
+    List<Question> getQuestions(Long id);
 }

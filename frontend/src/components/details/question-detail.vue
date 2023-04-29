@@ -12,7 +12,6 @@
 
 
 <script lang="ts" setup>
-// TODO：加入收藏问题集功能
 // TODO：显示悬赏助人点
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";

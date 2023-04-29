@@ -2,6 +2,7 @@ package com.tinysnow.system.mapper;
 
 import com.tinysnow.system.dto.CollectionDto;
 import com.tinysnow.system.model.CollectionQuestionRelation;
+import com.tinysnow.system.model.Question;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tinysnow.system.model.Collection;
@@ -35,7 +36,7 @@ public interface CollectionMapper {
     /**
      * 更新 Collection
      */
-    int update(Collection collection);
+    int update(CollectionQuestionRelation cqr);
 
     /**
      * 根据 id 删除 Collection
@@ -51,4 +52,6 @@ public interface CollectionMapper {
      * 添加中间表相关数据
      */
     int saveToCollection(CollectionQuestionRelation cqr);
+
+    List<Question> getQuestions(Long id);
 }

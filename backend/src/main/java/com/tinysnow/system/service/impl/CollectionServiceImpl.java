@@ -2,6 +2,7 @@ package com.tinysnow.system.service.impl;
 
 import com.tinysnow.system.dto.CollectionDto;
 import com.tinysnow.system.model.CollectionQuestionRelation;
+import com.tinysnow.system.model.Question;
 import com.tinysnow.system.service.CollectionService;
 import com.tinysnow.system.mapper.CollectionMapper;
 import com.tinysnow.system.model.Collection;
@@ -35,8 +36,8 @@ public class CollectionServiceImpl implements CollectionService {
         return collectionMapper.find(id);
     }
 
-    public int update(Collection collection) {
-        return collectionMapper.update(collection);
+    public int update(CollectionQuestionRelation cqr) {
+        return collectionMapper.update(cqr);
     }
 
     @Transactional
@@ -48,5 +49,14 @@ public class CollectionServiceImpl implements CollectionService {
     @Override
     public int saveToCollection(CollectionQuestionRelation cqr) {
         return collectionMapper.saveToCollection(cqr);
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Question> getQuestions(Long id) {
+       return collectionMapper.getQuestions(id);
     }
 }

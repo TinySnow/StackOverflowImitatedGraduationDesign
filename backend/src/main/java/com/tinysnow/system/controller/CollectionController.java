@@ -38,15 +38,19 @@ public class CollectionController {
         return Response.success(collectionService.findList(id));
     }
 
+    @GetMapping(value = "/no-pass/get-questions/{id}")
+    public Response getQuestions(@PathVariable("id") Long id) {
+        return Response.success(collectionService.getQuestions(id));
+    }
+
     @GetMapping(value = "/no-pass/{id}")
     public Response find(@PathVariable("id") Long id) {
         return Response.success(collectionService.find(id));
     }
 
-    @PutMapping(value = "/{id}")
-    public Response update(@PathVariable("id") Long id, @RequestBody Collection collection) {
-        collection.setId(id);
-        return Response.success(collectionService.update(collection));
+    @PutMapping(value = "/no-pass")
+    public Response update(@RequestBody CollectionQuestionRelation cqr) {
+        return Response.success(collectionService.update(cqr));
     }
 
     @DeleteMapping(value = "/{id}")

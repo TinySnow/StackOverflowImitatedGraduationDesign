@@ -49,9 +49,15 @@
                q.created_time as question_created_time,
                q.updated_time as question_updated_time
         from collection c
-                 join collection_question_relation cqr on c.id = cqr.collection_id
-                 join question q on cqr.question_id = q.id
+                 left join collection_question_relation cqr on c.id = cqr.collection_id
+                 left join question q on cqr.question_id = q.id
         where c.author = #{id}
+    </select>
+    <select id="getQuestions" resultMap="com.tinysnow.system.mapper.QuestionMapper.base">
+        select q.*
+        from collection_question_relation cqr
+                 join question q on q.id = cqr.question_id
+        where collection_id = #{id}
     </select>
 
     <insert id="save" useGeneratedKeys="true" parameterType="com.tinysnow.system.model.Collection">
@@ -64,10 +70,12 @@
         values (#{collectionId}, #{questionId})
     </insert>
 
-    <update id="update" parameterType="com.tinysnow.system.model.Collection">
-        update collection
-        set where id = #{id}
-    </update>
+    <delete id="update" parameterType="com.tinysnow.system.model.CollectionQuestionRelation">
+        delete
+        from collection_question_relation
+        where collection_id = #{collectionId}
+          and question_id = #{questionId}
+    </delete>
 
     <delete id="delete">
         delete

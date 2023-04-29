@@ -5,7 +5,8 @@
     <custom-divider />
     <el-empty v-if="collections[0].id === ''" description="暂无收藏的问题集" />
     <el-space v-else fill direction="vertical" class="space">
-        <collection-card v-for="collection in collections" :collection="collection" :userId="userIdStore.userId" />
+        <collection-card v-for="collection in collections" :collection="collection" :userId="userIdStore.userId"
+            @update="update" />
     </el-space>
     <new-collection :user-id="userIdStore.userId" :show="isDialogShow" @close="close" />
 </template>
@@ -39,19 +40,26 @@ const popup = () => {
 const close = () => {
     isDialogShow.value = false
 }
-onMounted(async () => {
+const update = (isUpdate: boolean) => {
+    if (isUpdate) {
+        getCollectionListOfOneAuthor()
+    }
+}
+
+const getCollectionListOfOneAuthor = async () => {
     backend.get(api.getCollectionListOfOneAuthor + userIdStore.userId, {
         headers: {
             Authorization: localStorage.getItem("token")
         }
     }).then(res => {
-        console.log(res.data.data);
         Object.assign(collections, res.data.data)
-        localStorage.setItem("collections",JSON.stringify(res.data.data))
+        console.log(res.data.data);
+        localStorage.setItem("collections", JSON.stringify(res.data.data))
     }).catch(error => {
         console.log(error);
     });
-})
+}
+onMounted(getCollectionListOfOneAuthor)
 </script>
 
 

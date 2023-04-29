@@ -36,7 +36,7 @@
             </el-dropdown>
         </el-col>
     </el-row>
-    <!-- <update-question :question-id="data.collection.id.toString()" :show="isUpdateShow" @close="close" /> -->
+    <update-collection :collection-id="data.collection.id.toString()" :show="isUpdateShow" @close="close" />
     <el-dialog v-model="reconfirm" title="最终确认" width="30%">
         <p>问题集标题：</p>
         <p>{{ data.collection.title }}</p>
@@ -61,6 +61,7 @@ import 'md-editor-v3/lib/style.css';
 import { useRouter } from 'vue-router';
 import { backend } from '@/utils/baseurl';
 import api from "@/apis/main";
+import UpdateCollection from "@/components/update/update-collection.vue";
 import { showMessagesForError, showMessagesForSuccess } from '@/utils/show-messages';
 
 
@@ -97,7 +98,7 @@ const data = defineProps<{
 const me = data.userId === userIdStore.userId
 
 const edit = () => {
-    // isUpdateShow.value = true
+    isUpdateShow.value = true
 }
 
 const deletee = () => {
@@ -110,14 +111,16 @@ const delay = (ms: number) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-const close = async () => {
-    isUpdateShow.value = false
+const close = async (isUpdate: boolean) => {
+    if (!isUpdate) {
+        isUpdateShow.value = false
+    }
     await delay(1000)
-    await emits("update", false)
+    await emits("update", true)
 }
 
 const del = async () => {
-    backend.delete(api.deleteCollection + data.collection.id,{
+    backend.delete(api.deleteCollection + data.collection.id, {
         headers: {
             Authorization: localStorage.getItem("token")
         }
