@@ -4,6 +4,8 @@ set -Eexuo pipefail
 
 service mysql start
 
-java -jar /home/snow/backend-0.0.1-SNAPSHOT.jar &
+java -jar /home/snow/StackOverflowImitatedGraduationDesign/etc/backend.jar &
 
-serve -l 5173 /home/snow/frontend &
+serve -p 5173 /home/snow/frontend/dist &
+
+/home/snow/StackOverflowImitatedGraduationDesign/logstash-7.6.2/bin/logstash &
